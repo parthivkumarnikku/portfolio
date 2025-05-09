@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Parthiv Kumar Nikku - Cybersecurity Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Parthiv Kumar Nikku</h1>
+      <p>Cybersecurity Enthusiast | Network Defender | Ethical Hacker</p>
+      <p class="social-links">
+        <span><i class="fas fa-envelope"></i> <a href="mailto:parthivkumarnikku@gmail.com">parthivkumarnikku@gmail.com</a></span>
+        <span class="delimiter">|</span>
+        <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
+        <span class="delimiter">|</span>
+        <span><i class="fab fa-github"></i> <a href="https://github.com/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
+        <span class="delimiter">|</span>
+        <span><i class="fab fa-github"></i> <a href="https://github.com/scap3sh4rk" target="_blank">scap3sh4rk</a></span>
+        <span class="delimiter">|</span>
+        <span><i class="fas fa-user-secret"></i> <a href="https://tryhackme.com/p/scap3sh4rk" target="_blank">TryHackMe</a></span>
+      </p>
+      <nav>
+        <h2>Menu</h2>
+        <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-user"></i> About</a>
+        <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+  <main class="container">
+    <section id="about-me" class="fade-in">
+      <h2>About Me</h2>
+      <p><span id="about-text"></span><span class="cursor">|</span></p>
+    </section>
+    <section id="basic-details" class="fade-in bordered">
+      <h3>Basic Details</h3>
+      <p><strong>Name:</strong> Parthiv Kumar Nikku </p>
+      <p><strong>Alias:</strong> scap3sh4rk </p>
+      <p><strong>Location:</strong> [Andhra Pradesh, India]</p>
+      <p><strong>Languages:</strong> Telugu, English, Hindi </p>
+    </section>
+    <section id="education" class="fade-in bordered">
+      <h3>Education</h3>
+      <ul>
+        <li>BTech in Cybersecurity, Amrita Vishwa Vidyapeetham,Coimbatore - [2026 PO]</li>
+      </ul>
+    </section>
+    <section id="skills" class="fade-in bordered">
+      <h3>Skills</h3>
+      <ul>
+        <li>Network Security</li>
+        <li>Penetration Testing</li>
+        <li>Incident Response</li>
+        <li>Secure Coding Practices</li>
+        <li>Cryptography</li> ...
+      </ul>
+    </section>
+    <section id="experience" class="fade-in bordered">
+      <h3>Experience</h3>
+      <ul>
+        <li>Role, [Company], [Tenure]</li>
+        <li>Role, [Company], [Tenure]</li>
+      </ul>
+    </section>
+    <section id="certifications" class="fade-in bordered">
+      <h3>Certifications</h3>
+      <ul>
+        <li>Certified Ethical Hacker (CEH)</li>
+        <li>Ethical Hacking Essentials</li>
+        <li>CCIO</li>
+      </ul>
+    </section>
+    <section id="interests" class="fade-in bordered">
+      <h3>Interests</h3>
+      <p>Capture The Flag (CTF) challenges, open-source security tools, cryptography research.</p>
+    </section>
+  </main>
+   <footer>
+    <p>&copy; 2025 Parthiv Kumar Nikku | Built with &lt;/&gt; and coffee :)</p>
+    <p style="color: rgb(51, 255, 0); text-align: center; font-style: italic;">Site under development....</p>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Menu toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+
+      // Close menu on outside click or link click
+      document.addEventListener('click', (event) => {
+        if (nav.classList.contains('active') && 
+            !nav.contains(event.target) && 
+            !menuToggle.contains(event.target)) {
+          nav.classList.remove('active');
+        }
+      });
+
+      // Close menu when a navigation link is clicked
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('active');
+        });
+      });
+
+      // Hamburger menu visibility on scroll
+      const header = document.querySelector('header');
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            menuToggle.classList.add('visible');
+            nav.classList.add('sliding');
+          } else {
+            menuToggle.classList.remove('visible');
+            nav.classList.remove('sliding');
+            // Only remove 'active' if the menu is actually open
+            if (nav.classList.contains('active')) {
+              nav.classList.remove('active');
+            }
+          }
+        });
+      }, { threshold: 0 });
+      navObserver.observe(header);
+
+      // Typing effect
+      const aboutText = document.getElementById('about-text');
+      const text = "I’m John, a cybersecurity enthusiast dedicated to protecting digital systems and exploring ethical hacking.";
+      let index = 0;
+      function type() {
+        if (index < text.length) {
+          aboutText.textContent += text.charAt(index);
+          index++;
+          setTimeout(type, 50);
+        } else {
+          document.querySelector('.cursor').style.animation = 'none';
+        }
+      }
+      type();
+
+      // Back to top
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Fade-in on scroll
+      const fadeIns = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      fadeIns.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
