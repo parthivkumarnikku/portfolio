@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Fira Code', monospace;
-  background-color: #0f0f0f;
+  background-color: #000000;
   color: #00ff00;
   line-height: 1.6;
 }
@@ -167,7 +167,7 @@ h2 {
 }
 
 .project:hover {
-  background-color: #161716;
+  background-color: #000000;
   box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00;
   transform: scale(1.03);
   z-index: 10;
@@ -242,7 +242,7 @@ footer {
   bottom: 2rem;
   right: 2rem;
   background: #00ff00;
-  color: #0f0f0f;
+  color: #000000;
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -275,7 +275,7 @@ footer {
   border: 1px solid #00ff00;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: #1a1a1a;
+  background-color: #090313;
 }
 
 /* Adjust padding for unordered lists inside bordered sections */
