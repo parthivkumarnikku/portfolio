@@ -8,7 +8,7 @@
 /* 
  * COLOR PSYCHOLOGY & DESIGN SYSTEM
  * ================================
- * #ffff00 (Yellow): Primary headings - represents clarity, focus, optimism - draws attention
+ * #cece00 (Lighter Muted Yellow): Primary headings - represents clarity, focus, optimism - draws attention
  * #00ff00 (Green): Base text, links, navigation - calming, trust, security
  * #ccff00 (Lime): Secondary headings, accents - vibrant, technical, hacker aesthetic
  * #ff6b35 (Orange-Red): Expertise/competencies, accents - energy, warmth, action
@@ -107,15 +107,15 @@ footer {
 }
 
 .primary-nav a:hover {
-  background: #ffff00;
+  background: #cece00;
   color: #000 !important;
   border-radius: 3px;
   font-weight: bold;
 }
 
 .primary-nav a.active {
-  border-bottom: 2px solid #ffff00;
-  color: #ffff00;
+  border-bottom: 2px solid #cece00;
+  color: #cece00;
   font-weight: bold;
 }
 
@@ -197,8 +197,8 @@ footer {
 }
 
 .social-links a:hover {
-  color: #ffff00;
-  text-shadow: 0 0 10px #ffff00;
+  color: #cece00;
+  text-shadow: 0 0 10px #cece00;
 }
 
 .social-links a i {
@@ -240,15 +240,15 @@ footer {
 
 h2 {
   margin-bottom: 1rem;
-  color: #ffff00;
+  color: #cece00;
 }
 
 h3 {
-  color: #ffff00;
+  color: #cece00;
 }
 
 h4 {
-  color: #ffff00;
+  color: #cece00;
 }
 
 section {
@@ -287,7 +287,7 @@ section:last-child {
 .project:hover {
   box-shadow: 0 0 15px #ccff00;
   transform: scale(1.03);
-  border-left-color: #ffff00;
+  border-left-color: #cece00;
 }
 
 /* BORDERS */
@@ -424,7 +424,7 @@ section:last-child {
 
 /* Section-specific colors for visual hierarchy and content organization */
 #welcome h2,
-#welcome h3 { color: #ffff00; }
+#welcome h3 { color: #cece00; }
 
 #welcome p {
   color: #d0d0d0;
@@ -432,19 +432,19 @@ section:last-child {
 
 #core-competencies h2,
 #core-competencies h3,
-#core-competencies h4 { color: #ffff00; }
+#core-competencies h4 { color: #cece00; }
 
 #core-competencies div {
-  border-left-color: #ffea00 !important;
+  border-left-color: #cece00 !important;
   background: #171917 !important;
 }
 
 #core-competencies h3 {
-  color: #ffea00;
+  color: #cece00;
 }
 
 #featured-projects h2,
-#featured-projects h3 { color: #ffff00; }
+#featured-projects h3 { color: #cece00; }
 
 #featured-projects .project {
   border-left-color: #00ff00;
@@ -456,7 +456,7 @@ section:last-child {
 }
 
 #featured-projects p strong {
-  color: #ffff00;
+  color: #cece00;
 }
 
 #featured-projects .bordered {
@@ -465,7 +465,7 @@ section:last-child {
 }
 
 #certifications-home h2,
-#certifications-home h3 { color: #ffff00; }
+#certifications-home h3 { color: #cece00; }
 
 #certifications-home h3 {
   color: #00ff00;
@@ -477,7 +477,7 @@ section:last-child {
 }
 
 #learning-interests h2,
-#learning-interests h3 { color: #ffff00; }
+#learning-interests h3 { color: #cece00; }
 
 #learning-interests h3 {
   color: #00ff00;
@@ -489,14 +489,14 @@ section:last-child {
 }
 
 /* About Page Specific Colors */
-#about h2 { color: #ffff00; }
+#about h2 { color: #cece00; }
 #about p { color: #e0e0e0; }
 
 #education h2,
 #expertise h2,
 #tools-knowledge h2,
 #learning-path h2 {
-  color: #ffff00;
+  color: #cece00;
 }
 
 #education h3 {
@@ -504,7 +504,7 @@ section:last-child {
 }
 
 #education div[style*="border-left"] {
-  border-left-color: #ffff00 !important;
+  border-left-color: #cece00 !important;
 }
 
 #expertise h3 {
@@ -520,11 +520,11 @@ section:last-child {
 }
 
 #tools-knowledge div[style*="border-top"] {
-  border-top-color: #ffff00 !important;
+  border-top-color: #cece00 !important;
 }
 
 #learning-path h4 {
-  color: #ffff00;
+  color: #cece00;
 }
 
 #learning-path div[style*="border-radius"] {
@@ -532,7 +532,7 @@ section:last-child {
 }
 
 /* Projects Page Specific Colors */
-#projects h2 { color: #ffff00; }
+#projects h2 { color: #cece00; }
 
 .project h3 {
   color: #ffaa00;
@@ -550,14 +550,14 @@ section:last-child {
   box-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
 }
 
-#project-summary h2 { color: #ffff00; }
+#project-summary h2 { color: #cece00; }
 #project-summary p strong { color: #ff6b35; }
 
 /* Disclosures Page Specific Colors */
-#disclosure-intro h2 { color: #ffff00; }
+#disclosure-intro h2 { color: #cece00; }
 
 .disclosure-item h3 {
-  color: #ffff00;
+  color: #cece00;
 }
 
 .disclosure-field strong {
@@ -575,10 +575,10 @@ section:last-child {
 
 .disclosure-item:hover {
   box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
-  border-color: #ffff00;
+  border-color: #cece00;
 }
 
-#disclosure-policy h2 { color: #ffff00; }
+#disclosure-policy h2 { color: #cece00; }
 
 #disclosure-policy h4 {
   color: #00ff88;
@@ -591,7 +591,7 @@ section:last-child {
 
 /* Certifications Page Specific Colors */
 .cert-title {
-  color: #ffff00 !important;
+  color: #cece00 !important;
 }
 
 .cert-field strong {
@@ -603,8 +603,8 @@ section:last-child {
   border-bottom-color: #ffaa00 !important;
 }
 
-#certifications-intro h2 { color: #ffff00; }
-#certifications-info h2 { color: #ffff00; }
+#certifications-intro h2 { color: #cece00; }
+#certifications-info h2 { color: #cece00; }
 #certifications-info h3 { color: #ffaa00; }
 
 /* Link styling based on context */
