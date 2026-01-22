@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certifications | Parthiv Kumar Nikku</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+  
+  <style>
+    .certification-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .certification-card {
+      background: #1a1a1a;
+      border: 2px solid #00ff00;
+      padding: 1.5rem;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certification-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00ff00, #00cc00, #00ff00);
+    }
+
+    .certification-card:hover {
+      box-shadow: 0 0 15px #00ff00;
+      transform: translateY(-5px);
+    }
+
+    .cert-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #00ff00;
+    }
+
+    .cert-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #00ff00;
+    }
+
+    .cert-issuer {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    .cert-field {
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .cert-field strong {
+      color: #00ff00;
+      display: inline-block;
+      min-width: 100px;
+    }
+
+    .cert-date {
+      background: #0f0f0f;
+      padding: 0.5rem;
+      border-radius: 3px;
+      display: inline-block;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .cert-links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cert-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #00ff00;
+      text-decoration: none;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid #00ff00;
+      border-radius: 3px;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .cert-links a:hover {
+      background: #00ff00;
+      color: #000;
+    }
+
+    .cert-status {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .status-active {
+      background: #00ff00;
+      color: #000;
+    }
+
+    .status-expired {
+      background: #666;
+      color: #fff;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      border: 1px solid #00ff00;
+      background: transparent;
+      color: #00ff00;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #00ff00;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-container">
+
+      <span class="brand-name">NPK</span>
+
+      <nav class="primary-nav" id="primary-nav">
+        <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-user"></i> About</a>
+        <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="./html/certifications.html"><i class="fas fa-certificate"></i> Certifications</a>
+      </nav>
+
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download>
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </div>
+
+</header>
+
+<main class="container">
+
+  <section id="certifications-intro" class="fade-in">
+    <h2>Professional Certifications</h2>
+    <p>
+      I am committed to continuous professional development and maintaining current industry certifications. 
+      Below are my credentials that validate my expertise in cybersecurity and ethical hacking.
+    </p>
+  </section>
+
+  <section id="certifications-list" class="fade-in">
+    
+    <div class="certification-grid">
+
+      <!-- Certified Ethical Hacker -->
+      <div class="certification-card">
+        <div class="cert-icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div class="cert-title">Certified Ethical Hacker (CEHv13)</div>
+        <div class="cert-issuer">EC-Council</div>
+
+        <div class="cert-field">
+          <strong>Credential ID:</strong> [Your Credential ID]
+        </div>
+
+        <div class="cert-field">
+          <strong>Issued:</strong> [Issue Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Expires:</strong> [Expiration Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Skills:</strong> Penetration Testing, Network Security, Ethical Hacking Methodologies
+        </div>
+
+        <div class="cert-status status-active">
+          <i class="fas fa-check-circle"></i> Active
+        </div>
+
+        <div class="cert-links">
+          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
+        </div>
+      </div>
+
+      <!-- Ethical Hacking Essentials -->
+      <div class="certification-card">
+        <div class="cert-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="cert-title">Ethical Hacking Essentials (EHE)</div>
+        <div class="cert-issuer">EC-Council</div>
+
+        <div class="cert-field">
+          <strong>Credential ID:</strong> [Your Credential ID]
+        </div>
+
+        <div class="cert-field">
+          <strong>Issued:</strong> [Issue Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Expires:</strong> [Expiration Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Skills:</strong> Hacking Fundamentals, Security Tools, Vulnerability Assessment
+        </div>
+
+        <div class="cert-status status-active">
+          <i class="fas fa-check-circle"></i> Active
+        </div>
+
+        <div class="cert-links">
+          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
+        </div>
+      </div>
+
+      <!-- CCIO -->
+      <div class="certification-card">
+        <div class="cert-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="cert-title">Certified Chief Information Officer (CCIO)</div>
+        <div class="cert-issuer">[Issuing Organization]</div>
+
+        <div class="cert-field">
+          <strong>Credential ID:</strong> [Your Credential ID]
+        </div>
+
+        <div class="cert-field">
+          <strong>Issued:</strong> [Issue Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Expires:</strong> [Expiration Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Skills:</strong> Information Security Management, Risk Assessment, Governance
+        </div>
+
+        <div class="cert-status status-active">
+          <i class="fas fa-check-circle"></i> Active
+        </div>
+
+        <div class="cert-links">
+          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
+        </div>
+      </div>
+
+      <!-- Template for Additional Certifications -->
+      <div class="certification-card">
+        <div class="cert-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="cert-title">[Certification Name]</div>
+        <div class="cert-issuer">[Issuing Organization]</div>
+
+        <div class="cert-field">
+          <strong>Credential ID:</strong> [Your Credential ID]
+        </div>
+
+        <div class="cert-field">
+          <strong>Issued:</strong> [Issue Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Expires:</strong> [Expiration Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Skills:</strong> [Key skills validated by this certification]
+        </div>
+
+        <div class="cert-status status-active">
+          <i class="fas fa-check-circle"></i> Active
+        </div>
+
+        <div class="cert-links">
+          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
+        </div>
+      </div>
+
+      <!-- Template for Expired Certification -->
+      <div class="certification-card">
+        <div class="cert-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="cert-title">[Previous Certification Name]</div>
+        <div class="cert-issuer">[Issuing Organization]</div>
+
+        <div class="cert-field">
+          <strong>Credential ID:</strong> [Your Credential ID]
+        </div>
+
+        <div class="cert-field">
+          <strong>Issued:</strong> [Issue Date]
+        </div>
+
+        <div class="cert-field">
+          <strong>Expired:</strong> [Expiration Date]
+        </div>
+
+        <div class="cert-status status-expired">
+          <i class="fas fa-exclamation-circle"></i> Expired
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="certifications-info" class="fade-in bordered">
+    <h2>Certification Details</h2>
+    
+    <div style="margin-bottom: 2rem;">
+      <h3>Continuing Education</h3>
+      <p>
+        I am committed to maintaining and renewing my certifications through continuous learning and professional development. 
+        My goal is to stay current with the latest cybersecurity trends, technologies, and best practices.
+      </p>
+    </div>
+
+    <div style="margin-bottom: 2rem;">
+      <h3>Planned Certifications</h3>
+      <ul>
+        <li><strong>OSCP</strong> (Offensive Security Certified Professional) - [Target Date]</li>
+        <li><strong>CISSP</strong> (Certified Information Systems Security Professional) - [Target Date]</li>
+        <li><strong>CompTIA Security+</strong> - [Target Date]</li>
+        <li><strong>AWS Certified Security - Specialty</strong> - [Target Date]</li>
+      </ul>
+    </div>
+
+  </section>
+<br>
+</main>
+
+<footer>
+  <p>&copy; 2025 Parthiv Kumar Nikku</p>
+  <p style="font-style: italic;">Site under development</p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Highlight active menu item
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('/').pop() || 'index.html';
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("primary-nav");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".primary-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggle.classList.remove("active");
+      nav.classList.remove("active");
+    });
+  });
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+      } else {
+        e.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in, .project, .certification-card, .disclosure-item").forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>

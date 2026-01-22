@@ -1,185 +1,276 @@
-<!-- 
-Author : parthiv kumar nikku
-Email : parthivkumarnikku@gmail.com
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>parthivkumarnikku - Cybersecurity Portfolio</title>
+  <title>Parthiv Kumar Nikku | Cybersecurity Portfolio</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
   <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
-  <div id="vanta-bg"></div>
-  <header>
-    <div class="header-container">
-      <h1>Parthiv Kumar Nikku</h1>
-      <p>Cybersecurity Enthusiast | Network Defender | Ethical Hacker</p>
-      <p class="social-links">
-        <span><i class="fas fa-envelope"></i> <a href="mailto:parthivkumarnikku@gmail.com">parthivkumarnikku@gmail.com</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-github"></i> <a href="https://github.com/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-github"></i> <a href="https://github.com/scap3sh4rk" target="_blank">scap3sh4rk</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fas fa-user-secret"></i> <a href="https://tryhackme.com/p/scap3sh4rk" target="_blank">TryHackMe</a></span>
-      </p>
-      <nav>
-        <h2>Menu</h2>
+
+<header class="site-header">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-container">
+
+      <span class="brand-name">NPK</span>
+
+      <nav class="primary-nav" id="primary-nav">
         <a href="index.html"><i class="fas fa-home"></i> Home</a>
         <a href="./html/about.html"><i class="fas fa-user"></i> About</a>
         <a href="./html/projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="./html/disclosures.html"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="./html/certifications.html"><i class="fas fa-certificate"></i> Certifications</a>
       </nav>
-      <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+      <a class="resume-btn" href="./assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download>
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
     </div>
-  </header>
-  <main class="container">
-    <section id="welcome" class="fade-in">
-      <h2>Welcome</h2>
-      <p><span id="welcome-text"></span><span class="cursor">|</span></p>
-    </section>
-    <section id="skills" class="fade-in bordered">
-      <h2>Skills</h2>
-      <ul>
-        <li>Network Security</li>
-        <li>Penetration Testing</li>
-        <li>Incident Response</li>
-        <li>Secure Coding Practices</li>
-        <li>Cryptography</li>
-      </ul>
-    </section>
-    <section id="certifications" class="fade-in bordered">
-      <h2>Certifications</h2>
-      <ul>
-        <li>Certified Ethical Hacker (CEH)</li>
-        <li>Ethical Hacking Essencials</li>
-        <li>CCIO</li>
-      </ul>
-    </section>
-    <section id="featured-projects" class="fade-in">
-      <h2>Featured Projects</h2>
-      <div class="project-grid">
-        <div class="project bordered">
-          <h3>Featured Project Title 1</h3>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Outcome:</strong> Report/outcome</p>
-        </div>
-        <div class="project bordered">
-          <h3>Project Title 2</h3>
-          <p><strong>Description:</strong> Title</p>
-          <p><strong>Technologies Used:</strong> Tech</p>
-          <p><strong>Outcome:</strong> outcome</p>
-        </div>
-        <div class="project bordered">
-          <h3>Penetration Testing Lab</h3>
-          <p><strong>Description:</strong> Set up a virtual lab environment for practicing penetration testing techniques on various platforms.</p>
-          <p><strong>Technologies Used:</strong> VirtualBox, Kali Linux, Metasploitable, Burp Suite</p>
-          <p><strong>Outcome:</strong> Improved practical skills in identifying and exploiting vulnerabilities.</p>
-        </div>
+  </div>
+
+  <!-- IDENTITY -->
+  <div class="identity-section">
+    <div class="identity-left">
+      <img src="./assets/images/profile.jpg" class="profile-pic" alt="Profile Picture">
+    </div>
+
+    <div class="identity-right">
+      <h1 style="color: #ffff00;">Parthiv Kumar Nikku</h1>
+
+      <p class="tagline">
+        CEHv13 | CERTIn-64284725 | OS Security Research Intern at LGSI | Former CyberSecurity Intern at Bharat Electronics Limited | TryHackMe | Offensive Security & System Internals
+      </p>
+
+      <div class="social-links">
+        <a href="mailto:parthiv.kumar.Nikku@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://www.linkedin.com/in/parthivkumarnikku" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/parthivkumarnikku" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://tryhackme.com/p/scap3sh4rk" target="_blank"><i class="fas fa-user-secret"></i> TryHackMe</a>
       </div>
-    </section>
-    <section id="area-of-interest" class="fade-in bordered">
-      <h2>Area of Interests</h2>
-      <ul>
-        <li><a href="#">How to Secure Your Home Network</a> - A guide to basic network security practices.</li>
-        <li><a href="#">Understanding OWASP Top 10 Vulnerabilities</a> - An overview of common web application security risks.</li>
-        <li><a href="#">Getting Started with Ethical Hacking</a> - Tips for beginners in cybersecurity.</li>
-      </ul>
-    </section>
-  </main>
-   <footer>
-    <p>&copy; 2025 Parthiv Kumar Nikku | Built with &lt;/&gt; and coffee :)</p>
-    <p style="color: rgb(51, 255, 0); text-align: center; font-style: italic;">Site under development....</p>
-  </footer>
-  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
+    </div>
+  </div>
 
-      // Close menu on outside click or link click
-      document.addEventListener('click', (event) => {
-        if (nav.classList.contains('active') && 
-            !nav.contains(event.target) && 
-            !menuToggle.contains(event.target)) {
-          nav.classList.remove('active');
-        }
-      });
+</header>
 
-      // Close menu when a navigation link is clicked
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('active');
-        });
-      });
+<main class="container">
 
-      // Hamburger menu visibility on scroll
-      const header = document.querySelector('header');
-      const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) {
-            menuToggle.classList.add('visible');
-            nav.classList.add('sliding');
-          } else {
-            menuToggle.classList.remove('visible');
-            nav.classList.remove('sliding');
-            // Only remove 'active' if the menu is actually open
-            if (nav.classList.contains('active')) {
-              nav.classList.remove('active');
-            }
-          }
-        });
-      }, { threshold: 0 });
-      navObserver.observe(header);
+  <section id="welcome" class="fade-in">
+    <h2>Welcome To My World...</h2>
+    <p style="color: #26ff00;"><span id="welcome-text"></span><span class="cursor">|</span></p>
+  </section>
 
-      // Typing effect
-      const welcomeText = document.getElementById('welcome-text');
-      const text = "This is my personal cybersecurity portfolio where I showcase my passion, projects, and knowledge in the field of cybersecurity.";
-      let index = 0;
-      function type() {
-        if (index < text.length) {
-          welcomeText.textContent += text.charAt(index);
-          index++;
-          setTimeout(type, 50);
-        } else {
-          document.querySelector('.cursor').style.animation = 'none';
-        }
-      }
-      type();
+  <section id="core-competencies" class="fade-in bordered">
+    <h2>Core Competencies</h2>
+    <p style="margin-bottom: 1.5rem;">My primary areas of expertise in cybersecurity:</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
+        <h3><i class="fas fa-shield-alt"></i> Security Testing</h3>
+        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
+          <li>Penetration Testing</li>
+          <li>Vulnerability Assessment</li>
+          <li>Security Auditing</li>
+        </ul>
+      </div>
+      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
+        <h3><i class="fas fa-network-wired"></i> Network Security</h3>
+        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
+          <li>Network Defense</li>
+          <li>Intrusion Detection</li>
+          <li>Firewall Configuration</li>
+        </ul>
+      </div>
+      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
+        <h3><i class="fas fa-code"></i> Application Security</h3>
+        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
+          <li>OWASP Top 10</li>
+          <li>Secure Coding</li>
+          <li>Web App Testing</li>
+        </ul>
+      </div>
+      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
+        <h3><i class="fas fa-cogs"></i> Incident Response</h3>
+        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
+          <li>Threat Analysis</li>
+          <li>Incident Investigation</li>
+          <li>Forensic Analysis</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      // Back to top
-      const backToTop = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
-        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-      });
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+  <section id="featured-projects" class="fade-in">
+    <h2>Featured Projects</h2>
+    <p style="margin-bottom: 1.5rem;">Explore my latest cybersecurity research and hands-on projects:</p>
 
-      // Fade-in on scroll
-      const fadeIns = document.querySelectorAll('.fade-in');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      fadeIns.forEach(el => observer.observe(el));
+    <div class="project-grid">
+
+      <div class="project bordered">
+        <h3><i class="fas fa-flask"></i> Penetration Testing Lab</h3>
+        <p><strong>Description:</strong> Comprehensive local exploitation lab for hands-on penetration testing practice and vulnerability assessment.</p>
+        <p><strong>Tools Used:</strong> Kali Linux, Metasploitable, Burp Suite, Metasploit Framework</p>
+        <p><strong>Key Outcomes:</strong> Exploitation workflow mastery, vulnerability identification, and attack simulation.</p>
+        <p style="margin-top: 0.8rem;"><strong>Links:</strong> 
+          <a href="#"><i class="fas fa-github"></i> GitHub Repo</a> | 
+          <a href="#"><i class="fas fa-file-alt"></i> Documentation</a>
+        </p>
+      </div>
+
+      <div class="project bordered">
+        <h3><i class="fas fa-wave-square"></i> Network Traffic Analysis</h3>
+        <p><strong>Description:</strong> Advanced packet inspection and network forensics for identifying malicious traffic patterns and network anomalies.</p>
+        <p><strong>Tools Used:</strong> Wireshark, TCPDump, Tshark, Snort</p>
+        <p><strong>Key Outcomes:</strong> Incident response capability, threat detection skills, and network behavior analysis.</p>
+        <p style="margin-top: 0.8rem;"><strong>Links:</strong> 
+          <a href="#"><i class="fas fa-file-pdf"></i> Lab Guide</a> | 
+          <a href="#"><i class="fas fa-github"></i> GitHub</a>
+        </p>
+      </div>
+
+      <div class="project bordered">
+        <h3><i class="fas fa-globe"></i> Web Application Security</h3>
+        <p><strong>Description:</strong> Comprehensive OWASP Top 10 vulnerability testing and secure code remediation guidance.</p>
+        <p><strong>Tools Used:</strong> Burp Suite Professional, OWASP ZAP, SQLMap, Nikto</p>
+        <p><strong>Key Outcomes:</strong> Detailed vulnerability reports, remediation guidance, and security best practices documentation.</p>
+        <p style="margin-top: 0.8rem;"><strong>Links:</strong> 
+          <a href="#"><i class="fas fa-github"></i> GitHub</a> | 
+          <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="certifications-home" class="fade-in bordered">
+    <h2>Professional Certifications</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+      <div>
+        <h3><i class="fas fa-certificate"></i> Certified Ethical Hacker (CEHv13)</h3>
+        <p><strong>Issuer:</strong> EC-Council</p>
+        <p><strong>Status:</strong> <span style="color: #00ff00;">Active</span></p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Industry-recognized certification validating expertise in ethical hacking and penetration testing.</p>
+      </div>
+      <div>
+        <h3><i class="fas fa-certificate"></i> Ethical Hacking Essentials (EHE)</h3>
+        <p><strong>Issuer:</strong> EC-Council</p>
+        <p><strong>Status:</strong> <span style="color: #00ff00;">Active</span></p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Foundation-level certification in ethical hacking principles and methodologies.</p>
+      </div>
+      <div>
+        <h3><i class="fas fa-certificate"></i> Certified Chief Information Officer (CCIO)</h3>
+        <p><strong>Issuer:</strong> EC-Council</p>
+        <p><strong>Status:</strong> <span style="color: #00ff00;">Active</span></p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Executive-level certification in information security governance and risk management.</p>
+      </div>
+    </div>
+    <p style="margin-top: 1.5rem;"><a href="./html/certifications.html"><i class="fas fa-arrow-right"></i> View All Certifications</a></p>
+  </section>
+
+  <section id="learning-interests" class="fade-in bordered">
+    <h2>Areas of Interest & Research</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+      <div>
+        <h3><i class="fas fa-lock"></i> Home Network Security</h3>
+        <p style="font-size: 0.9rem;">IoT device security, network segmentation, and residential threat detection.</p>
+      </div>
+      <div>
+        <h3><i class="fas fa-bug"></i> OWASP Top 10</h3>
+        <p style="font-size: 0.9rem;">Web application vulnerabilities, secure development, and remediation strategies.</p>
+      </div>
+      <div>
+        <h3><i class="fas fa-user-secret"></i> Ethical Hacking Methodologies</h3>
+        <p style="font-size: 0.9rem;">Authorized penetration testing, security assessments, and vulnerability management.</p>
+      </div>
+      <div>
+        <h3><i class="fas fa-virus"></i> Threat Intelligence</h3>
+        <p style="font-size: 0.9rem;">Emerging threats, attack patterns, and defensive countermeasures.</p>
+      </div>
+    </div>
+  </section>
+<br>
+</main>
+
+<footer>
+  <p>&copy; 2025 Parthiv Kumar Nikku</p>
+  <p style="font-style: italic;">Site under development</p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Highlight active menu item
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('/').pop() || 'index.html';
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("primary-nav");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".primary-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggle.classList.remove("active");
+      nav.classList.remove("active");
     });
-  </script>
+  });
+
+  const text = "This is my personal cybersecurity portfolio showcasing hands-on security work and research.";
+  let i = 0;
+  const el = document.getElementById("welcome-text");
+
+  (function type() {
+    if (i < text.length) {
+      el.textContent += text[i++];
+      setTimeout(type, 45);
+    }
+  })();
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+      } else {
+        e.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in, .project, .certification-card, .disclosure-item").forEach(el => observer.observe(el));
+});
+</script>
 
 </body>
 </html>

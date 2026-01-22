@@ -3,147 +3,233 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects - Cybersecurity Portfolio</title>
+  <title>Projects | Parthiv Kumar Nikku</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-  <header>
-    <div class="header-container">
-      <h1>Parthiv Kumar Nikku</h1>
-      <p>Cybersecurity Enthusiast | Network Defender | Ethical Hacker</p>
-      <p class="social-links">
-        <span><i class="fas fa-envelope"></i> <a href="mailto:parthivkumarnikku@gmail.com">parthivkumarnikku@gmail.com</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-github"></i> <a href="https://github.com/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-github"></i> <a href="https://github.com/scap3sh4rk" target="_blank">scap3sh4rk</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fas fa-user-secret"></i> <a href="https://tryhackme.com/p/scap3sh4rk" target="_blank">TryHackMe</a></span>
-      </p>
-      <nav>
-        <h2>Menu</h2>
+
+<body>
+
+<header class="site-header">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-container">
+
+      <span class="brand-name">NPK</span>
+
+      <nav class="primary-nav" id="primary-nav">
         <a href="../index.html"><i class="fas fa-home"></i> Home</a>
         <a href="about.html"><i class="fas fa-user"></i> About</a>
         <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="certifications.html"><i class="fas fa-certificate"></i> Certifications</a>
       </nav>
-      <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download>
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
     </div>
-  </header>
-  <main class="container">
-    <section id="projects" class="fade-in">
-      <h2>Projects</h2>
-      <ul class="project-list">
-        <li class="bordered">
-          <h2>Project 1</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[GitHub Repo URL]" target="_blank">GitHub Repository</a></p>
-        </li>
-        <li class="bordered">
-          <h2>Project 2</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[GitHub Repo URL]" target="_blank">GitHub Repository</a> , <a href="[Demo URL]" target="_blank">Live Demo</a></p>
-        </li>
-        <li class="bordered">
-          <h2>Project 3</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[Documentation URL]" target="_blank">Lab Setup Guide</a></p>
-        </li>
-        <li class="bordered">
-          <h2>Project 4</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[GitHub Repo URL]" target="_blank">GitHub Repository</a></p>
-        </li>
-      </ul>
-    </section>
-  </main>
-    <footer>
-    <p>&copy; 2025 Parthiv Kumar Nikku | Built with &lt;/&gt; and coffee :)</p>
-    <p style="color: rgb(51, 255, 0); text-align: center; font-style: italic;">Site under development....</p>
-  </footer>
-  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
+  </div>
 
-      // Close menu on outside click or link click
-      document.addEventListener('click', (event) => {
-        if (nav.classList.contains('active') && 
-            !nav.contains(event.target) && 
-            !menuToggle.contains(event.target)) {
-          nav.classList.remove('active');
-        }
-      });
+</header>
 
-      // Close menu when a navigation link is clicked
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('active');
-        });
-      });
+<main class="container">
 
-      // Hamburger menu visibility on scroll
-      const header = document.querySelector('header');
-      const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) {
-            menuToggle.classList.add('visible');
-            nav.classList.add('sliding');
-          } else {
-            menuToggle.classList.remove('visible');
-            nav.classList.remove('sliding');
-            // Only remove 'active' if the menu is actually open
-            if (nav.classList.contains('active')) {
-              nav.classList.remove('active');
-            }
-          }
-        });
-      }, { threshold: 0 });
-      navObserver.observe(header);
+  <section id="projects" class="fade-in">
+    <h2>Cybersecurity Projects & Research</h2>
+    <p style="color: #d0d0d0;">Here are my key cybersecurity projects, research work, and hands-on lab exercises showcasing practical security implementation:</p>
+  </section>
 
-      // Back to top
-      const backToTop = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
-        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-      });
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+  <div class="project-grid">
+    
+    <div class="project bordered">
+      <h3><i class="fas fa-flask"></i> Penetration Testing Lab</h3>
+      <p><strong>Description:</strong> Comprehensive local exploitation lab environment for hands-on penetration testing practice and vulnerability assessment techniques.</p>
+      <p><strong>Technologies:</strong> Kali Linux, Metasploitable, Burp Suite, Metasploit Framework, Nmap</p>
+      <p><strong>Key Achievements:</strong> 
+        <ul style="margin-top: 0.5rem;">
+          <li>Exploitation workflow mastery</li>
+          <li>Vulnerability identification and exploitation</li>
+          <li>Attack simulation and documentation</li>
+        </ul>
+      </p>
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
+        <br><a href="#"><i class="fas fa-file-alt"></i> Lab Documentation</a>
+        <br><a href="#"><i class="fas fa-external-link-alt"></i> Blog Post</a>
+      </p>
+    </div>
 
-      // Fade-in on scroll
-      const fadeIns = document.querySelectorAll('.fade-in');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      fadeIns.forEach(el => observer.observe(el));
+    <div class="project bordered">
+      <h3><i class="fas fa-wave-square"></i> Network Traffic Analysis & Forensics</h3>
+      <p><strong>Description:</strong> Advanced packet inspection and network forensics for identifying malicious traffic patterns, anomalies, and attack signatures.</p>
+      <p><strong>Technologies:</strong> Wireshark, TCPDump, Tshark, Snort, Suricata, ELK Stack</p>
+      <p><strong>Key Achievements:</strong> 
+        <ul style="margin-top: 0.5rem;">
+          <li>Incident response capability development</li>
+          <li>Threat detection and identification</li>
+          <li>Network behavior baseline analysis</li>
+        </ul>
+      </p>
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+        <br><a href="#"><i class="fas fa-file-pdf"></i> Lab Guide & Procedures</a>
+        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
+        <br><a href="#"><i class="fas fa-external-link-alt"></i> Case Studies</a>
+      </p>
+    </div>
+
+    <div class="project bordered">
+      <h3><i class="fas fa-globe"></i> Web Application Security Testing</h3>
+      <p><strong>Description:</strong> Comprehensive OWASP Top 10 vulnerability testing, secure code analysis, and remediation guidance for web applications.</p>
+      <p><strong>Technologies:</strong> Burp Suite Professional, OWASP ZAP, SQLMap, Nikto, Flask/Django Vulnerable Apps</p>
+      <p><strong>Key Achievements:</strong> 
+        <ul style="margin-top: 0.5rem;">
+          <li>Vulnerability report generation</li>
+          <li>Remediation guidance and secure coding practices</li>
+          <li>Security best practices documentation</li>
+        </ul>
+      </p>
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
+        <br><a href="#"><i class="fas fa-external-link-alt"></i> Live Demo Environment</a>
+        <br><a href="#"><i class="fas fa-file-alt"></i> Vulnerability Reports</a>
+      </p>
+    </div>
+
+    <div class="project bordered">
+      <h3><i class="fas fa-lock"></i> API Security Assessment</h3>
+      <p><strong>Description:</strong> Security assessment and hardening of RESTful APIs including authentication, authorization, and data protection mechanisms.</p>
+      <p><strong>Technologies:</strong> Postman, Burp Suite, Python, OAuth2, JWT, SSL/TLS</p>
+      <p><strong>Key Achievements:</strong> 
+        <ul style="margin-top: 0.5rem;">
+          <li>API vulnerability identification</li>
+          <li>Authentication bypass prevention</li>
+          <li>Secure API design guidelines</li>
+        </ul>
+      </p>
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
+        <br><a href="#"><i class="fas fa-file-alt"></i> API Security Checklist</a>
+        <br><a href="#"><i class="fas fa-external-link-alt"></i> Documentation</a>
+      </p>
+    </div>
+
+    <div class="project bordered">
+      <h3><i class="fas fa-shield-alt"></i> Incident Response Simulation</h3>
+      <p><strong>Description:</strong> Tabletop exercises and simulations for incident response procedures, threat detection, and breach containment.</p>
+      <p><strong>Technologies:</strong> Python, SIEM Tools, Log Analysis, Threat Intelligence Platforms</p>
+      <p><strong>Key Achievements:</strong> 
+        <ul style="margin-top: 0.5rem;">
+          <li>Incident timeline reconstruction</li>
+          <li>Root cause analysis</li>
+          <li>Response procedure optimization</li>
+        </ul>
+      </p>
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+        <br><a href="#"><i class="fas fa-file-pdf"></i> Incident Report Templates</a>
+        <br><a href="#"><i class="fas fa-external-link-alt"></i> Response Playbooks</a>
+        <br><a href="#"><i class="fas fa-book"></i> Lessons Learned</a>
+      </p>
+    </div>
+
+    <div class="project bordered">
+      <h3><i class="fas fa-code"></i> Secure Code Review Tool</h3>
+      <p><strong>Description:</strong> Automated security code review tool for identifying common vulnerabilities and anti-patterns in source code.</p>
+      <p><strong>Technologies:</strong> Python, AST Analysis, Regex Pattern Matching, Static Analysis</p>
+      <p><strong>Key Achievements:</strong> 
+        <ul style="margin-top: 0.5rem;">
+          <li>Vulnerability pattern detection</li>
+          <li>Code quality metrics</li>
+          <li>Remediation recommendations</li>
+        </ul>
+      </p>
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
+        <br><a href="#"><i class="fas fa-file-alt"></i> Tool Documentation</a>
+        <br><a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+      </p>
+    </div>
+
+  </div>
+
+  <section id="project-summary" class="fade-in bordered" style="margin-top: 2rem;">
+    <h2>Project Methodology</h2>
+    <p><strong>Approach:</strong> All projects follow industry-standard security assessment methodologies including NIST, OWASP, and PTES frameworks.</p>
+    <p style="margin-top: 1rem;"><strong>Documentation:</strong> Each project includes comprehensive documentation, test cases, and findings reports available upon request.</p>
+    <p style="margin-top: 1rem;"><strong>Collaboration:</strong> Open to discussing project details, security findings, and best practices. <a href="../index.html#contact">Contact me</a> for more information.</p>
+  </section>
+<br>
+</main>
+
+<footer>
+  <p>&copy; 2025 Parthiv Kumar Nikku</p>
+  <p style="font-style: italic;">Site under development</p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Highlight active menu item
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('/').pop() || 'index.html';
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("primary-nav");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".primary-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggle.classList.remove("active");
+      nav.classList.remove("active");
     });
-  </script>
+  });
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+      } else {
+        e.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in, .project, .certification-card, .disclosure-item").forEach(el => observer.observe(el));
+});
+</script>
+
 </body>
+</html>
 </html>

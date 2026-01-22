@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsible Disclosures | Parthiv Kumar Nikku</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .disclosure-item {
+      background: #1a1a1a;
+      border: 1px solid #00ff00;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: 0.3s;
+    }
+
+    .disclosure-item:hover {
+      box-shadow: 0 0 12px #00ff00;
+    }
+
+    .severity-critical {
+      border-left: 4px solid #ff0000;
+    }
+
+    .severity-high {
+      border-left: 4px solid #ff6600;
+    }
+
+    .severity-medium {
+      border-left: 4px solid #ffff00;
+    }
+
+    .severity-low {
+      border-left: 4px solid #00ff00;
+    }
+
+    .severity-badge {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 3px;
+      font-weight: bold;
+      margin-right: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .severity-critical .severity-badge {
+      background: #ff0000;
+      color: #fff;
+    }
+
+    .severity-high .severity-badge {
+      background: #ff6600;
+      color: #fff;
+    }
+
+    .severity-medium .severity-badge {
+      background: #ffff00;
+      color: #000;
+    }
+
+    .severity-low .severity-badge {
+      background: #00ff00;
+      color: #000;
+    }
+
+    .disclosure-field {
+      margin: 1rem 0;
+    }
+
+    .disclosure-field strong {
+      color: #00ff00;
+    }
+
+    .timeline {
+      background: #0a1a1a;
+      border-left: 2px solid #00ff00;
+      padding-left: 1.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.95rem;
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      background: #00ff00;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-container">
+
+      <span class="brand-name">NPK</span>
+
+      <nav class="primary-nav" id="primary-nav">
+        <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-user"></i> About</a>
+        <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="certifications.html"><i class="fas fa-certificate"></i> Certifications</a>
+      </nav>
+
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download>
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </div>
+
+</header>
+
+<main class="container">
+
+  <section id="disclosure-intro" class="fade-in">
+    <h2>Responsible Vulnerability Disclosures</h2>
+    <p style="color: #d0d0d0;">
+      This page documents vulnerabilities I have discovered and responsibly disclosed to affected organizations. 
+      All disclosures follow industry best practices and coordinated vulnerability disclosure policies.
+    </p>
+    <p style="margin-top: 1rem; color: #d0d0d0;"><strong>Note:</strong> Some details are redacted to protect organizational privacy and comply with responsible disclosure agreements.</p>
+  </section>
+
+  <section id="disclosures-list" class="fade-in">
+    
+    <div class="disclosure-item severity-critical">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3><span class="severity-badge">CRITICAL</span> Remote Code Execution via File Upload</h3>
+        </div>
+        <div style="font-size: 0.9rem; color: #888;">
+          <i class="fas fa-calendar"></i> January 2024
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Organization:</strong> [Organization Name - Confidential]
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Vulnerability Type:</strong> Remote Code Execution (RCE) via Arbitrary File Upload
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Description:</strong> The application's file upload functionality failed to properly validate file types and contents, allowing attackers to upload and execute arbitrary code on the server.
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Impact:</strong> 
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Complete server compromise</li>
+          <li>Unauthorized access to sensitive data</li>
+          <li>Lateral movement to internal systems</li>
+          <li>Potential ransomware deployment</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>CVSS Score:</strong> 9.8 (Critical)
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Remediation:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Implement strict file type validation (whitelist approach)</li>
+          <li>Scan uploaded files with antivirus/malware detection</li>
+          <li>Store uploaded files outside web root</li>
+          <li>Disable code execution on upload directory</li>
+          <li>Implement file size restrictions</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Timeline:</strong>
+        <div class="timeline">
+          <div class="timeline-item"><strong>2024-01-15:</strong> Vulnerability discovered</div>
+          <div class="timeline-item"><strong>2024-01-16:</strong> Vendor notified via security@[domain.com]</div>
+          <div class="timeline-item"><strong>2024-02-15:</strong> Vendor acknowledged receipt</div>
+          <div class="timeline-item"><strong>2024-03-15:</strong> Patch released</div>
+          <div class="timeline-item"><strong>2024-03-20:</strong> Public disclosure</div>
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Status:</strong> <span style="color: #00ff00;"><i class="fas fa-check-circle"></i> Resolved & Disclosed</span>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>References:</strong>
+        <ul style="margin-top: 0.5rem;">
+          <li><a href="https://cve.mitre.org" target="_blank">CVE Details (if applicable)</a></li>
+          <li><a href="https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload" target="_blank">OWASP: Unrestricted File Upload</a></li>
+          <li><a href="#">Full Disclosure Report</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Example High Severity Disclosure -->
+    <div class="disclosure-item severity-high">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3><span class="severity-badge">HIGH</span> SQL Injection in Authentication Module</h3>
+        </div>
+        <div style="font-size: 0.9rem; color: #888;">
+          <i class="fas fa-calendar"></i> December 2023
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Organization:</strong> [Organization Name - Confidential]
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Vulnerability Type:</strong> SQL Injection (SQLi) in Login Form
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Description:</strong> User input in the login form was not properly sanitized, allowing SQL injection attacks to bypass authentication mechanisms.
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Impact:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Unauthorized account access</li>
+          <li>Database enumeration and extraction</li>
+          <li>User credential compromise</li>
+          <li>Privilege escalation</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>CVSS Score:</strong> 8.6 (High)
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Remediation:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Use parameterized queries/prepared statements</li>
+          <li>Implement input validation and sanitization</li>
+          <li>Apply principle of least privilege to database accounts</li>
+          <li>Enable database query logging and monitoring</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Timeline:</strong>
+        <div class="timeline">
+          <div class="timeline-item"><strong>2023-12-10:</strong> Vulnerability discovered</div>
+          <div class="timeline-item"><strong>2023-12-11:</strong> Vendor notified via security@[domain.com]</div>
+          <div class="timeline-item"><strong>2024-01-11:</strong> Vendor acknowledged receipt</div>
+          <div class="timeline-item"><strong>2024-02-01:</strong> Patch released</div>
+          <div class="timeline-item"><strong>2024-02-08:</strong> Public disclosure</div>
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Status:</strong> <span style="color: #00ff00;"><i class="fas fa-check-circle"></i> Resolved</span>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>References:</strong>
+        <ul style="margin-top: 0.5rem;">
+          <li><a href="https://owasp.org/www-community/attacks/SQL_Injection" target="_blank">OWASP: SQL Injection</a></li>
+          <li><a href="#">Proof of Concept (Restricted Access)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Template for Additional Disclosures -->
+    <div class="disclosure-item severity-medium">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3><span class="severity-badge">MEDIUM</span> Cross-Site Scripting (XSS) in User Profile</h3>
+        </div>
+        <div style="font-size: 0.9rem; color: #888;">
+          <i class="fas fa-calendar"></i> November 2023
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Organization:</strong> [Organization Name - Confidential]
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Vulnerability Type:</strong> Stored Cross-Site Scripting (XSS)
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Description:</strong> The user profile page failed to properly encode user-supplied input, allowing injection of malicious JavaScript code.
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Impact:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Session hijacking</li>
+          <li>Credential theft</li>
+          <li>Malware distribution</li>
+          <li>Defacement</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>CVSS Score:</strong> 6.1 (Medium)
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Remediation:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Implement output encoding/escaping</li>
+          <li>Use Content Security Policy (CSP) headers</li>
+          <li>Input validation and sanitization</li>
+          <li>Use security libraries for encoding</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Timeline:</strong>
+        <div class="timeline">
+          <div class="timeline-item"><strong>2023-11-05:</strong> Vulnerability discovered</div>
+          <div class="timeline-item"><strong>2023-11-06:</strong> Vendor notified via security@[domain.com]</div>
+          <div class="timeline-item"><strong>2023-12-06:</strong> Vendor acknowledged receipt</div>
+          <div class="timeline-item"><strong>2024-01-10:</strong> Patch released</div>
+          <div class="timeline-item"><strong>2024-01-17:</strong> Public disclosure</div>
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Status:</strong> <span style="color: #00ff00;"><i class="fas fa-check-circle"></i> Resolved</span>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>References:</strong>
+        <ul style="margin-top: 0.5rem;">
+          <li><a href="https://owasp.org/www-community/attacks/xss/" target="_blank">OWASP: Cross-Site Scripting</a></li>
+          <li><a href="#">Security Fix Details</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="disclosure-policy" class="fade-in bordered">
+    <h2>Responsible Disclosure Policy & Practices</h2>
+    <p style="margin-bottom: 1rem;">
+      I am committed to ethical and responsible vulnerability disclosure. Below are the principles I follow:
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+      <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid #00ff00;">
+        <h4><i class="fas fa-lock"></i> Confidentiality</h4>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Vulnerabilities are not disclosed publicly until proper notification period and remediation timelines are provided.</p>
+      </div>
+      <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid #00ff00;">
+        <h4><i class="fas fa-clock"></i> Timeliness</h4>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Detailed reports are provided to organizations promptly (usually within 24 hours of discovery).</p>
+      </div>
+      <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid #00ff00;">
+        <h4><i class="fas fa-handshake"></i> Collaboration</h4>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Close coordination with vendor/organization to understand environment and support mitigation efforts.</p>
+      </div>
+      <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid #00ff00;">
+        <h4><i class="fas fa-balance-scale"></i> Ethics</h4>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">All testing is conducted with proper authorization and clearly defined scope boundaries.</p>
+      </div>
+      <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid #00ff00;">
+        <h4><i class="fas fa-transparency"></i> Transparency</h4>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Clear communication about disclosure timelines, CVE requests, and public disclosure dates.</p>
+      </div>
+      <div style="background: #1a1a1a; padding: 1rem; border-left: 3px solid #00ff00;">
+        <h4><i class="fas fa-shield-alt"></i> Non-Exploitation</h4>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Vulnerabilities are not exploited beyond proof of concept and are not shared with unauthorized parties.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <h3 style="margin-bottom: 1rem;">Contact for Security Issues</h3>
+      <p>For responsible disclosure or to report a security issue, please contact:</p>
+      <p style="margin-top: 0.5rem;">
+        <a href="mailto:security@example.com"><i class="fas fa-envelope"></i> security@example.com</a>
+      </p>
+    </div>
+  </section>
+<br>
+</main>
+
+<footer>
+  <p>&copy; 2025 Parthiv Kumar Nikku</p>
+  <p style="font-style: italic;">Site under development</p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Highlight active menu item
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('/').pop() || 'index.html';
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("primary-nav");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".primary-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggle.classList.remove("active");
+      nav.classList.remove("active");
+    });
+  });
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+      } else {
+        e.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in, .project, .certification-card, .disclosure-item").forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
