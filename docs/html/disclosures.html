@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsible Disclosures | Parthiv Kumar Nikku</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-container">
+
+      <span class="brand-name">NPK</span>
+
+      <nav class="primary-nav" id="primary-nav">
+        <a href="../index.html" data-label="Home"><i class="fas fa-home"></i> Home</a>
+        <a href="experience.html" data-label="Experience"><i class="fas fa-timeline"></i> Experience</a>
+        <a href="projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="about.html" data-label="About"><i class="fas fa-user"></i> About</a>
+      </nav>
+
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download data-label="Resume">
+        <i class="fas fa-download"></i> Resume
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </div>
+
+</header>
+
+<main class="container">
+
+  <section id="disclosure-intro" class="fade-in">
+    <h2>Responsible Vulnerability Disclosures</h2>
+    <p style="color: #d0d0d0;">
+      This page documents vulnerabilities I have discovered and responsibly disclosed to affected organizations. 
+      All disclosures follow industry best practices and coordinated vulnerability disclosure policies.
+    </p>
+    <p style="margin-top: 1rem; color: #d0d0d0;"><strong>Note:</strong> Some details are redacted to protect organizational privacy and comply with responsible disclosure agreements.</p>
+  </section>
+
+  <section id="disclosures-list" class="fade-in">
+    
+    <!-- CRITICAL SEVERITY TEMPLATE (RESERVED FOR FUTURE USE) -->
+    <!--
+    <div class="disclosure-item severity-critical">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3><span class="severity-badge">CRITICAL</span> Remote Code Execution via File Upload</h3>
+        </div>
+        <div style="font-size: 0.9rem; color: #888;">
+          <i class="fas fa-calendar"></i> January 2024
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Organization:</strong> [Organization Name - Confidential]
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Vulnerability Type:</strong> Remote Code Execution (RCE) via Arbitrary File Upload
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Description:</strong> The application's file upload functionality failed to properly validate file types and contents, allowing attackers to upload and execute arbitrary code on the server.
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Impact:</strong> 
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Complete server compromise</li>
+          <li>Unauthorized access to sensitive data</li>
+          <li>Lateral movement to internal systems</li>
+          <li>Potential ransomware deployment</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>CVSS Score:</strong> 9.8 (Critical)
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Remediation:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Implement strict file type validation (whitelist approach)</li>
+          <li>Scan uploaded files with antivirus/malware detection</li>
+          <li>Store uploaded files outside web root</li>
+          <li>Disable code execution on upload directory</li>
+          <li>Implement file size restrictions</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Timeline:</strong>
+        <div class="timeline">
+          <div class="timeline-item"><strong>2024-01-15:</strong> Vulnerability discovered</div>
+          <div class="timeline-item"><strong>2024-01-16:</strong> Vendor notified via security@[domain.com]</div>
+          <div class="timeline-item"><strong>2024-02-15:</strong> Vendor acknowledged receipt</div>
+          <div class="timeline-item"><strong>2024-03-15:</strong> Patch released</div>
+          <div class="timeline-item"><strong>2024-03-20:</strong> Public disclosure</div>
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>Status:</strong> <span style="color: #00ff00;"><i class="fas fa-check-circle"></i> Resolved & Disclosed</span>
+      </div>
+
+      <div class="disclosure-field">
+        <strong>References:</strong>
+        <ul style="margin-top: 0.5rem;">
+          <li><a href="https://cve.mitre.org" target="_blank">CVE Details (if applicable)</a></li>
+          <li><a href="https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload" target="_blank">OWASP: Unrestricted File Upload</a></li>
+          <li><a href="#">Full Disclosure Report</a></li>
+        </ul>
+      </div>
+    </div>
+    -->
+
+    <!-- HIGH SEVERITY DISCLOSURE -->
+    <div class="disclosure-item severity-high">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3><span class="severity-badge">HIGH</span> Cross-Site Request Forgery in Profile Update Module</h3>
+        </div>
+        <div style="font-size: 0.9rem; color: #888;">
+          <i class="fas fa-calendar"></i> November 2025
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Organization:</strong> Open-source Web Application (CarRentalMS)
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Vulnerability Type:</strong> Cross-Site Request Forgery (CSRF)
+      </div>
+      
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">CVE-ID:</strong> CVE-2025-66683
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Description:</strong> The application lacked anti-CSRF protection in sensitive profile update endpoints, enabling attackers to trigger unauthorized state-changing requests through crafted external pages.
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Impact:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Unauthorized modification of user account information</li>
+          <li>Account integrity compromise</li>
+          <li>Potential privilege abuse in administrative contexts</li>
+          <li>Foundation for chained attacks</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">CVSS Score:</strong> 8.1 (High)
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Remediation:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Implement anti-CSRF tokens in all state-changing requests</li>
+          <li>Validate origin and referer headers</li>
+          <li>Enforce same-site cookie attributes</li>
+          <li>Apply secure session handling practices</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Timeline:</strong>
+        <div class="timeline">
+          <div class="timeline-item"><strong>2025-11-17:</strong> Vulnerability discovered</div>
+          <div class="timeline-item"><strong>2026-11-08:</strong> CVE assigned</div>
+          <div class="timeline-item"><strong>2026-01-11:</strong> Vendor notified via GitHub</div>
+          <div class="timeline-item"><strong>2026-01-11:</strong> Public issue created</div>
+          <div class="timeline-item"><strong>2026-XX-XX:</strong> CVE Published</div>
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Status:</strong> <span style="color: #00ff00;"><i class="fas fa-uncheck-circle"></i> Reserved</span>
+      </div>
+
+      <div class="social-links">
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">References:</strong>
+        <ul style="margin-top: 0.5rem;">
+          <li><a href="https://github.com/MartMbithi/CarRentalMS" target="_blank">GitHub Repository</a></li>
+          <li><a href="https://github.com/MartMbithi/CarRentalMS/issues/34" target="_blank">GitHub Issue Disclosure</a></li>
+          <li><a href="https://cxsecurity.com/issue/WLB-2026010007" target="_blank">cxsecurity public disclosure</a></li>
+          <li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-66683" target="_blank">CVE-2025-66683</a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+
+    <!-- MEDIUM SEVERITY DISCLOSURE -->
+    <div class="disclosure-item severity-medium">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3><span class="severity-badge">MEDIUM</span> Information Disclosure via Debug Stack Trace</h3>
+        </div>
+        <div style="font-size: 0.9rem; color: #888;">
+          <i class="fas fa-calendar"></i> December 2025
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Organization:</strong> National Testing Agency (NTA)
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Vulnerability Type:</strong> Information Disclosure (CWE-209)
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">CERTIn Reference ID:</strong> CERTIn-64284725
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Description:</strong> A public-facing login module exposed a full backend debug stack trace, revealing internal file paths, framework details, database query structures, and server configuration information.
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Impact:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Exposure of backend architecture and technology stack</li>
+          <li>Disclosure of internal file paths and database schema hints</li>
+          <li>Increased risk of targeted exploitation</li>
+          <li>Reconnaissance advantage for attackers</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">CVSS Score:</strong> 6.5 (Medium)
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Remediation:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+          <li>Disable debug mode in production environments</li>
+          <li>Implement generic error handling pages</li>
+          <li>Restrict sensitive error logging to server-side logs</li>
+          <li>Harden production framework configurations</li>
+        </ul>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Timeline:</strong>
+        <div class="timeline">
+          <div class="timeline-item"><strong>2025-12-02:</strong> Vulnerability discovered</div>
+          <div class="timeline-item"><strong>2025-12-02:</strong> Responsible disclosure submitted</div>
+          <div class="timeline-item"><strong>2025-12-02:</strong> Acknowledgment received</div>
+        </div>
+      </div>
+
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">Status:</strong> <span style="color: #00ff00;"><i class="fas fa-check-circle"></i> Resolved</span>
+      </div>
+
+      <div class="social-links">
+      <div class="disclosure-field">
+        <strong style="color: #ffaa00;">References:</strong>
+        <ul style="margin-top: 0.5rem;">
+          <li><a href="https://www.linkedin.com/posts/parthivkumarnikku_cybersecurity-responsibledisclosure-infosec-activity-7401468054955872256-NIV3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-8aI8B7-GxBa0Q5vdPtaPX9zGXHHkj9Ek" target="_blank">LinkedIn Disclosure Post</a></li>
+          <li><a href="https://owasp.org/www-community/Improper_Error_Handling" target="_blank">OWASP: Improper Error Handling</a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  <p>&copy; 2026 Parthiv Kumar Nikku | Built with </> and coffee :)</p>
+  <p style="font-style: italic;"></p>
+  <p style="font-style: italic; color: #286601;">Last Updated: 23 Jan 2026</p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Highlight active menu item
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('/').pop() || 'index.html';
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("primary-nav");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".primary-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggle.classList.remove("active");
+      nav.classList.remove("active");
+    });
+  });
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+      } else {
+        e.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in, .project, .certification-card, .disclosure-item").forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>

@@ -3,147 +3,256 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects - Cybersecurity Portfolio</title>
+  <title>Projects | Parthiv Kumar Nikku</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-  <header>
-    <div class="header-container">
-      <h1>Parthiv Kumar Nikku</h1>
-      <p>Cybersecurity Enthusiast | Network Defender | Ethical Hacker</p>
-      <p class="social-links">
-        <span><i class="fas fa-envelope"></i> <a href="mailto:parthivkumarnikku@gmail.com">parthivkumarnikku@gmail.com</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-github"></i> <a href="https://github.com/parthivkumarnikku" target="_blank">parthivkumarnikku</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fab fa-github"></i> <a href="https://github.com/scap3sh4rk" target="_blank">scap3sh4rk</a></span>
-        <span class="delimiter">|</span>
-        <span><i class="fas fa-user-secret"></i> <a href="https://tryhackme.com/p/scap3sh4rk" target="_blank">TryHackMe</a></span>
-      </p>
-      <nav>
-        <h2>Menu</h2>
-        <a href="../index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="about.html"><i class="fas fa-user"></i> About</a>
-        <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+
+<body>
+
+<header class="site-header">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-container">
+
+      <span class="brand-name">NPK</span>
+
+      <nav class="primary-nav" id="primary-nav">
+        <a href="../index.html" data-label="Home"><i class="fas fa-home"></i> Home</a>
+        <a href="experience.html" data-label="Experience"><i class="fas fa-timeline"></i> Experience</a>
+        <a href="projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="about.html" data-label="About"><i class="fas fa-user"></i> About</a>
       </nav>
-      <button class="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download data-label="Resume">
+        <i class="fas fa-download"></i> Resume
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
     </div>
-  </header>
-  <main class="container">
-    <section id="projects" class="fade-in">
-      <h2>Projects</h2>
-      <ul class="project-list">
-        <li class="bordered">
-          <h2>Project 1</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[GitHub Repo URL]" target="_blank">GitHub Repository</a></p>
-        </li>
-        <li class="bordered">
-          <h2>Project 2</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[GitHub Repo URL]" target="_blank">GitHub Repository</a> , <a href="[Demo URL]" target="_blank">Live Demo</a></p>
-        </li>
-        <li class="bordered">
-          <h2>Project 3</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[Documentation URL]" target="_blank">Lab Setup Guide</a></p>
-        </li>
-        <li class="bordered">
-          <h2>Project 4</h2>
-          <p><strong>Description:</strong> Description</p>
-          <p><strong>Technologies Used:</strong> Tools and Technologies</p>
-          <p><strong>Role:</strong> Role in the project</p>
-          <p><strong>Challenges:</strong> </p>
-          <p><strong>Outcome:</strong> Result.</p>
-          <p><strong>Links:</strong> <a href="[GitHub Repo URL]" target="_blank">GitHub Repository</a></p>
-        </li>
+  </div>
+
+</header>
+
+<main class="container">
+
+  <section id="projects" class="fade-in">
+    <h2>Cybersecurity Projects & Research</h2>
+    <p style="color: #d0d0d0;">Here are my key cybersecurity projects, research work, and hands-on lab exercises showcasing practical security implementation:</p>
+  </section>
+
+<div class="project-grid">
+  
+  <!-- 1. Conorch -->
+  <div class="project bordered">
+    <h3><i class="fas fa-cubes"></i> Conorch – Container Orchestration Technology</h3>
+    <p><strong>Description:</strong> Lightweight Linux container orchestration technology developed using native kernel primitives, focusing on isolation, resource control, and secure execution without reliance on external container runtimes.</p>
+    <p><strong>Technologies:</strong> Linux Namespaces, Cgroups v2, Bash, iptables, Virtual Networking</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Designed secure container lifecycle management with process, network, and filesystem isolation</li>
+        <li>Implemented resource controls for CPU, memory, I/O, and process limits</li>
+        <li>Built a custom bridge-based networking model with NAT support</li>
       </ul>
-    </section>
-  </main>
-    <footer>
-    <p>&copy; 2025 Parthiv Kumar Nikku | Built with &lt;/&gt; and coffee :)</p>
-    <p style="color: rgb(51, 255, 0); text-align: center; font-style: italic;">Site under development....</p>
-  </footer>
-  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/parthivkumarnikku/LG_conorch.git" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+      <br><a href="https://www.linkedin.com/posts/parthivkumarnikku_aws-google-microsoftazure-activity-7401949288484032512-Linq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-8aI8B7-GxBa0Q5vdPtaPX9zGXHHkj9Ek"><i class="fas fa-external-link-alt"></i> Blog Post</a>
+    </p>
+    </div>
+  </div>
 
-      // Close menu on outside click or link click
-      document.addEventListener('click', (event) => {
-        if (nav.classList.contains('active') && 
-            !nav.contains(event.target) && 
-            !menuToggle.contains(event.target)) {
-          nav.classList.remove('active');
-        }
-      });
+  <!-- 2. CEHv13 Pentesting Lab -->
+  <div class="project bordered">
+    <h3><i class="fas fa-flask"></i> Penetration Testing Lab (CEHv13 Practice)</h3>
+    <p><strong>Description:</strong> Custom-built virtual penetration testing lab designed for CEHv13 preparation, simulating enterprise Windows and Linux environments with Active Directory infrastructure.</p>
+    <p><strong>Technologies:</strong> Kali Linux, Windows Server 2019, Windows Server 2022, Windows 10, Lubuntu, Active Directory</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Deployed Active Directory and practiced domain-based attack techniques</li>
+        <li>Captured NTLMv2-SSP hashes using Responder and successfully cracked credentials</li>
+        <li>Created reverse shell payloads and exploited PowerShell scripting using HoaxShell</li>
+        <li>Escalated privileges by bypassing UAC and exploiting Sticky Keys mechanisms</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://www.linkedin.com/posts/parthivkumarnikku_activedirectory-windowsserver-identitymanagement-activity-7368326780727779328-fsx5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-8aI8B7-GxBa0Q5vdPtaPX9zGXHHkj9Ek"><i class="fas fa-external-link-alt"></i> Blog Post</a>
+    </p>
+    </div>
+  </div>
 
-      // Close menu when a navigation link is clicked
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('active');
-        });
-      });
+  <!-- 3. IoT IDS -->
+  <div class="project bordered">
+    <h3><i class="fas fa-network-wired"></i> IoT-Based Smart Home Intrusion Detection System</h3>
+    <p><strong>Description:</strong> Honeypot-driven intrusion detection system for smart home environments designed to detect, redirect, and analyze malicious network activity.</p>
+    <p><strong>Technologies:</strong> Raspberry Pi, Linux Networking, iptables, Virtual Access Point, DHCP</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Built a decoy network to attract and analyze attackers performing port scans</li>
+        <li>Monitored and redirected malicious traffic to isolated honeypot services</li>
+        <li>Generated attack behavior insights for IoT threat modeling</li>
+      </ul>
+    </p>
+    <div class="social-links">
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="../assets/reports/24CYS333_IoT_Project_Report.pdf"><i class="fas fa-file-pdf"></i> Technical Report</a>
+    </p>
+    </div>
+    
+  </div>
 
-      // Hamburger menu visibility on scroll
-      const header = document.querySelector('header');
-      const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) {
-            menuToggle.classList.add('visible');
-            nav.classList.add('sliding');
-          } else {
-            menuToggle.classList.remove('visible');
-            nav.classList.remove('sliding');
-            // Only remove 'active' if the menu is actually open
-            if (nav.classList.contains('active')) {
-              nav.classList.remove('active');
-            }
-          }
-        });
-      }, { threshold: 0 });
-      navObserver.observe(header);
+  <!-- 4. WiFiSnipe -->
+  <div class="project bordered">
+    <h3><i class="fas fa-wifi"></i> WiFiSnipe</h3>
+    <p><strong>Description:</strong> Automated wireless network security testing tool designed to streamline Wi-Fi penetration testing and attack simulation workflows.</p>
+    <p><strong>Technologies:</strong> Aircrack-ng, Wifite, Bash, Kali Linux</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Automated scanning of nearby wireless networks</li>
+        <li>Captured WPA/WPA2 handshakes for offline password cracking</li>
+        <li>Performed targeted deauthentication and jamming attacks</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/scap3sh4rk/WiFiSnipe" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </p>
+    </div>
 
-      // Back to top
-      const backToTop = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
-        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-      });
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+  </div>
 
-      // Fade-in on scroll
-      const fadeIns = document.querySelectorAll('.fade-in');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      fadeIns.forEach(el => observer.observe(el));
+  <!-- 5. Malware Analysis -->
+  <div class="project bordered">
+    <h3><i class="fas fa-virus"></i> Malware Analysis</h3>
+    <p><strong>Description:</strong> Independent research project focused on understanding malware behavior through static and dynamic analysis techniques.</p>
+    <p><strong>Technologies:</strong> Linux, Windows, Ghidra, ProcMon, Static & Dynamic Analysis Tools</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Analyzed ransomware, worms, adware, and trojans</li>
+        <li>Studied execution flow, persistence mechanisms, and indicators of compromise</li>
+        <li>Documented analysis findings and mitigation techniques</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/parthivkumarnikku/-My_projects/tree/main/Malware_analysis" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </p>
+    </div>
+  </div>
+
+  <!-- 6. Socket Programming -->
+  <div class="project bordered">
+    <h3><i class="fas fa-code"></i> Socket Programming</h3>
+    <p><strong>Description:</strong> Low-level networking project exploring client-server communication models using socket programming concepts.</p>
+    <p><strong>Technologies:</strong> C, Linux Sockets, TCP/IP, Client–Server Architecture</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Implemented reliable client-server communication over TCP</li>
+        <li>Studied connection handling, data transmission, and error management</li>
+        <li>Gained practical understanding of network protocol behavior</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/parthivkumarnikku/Socket_programming.git" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </p>
+    </div>
+  </div>
+
+</div>
+
+
+<section id="project-summary" class="fade-in bordered" style="margin-top: 2rem;">
+  <h2>Project Methodology</h2>
+  <p>
+    <strong>Approach:</strong> Projects are executed using a research-driven, hands-on methodology combining real-world attack simulation, defensive validation, and system-level analysis. Work spans hardware-enforced security, wireless and IoT threat modeling, Linux OS internals, malware behavior analysis, and enterprise penetration testing aligned with practical VAPT workflows.
+  </p>
+  <p style="margin-top: 1rem;">
+    <strong>Execution:</strong> Each project emphasizes controlled lab environments, realistic threat scenarios, and iterative testing. This includes Active Directory exploitation, wireless attack simulations, container isolation testing, honeypot deployment, reverse engineering, and low-level network programming.
+  </p>
+  <p style="margin-top: 1rem;">
+    <strong>Documentation:</strong> All projects are supported by structured technical documentation, architecture notes, attack paths, proof-of-concept results, and remediation insights, with sensitive or proprietary details intentionally abstracted where required.
+  </p>
+  <p style="margin-top: 1rem;">
+    <strong>Collaboration:</strong> Open to technical discussions on project architecture, attack methodologies, and security design decisions. <a href="../index.html#contact">Contact me</a> for further details.
+  </p>
+</section>
+
+<br>
+</main>
+
+<footer>
+  <p>&copy; 2026 Parthiv Kumar Nikku | Built with &lt;/&gt; and coffee :)</p>
+  <p style="font-style: italic;"></p>
+  <p style="font-style: italic; color: #286601;">Last Updated: 23 Jan 2026</p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Highlight active menu item
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('/').pop() || 'index.html';
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("primary-nav");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".primary-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggle.classList.remove("active");
+      nav.classList.remove("active");
     });
-  </script>
+  });
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+      } else {
+        e.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in, .project, .certification-card, .disclosure-item").forEach(el => observer.observe(el));
+});
+</script>
+
 </body>
+</html>
 </html>
