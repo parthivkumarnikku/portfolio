@@ -26,13 +26,12 @@
         <a href="experience.html" data-label="Experience"><i class="fas fa-timeline"></i> Experience</a>
         <a href="projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
         <a href="disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
-        <a href="./html/certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
         <a href="about.html" data-label="About"><i class="fas fa-user"></i> About</a>
+        <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" data-label="Resume" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-download"></i> Resume
+        </a>
       </nav>
-
-      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download data-label="Resume">
-        <i class="fas fa-download"></i> Resume
-      </a>
 
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
         <span></span>
@@ -634,7 +633,7 @@
 </button>
 
 <script>
-// Highlight active menu item
+// Highlight active menu item and handle mobile menu
 document.addEventListener("DOMContentLoaded", () => {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.primary-nav a');
@@ -648,17 +647,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const toggle = document.getElementById("menu-toggle");
   const nav = document.getElementById("primary-nav");
+  const body = document.body;
 
-  toggle.addEventListener("click", () => {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
+
+  function closeMenu() {
+    toggle.classList.remove("active");
+    nav.classList.remove("active");
+    overlay.classList.remove("active");
+    body.classList.remove("menu-open");
+  }
+
+  function toggleMenu() {
     toggle.classList.toggle("active");
     nav.classList.toggle("active");
+    overlay.classList.toggle("active");
+    body.classList.toggle("menu-open");
+  }
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
   });
 
+  // Close menu when clicking overlay
+  overlay.addEventListener("click", closeMenu);
+
+  // Close menu when clicking nav links
   document.querySelectorAll(".primary-nav a").forEach(link => {
-    link.addEventListener("click", () => {
-      toggle.classList.remove("active");
-      nav.classList.remove("active");
-    });
+    link.addEventListener("click", closeMenu);
   });
 
   
@@ -669,7 +689,7 @@ document.addEventListener("DOMContentLoaded", () => {
   (function type() {
     if (i < text.length) {
       el.textContent += text[i++];
-      setTimeout(type, 45);
+      setTimeout(type, 10);
     }
   })();
   
