@@ -31,6 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* GLOBAL LINK STYLES */
@@ -1091,5 +1092,84 @@ section:last-child {
 @media (max-width: 480px) {
   #featured-posts iframe {
     height: 420px;
+  }
+}
+
+/* Mobile styles for certifications page */
+@media (max-width: 768px) {
+  #certifications-list,
+  #certificates-list,
+  #ctfs-hackathons {
+    padding: 1rem 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #certifications-list.visible,
+  #certificates-list.visible,
+  #ctfs-hackathons.visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .certification-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .certification-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #certifications-intro {
+    padding: 1rem 0.5rem;
+  }
+
+  #certifications-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  #certificates-list h2,
+  #ctfs-hackathons h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #cece00;
+  }
+}
+
+@media (max-width: 480px) {
+  #certifications-list,
+  #certificates-list,
+  #ctfs-hackathons {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .certification-card {
+    padding: 1rem;
+  }
+
+  .cert-title {
+    font-size: 1.1rem;
+  }
+
+  .cert-icon {
+    font-size: 2rem;
+  }
+
+  .cert-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cert-links a {
+    justify-content: center;
   }
 }
