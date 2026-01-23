@@ -22,15 +22,16 @@
       <span class="brand-name">NPK</span>
 
       <nav class="primary-nav" id="primary-nav">
-        <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="./html/about.html"><i class="fas fa-user"></i> About</a>
-        <a href="./html/projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
-        <a href="./html/disclosures.html"><i class="fas fa-bug"></i> Disclosures</a>
-        <a href="./html/certifications.html"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="index.html" data-label="Home"><i class="fas fa-home"></i> Home</a>
+        <a href="./html/experience.html" data-label="Experience"><i class="fas fa-timeline"></i> Experience</a>
+        <a href="./html/projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="./html/disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="./html/certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="./html/about.html" data-label="About"><i class="fas fa-user"></i> About</a>
       </nav>
 
-      <a class="resume-btn" href="./assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download>
-        <i class="fas fa-download"></i> Download Resume
+      <a class="resume-btn" href="./assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download data-label="Resume">
+        <i class="fas fa-download"></i> Resume
       </a>
 
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
@@ -49,7 +50,7 @@
     </div>
 
     <div class="identity-right">
-      <h1 style="color: #ffff00;">Parthiv Kumar Nikku</h1>
+      <h1 style="color: #ffff00; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Parthiv Kumar Nikku</h1>
 
       <p class="tagline">
         CEHv13 | CERTIn-64284725 | OS Security Research Intern at LGSI | Former CyberSecurity Intern at Bharat Electronics Limited | TryHackMe | Offensive Security & System Internals
@@ -73,139 +74,180 @@
     <p style="color: #26ff00;"><span id="welcome-text"></span><span class="cursor">|</span></p>
   </section>
 
-  <section id="core-competencies" class="fade-in bordered">
-    <h2>Core Competencies</h2>
-    <p style="margin-bottom: 1.5rem;">My primary areas of expertise in cybersecurity:</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
-        <h3><i class="fas fa-shield-alt"></i> Security Testing</h3>
-        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
-          <li>Penetration Testing</li>
-          <li>Vulnerability Assessment</li>
-          <li>Security Auditing</li>
-        </ul>
-      </div>
-      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
-        <h3><i class="fas fa-network-wired"></i> Network Security</h3>
-        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
-          <li>Network Defense</li>
-          <li>Intrusion Detection</li>
-          <li>Firewall Configuration</li>
-        </ul>
-      </div>
-      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
-        <h3><i class="fas fa-code"></i> Application Security</h3>
-        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
-          <li>OWASP Top 10</li>
-          <li>Secure Coding</li>
-          <li>Web App Testing</li>
-        </ul>
-      </div>
-      <div style="background: #1a1a1a; padding: 1.2rem; border-left: 3px solid #00ff00;">
-        <h3><i class="fas fa-cogs"></i> Incident Response</h3>
-        <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
-          <li>Threat Analysis</li>
-          <li>Incident Investigation</li>
-          <li>Forensic Analysis</li>
-        </ul>
-      </div>
+
+<section id="experience" class="fade-in bordered">
+  <h2>Professional Experience</h2>
+  <p style="margin-bottom: 1.5rem;">
+    Practical experience spanning operating system security research, penetration testing, malware analysis, cybersecurity training, artificial intelligence, and web development through internships, research roles, and independent work.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+
+    <!-- LG Soft India -->
+    <div style="background: #051005; padding: 1.5rem; border-left: 3px solid #00ff00;">
+      <h3 style="color: #ffaa00;"><i class="fas fa-briefcase"></i> OS Security Research Intern</h3>
+      <p style="color: #ccff00;"><strong>LG Soft India</strong></p>
+      <p style="color: #888;"><i class="fas fa-calendar"></i> May 2025 – Present</p>
+      <ul>
+        <li>Conducting operating system–level security research with focus on sandboxing.</li>
+        <li>Analyzing OS internals and isolation mechanisms for security weaknesses.</li>
+        <li>Contributing to system hardening and secure architecture discussions.</li>
+      </ul>
     </div>
-  </section>
 
-  <section id="featured-projects" class="fade-in">
-    <h2>Featured Projects</h2>
-    <p style="margin-bottom: 1.5rem;">Explore my latest cybersecurity research and hands-on projects:</p>
-
-    <div class="project-grid">
-
-      <div class="project bordered">
-        <h3><i class="fas fa-flask"></i> Penetration Testing Lab</h3>
-        <p><strong>Description:</strong> Comprehensive local exploitation lab for hands-on penetration testing practice and vulnerability assessment.</p>
-        <p><strong>Tools Used:</strong> Kali Linux, Metasploitable, Burp Suite, Metasploit Framework</p>
-        <p><strong>Key Outcomes:</strong> Exploitation workflow mastery, vulnerability identification, and attack simulation.</p>
-        <p style="margin-top: 0.8rem;"><strong>Links:</strong> 
-          <a href="#"><i class="fas fa-github"></i> GitHub Repo</a> | 
-          <a href="#"><i class="fas fa-file-alt"></i> Documentation</a>
-        </p>
-      </div>
-
-      <div class="project bordered">
-        <h3><i class="fas fa-wave-square"></i> Network Traffic Analysis</h3>
-        <p><strong>Description:</strong> Advanced packet inspection and network forensics for identifying malicious traffic patterns and network anomalies.</p>
-        <p><strong>Tools Used:</strong> Wireshark, TCPDump, Tshark, Snort</p>
-        <p><strong>Key Outcomes:</strong> Incident response capability, threat detection skills, and network behavior analysis.</p>
-        <p style="margin-top: 0.8rem;"><strong>Links:</strong> 
-          <a href="#"><i class="fas fa-file-pdf"></i> Lab Guide</a> | 
-          <a href="#"><i class="fas fa-github"></i> GitHub</a>
-        </p>
-      </div>
-
-      <div class="project bordered">
-        <h3><i class="fas fa-globe"></i> Web Application Security</h3>
-        <p><strong>Description:</strong> Comprehensive OWASP Top 10 vulnerability testing and secure code remediation guidance.</p>
-        <p><strong>Tools Used:</strong> Burp Suite Professional, OWASP ZAP, SQLMap, Nikto</p>
-        <p><strong>Key Outcomes:</strong> Detailed vulnerability reports, remediation guidance, and security best practices documentation.</p>
-        <p style="margin-top: 0.8rem;"><strong>Links:</strong> 
-          <a href="#"><i class="fas fa-github"></i> GitHub</a> | 
-          <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-        </p>
-      </div>
-
+    <!-- Bharat Electronics Limited -->
+    <div style="background: #051005; padding: 1.5rem; border-left: 3px solid #00ff00;">
+      <h3 style="color: #ffaa00;"><i class="fas fa-briefcase"></i> Junior Penetration Tester Intern</h3>
+      <p style="color: #ccff00;"><strong>Bharat Electronics Limited (BEL)</strong></p>
+      <p style="color: #888;"><i class="fas fa-calendar"></i> May 2025 – Jun 2025</p>
+      <ul>
+        <li>Executed network and application penetration testing engagements.</li>
+        <li>Performed security audits, configuration reviews, and system hardening.</li>
+        <li>Produced detailed vulnerability assessment and remediation reports.</li>
+      </ul>
     </div>
-  </section>
+
+    
+
+  
+
+  </div>
+  <div class="social-links">
+  <p style="margin-top: 1.5rem;"><a href="./html/experience.html"><i class="fas fa-arrow-right"></i> View All Experience</a></p>
+  </div>
+</section>
+
+
+
+<section id="featured-projects" class="fade-in">
+  <h2>Featured Projects</h2>
+  <p style="margin-bottom: 1.5rem;">
+    Selected projects demonstrating hands-on work in hardware security, IoT defense systems, and wireless network security research.
+  </p>
+
+  <div class="project-grid">
+
+    <!-- Data Diode -->
+    <div class="project bordered">
+      <h3 style="color: #ffaa00;"><i class="fas fa-shield-alt"></i> Data Diode</h3><br><br>
+      <p><strong>Description:</strong> Hardware-enforced one-way communication system designed as an ultimate firewall to prevent data exfiltration even under full system compromise.</p>
+      <p><strong>Tools / Technologies:</strong> RS-232, Embedded Hardware, Linux, Secure System Design</p>
+      <p><strong>Key Outcomes:</strong> Implemented unidirectional data flow, eliminated reverse-channel attacks, and enforced physical-layer security guarantees.</p>
+      <p style="margin-top: 0.8rem;">
+        <strong>Context:</strong> Final Year Project – ongoing research inspired by industrial-grade secure architectures.
+      </p>
+    </div>
+
+    <!-- IoT Smart Home IDS -->
+    <div class="project bordered">
+      <h3 style="color: #ffaa00;"><i class="fas fa-network-wired"></i> IoT-Based Smart Home Intrusion Detection System</h3><br>
+      <p><strong>Description:</strong> Honeypot-driven intrusion detection system for smart home environments to identify, redirect, and analyze malicious network activity.</p>
+      <p><strong>Tools / Technologies:</strong> Raspberry Pi, iptables, Virtual AP, DHCP, Linux Networking</p>
+      <p><strong>Key Outcomes:</strong> Detection of port scans, redirection of attackers to decoy services, and real-time traffic monitoring for threat analysis.</p>
+      <p style="margin-top: 0.8rem;">
+        <strong>Deliverable:</strong> Detailed technical report documenting architecture and attack simulations.<br>
+        <strong>Links:</strong>
+        <div class="social-links">
+        <a href="./assets/reports/24CYS333_IoT_Project_Report.pdf"><i class="fab fa-file-pdf"></i> Report</a>
+        </div>
+      </p>
+    </div>
+
+    <!-- WiFiSnipe -->
+    <div class="project bordered">
+      <h3 style="color: #ffaa00;"><i class="fas fa-wifi"></i> WiFiSnipe</h3><br><br>
+      <p><strong>Description:</strong> Automated wireless network security testing tool designed to simplify Wi-Fi penetration testing workflows.</p>
+      <p><strong>Tools / Technologies:</strong> Aircrack-ng, Wifite, Bash, Kali Linux</p>
+      <p><strong>Key Outcomes:</strong> Automated scanning of nearby networks, WPA/WPA2 handshake capture, and targeted wireless jamming capabilities.</p>
+      <p style="margin-top: 0.8rem;">
+        <strong>Links:</strong>
+        <div class="social-links">
+        <a href="https://github.com/scap3sh4rk/WiFiSnipe"><i class="fab fa-github"></i> GitHub Repository</a>
+        </div>
+      </p>
+    </div>
+
+  </div>
+    <div class="social-links">
+    <p style="margin-top: 1.5rem;"><a href="./html/projects.html"><i class="fas fa-arrow-right"></i> View All Projects</a></p>
+    </div>
+</section>
+
+
 
   <section id="certifications-home" class="fade-in bordered">
     <h2>Professional Certifications</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
       <div>
-        <h3><i class="fas fa-certificate"></i> Certified Ethical Hacker (CEHv13)</h3>
+        <h3 style="color: #ffaa00;"><i class="fas fa-certificate"></i> Certified Ethical Hacker (CEHv13)</h3>
         <p><strong>Issuer:</strong> EC-Council</p>
         <p><strong>Status:</strong> <span style="color: #00ff00;">Active</span></p>
         <p style="font-size: 0.9rem; margin-top: 0.5rem;">Industry-recognized certification validating expertise in ethical hacking and penetration testing.</p>
       </div>
       <div>
-        <h3><i class="fas fa-certificate"></i> Ethical Hacking Essentials (EHE)</h3>
+        <h3 style="color: #ffaa00;"><i class="fas fa-certificate"></i> Ethical Hacking Essentials (EHE)</h3>
         <p><strong>Issuer:</strong> EC-Council</p>
         <p><strong>Status:</strong> <span style="color: #00ff00;">Active</span></p>
         <p style="font-size: 0.9rem; margin-top: 0.5rem;">Foundation-level certification in ethical hacking principles and methodologies.</p>
       </div>
       <div>
-        <h3><i class="fas fa-certificate"></i> Certified Chief Information Officer (CCIO)</h3>
+        <h3 style="color: #ffaa00;"><i class="fas fa-certificate"></i> Certified Chief Information Officer (CCIO)</h3>
         <p><strong>Issuer:</strong> EC-Council</p>
         <p><strong>Status:</strong> <span style="color: #00ff00;">Active</span></p>
         <p style="font-size: 0.9rem; margin-top: 0.5rem;">Executive-level certification in information security governance and risk management.</p>
       </div>
     </div>
+    <div class="social-links">
     <p style="margin-top: 1.5rem;"><a href="./html/certifications.html"><i class="fas fa-arrow-right"></i> View All Certifications</a></p>
+    </div>
   </section>
 
   <section id="learning-interests" class="fade-in bordered">
-    <h2>Areas of Interest & Research</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-      <div>
-        <h3><i class="fas fa-lock"></i> Home Network Security</h3>
-        <p style="font-size: 0.9rem;">IoT device security, network segmentation, and residential threat detection.</p>
-      </div>
-      <div>
-        <h3><i class="fas fa-bug"></i> OWASP Top 10</h3>
-        <p style="font-size: 0.9rem;">Web application vulnerabilities, secure development, and remediation strategies.</p>
-      </div>
-      <div>
-        <h3><i class="fas fa-user-secret"></i> Ethical Hacking Methodologies</h3>
-        <p style="font-size: 0.9rem;">Authorized penetration testing, security assessments, and vulnerability management.</p>
-      </div>
-      <div>
-        <h3><i class="fas fa-virus"></i> Threat Intelligence</h3>
-        <p style="font-size: 0.9rem;">Emerging threats, attack patterns, and defensive countermeasures.</p>
-      </div>
+  <h2>Areas of Interest & Research</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+
+    <!-- 1. Wireless Security Research -->
+    <div>
+      <h3 style="color: #ffaa00;"><i class="fas fa-wifi"></i> Wireless Security Research</h3>
+      <p style="font-size: 0.9rem;">
+        Focused research on Wi-Fi security including WPA/WPA2 handshake capture, rogue access points, deauthentication attacks, wireless reconnaissance, and protocol-level weaknesses.
+      </p>
     </div>
-  </section>
+
+    <!-- 2. IoT -->
+    <div>
+      <h3 style="color: #ffaa00;"><i class="fas fa-microchip"></i> Internet of Things (IoT) Security</h3>
+      <p style="font-size: 0.9rem;">
+        Security of IoT ecosystems covering honeypots, smart home intrusion detection, device exposure analysis, and network-based attack detection in constrained environments.
+      </p>
+    </div>
+
+    <!-- 3. Linux OS Security -->
+    <div>
+      <h3 style="color: #ffaa00;"><i class="fas fa-terminal"></i> Linux Operating System Security</h3>
+      <p style="font-size: 0.9rem;">
+        Low-level Linux security including OS internals, sandboxing, container isolation, hardening techniques, and secure system design with a security-first mindset.
+      </p>
+    </div>
+
+    <!-- 4. Ethical Hacking Methodologies -->
+    <div>
+      <h3 style="color: #ffaa00;"><i class="fas fa-user-secret"></i> Ethical Hacking Methodologies</h3>
+      <p style="font-size: 0.9rem;">
+        Structured penetration testing methodologies covering reconnaissance, exploitation, post-exploitation, reporting, and responsible disclosure aligned with real-world VAPT practices.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 <br>
 </main>
 
 <footer>
-  <p>&copy; 2025 Parthiv Kumar Nikku</p>
-  <p style="font-style: italic;">Site under development</p>
+  <p>&copy; 2026 Parthiv Kumar Nikku | Built with &lt;/&gt; and coffee :)</p>
+  <p style="font-style: italic;"></p>
+  <p style="font-style: italic; color: #286601;">Last Updated: 23 Jan 2026</p>
 </footer>
 
 <button id="back-to-top" aria-label="Back to top">

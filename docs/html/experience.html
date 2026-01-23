@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience | Parthiv Kumar Nikku</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    .experience-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: #00ff00;
+    }
+
+    .timeline-item {
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: #00ff00;
+      border: 3px solid #051005;
+      border-radius: 50%;
+      top: 2rem;
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: 0;
+      margin-right: 52%;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 52%;
+      margin-right: 0;
+      text-align: left;
+    }
+
+    .timeline-content {
+      background: #000000;
+      border: 2px solid #00ff00;
+      padding: 1.5rem;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    .timeline-item.fade-in .timeline-content {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .timeline-item.fade-in.visible .timeline-content {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .timeline-content:hover {
+      box-shadow: 0 0 15px #00ff00;
+      transform: translateY(-5px);
+    }
+
+    .timeline-date {
+      color: #ffaa00;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+      justify-content: left;
+    }
+
+    .timeline-title {
+      color: #cece00;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-company {
+      color: #ccff00;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-description {
+      color: #d0d0d0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .skill-tag {
+      background: #051005;
+      color: #00ff00;
+      padding: 0.3rem 0.7rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      border: 1px solid #00ff00;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-container::before {
+        left: 0;
+      }
+
+      .timeline-item::before {
+        left: 0;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 2rem;
+        margin-right: 0;
+        text-align: left;
+      }
+
+      .timeline-date {
+        justify-content: left !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <!-- NAV BAR -->
+  <div class="nav-bar">
+    <div class="nav-container">
+
+      <span class="brand-name">NPK</span>
+
+      <nav class="primary-nav" id="primary-nav">
+        <a href="../index.html" data-label="Home"><i class="fas fa-home"></i> Home</a>
+        <a href="experience.html" data-label="Experience"><i class="fas fa-timeline"></i> Experience</a>
+        <a href="projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="about.html" data-label="About"><i class="fas fa-user"></i> About</a>
+      </nav>
+
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download data-label="Resume">
+        <i class="fas fa-download"></i> Resume
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </div>
+
+</header>
+
+<main class="container">
+
+  
+
+  <section id="experience-intro" class="fade-in">
+    <h2>Professional Experience</h2>
+    <p style="color: #d0d0d0;"><span id="experience-sp"></span><span class="cursor">|</span></p>
+  </section>
+
+  <section class="experience-timeline fade-in">
+  <div class="timeline-container">
+
+    <!-- LG Soft India -->
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date"><i class="fas fa-calendar"></i> May 2025 – Present</div>
+        <div class="timeline-title">Operating Systems Security Research Intern</div>
+        <div class="timeline-company"><i class="fas fa-building"></i> LG Soft India</div>
+        <div class="timeline-description">
+          Working on operating system–level security research with emphasis on sandboxing and isolation mechanisms. Analyzing OS internals to identify attack surfaces and support secure system design and hardening.
+        </div>
+        <div class="timeline-skills">
+          <span class="skill-tag">Operating Systems</span>
+          <span class="skill-tag">Sandboxing</span>
+          <span class="skill-tag">System Security</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bharat Electronics Limited -->
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date"><i class="fas fa-calendar"></i> May 2025 – Jun 2025</div>
+        <div class="timeline-title">Junior Penetration Tester Intern</div>
+        <div class="timeline-company"><i class="fas fa-building"></i> Bharat Electronics Limited (BEL)</div>
+        <div class="timeline-description">
+          Conducted network and application penetration testing engagements. Performed security audits, hardening reviews, and delivered structured vulnerability reports with remediation recommendations.
+        </div>
+        <div class="timeline-skills">
+          <span class="skill-tag">Penetration Testing</span>
+          <span class="skill-tag">Security Auditing</span>
+          <span class="skill-tag">Network Security</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amrita Vishwa Vidyapeetham -->
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date"><i class="fas fa-calendar"></i> Jan 2024 – May 2025</div>
+        <div class="timeline-title">Web Developer (Part-time)</div>
+        <div class="timeline-company"><i class="fas fa-building"></i> Amrita Vishwa Vidyapeetham</div>
+        <div class="timeline-description">
+          Developed and maintained web modules for an internal project (iamcop). Implemented responsive interfaces, authentication flows, and database-backed features using modern web technologies.
+        </div>
+        <div class="timeline-skills">
+          <span class="skill-tag">Web Development</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Responsive Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Malware Analyst -->
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date"><i class="fas fa-calendar"></i> Jun 2024 – Jul 2024</div>
+        <div class="timeline-title">Malware Analyst</div>
+        <div class="timeline-company"><i class="fas fa-building"></i> Independent</div>
+        <div class="timeline-description">
+          Performed static and basic dynamic malware analysis with focus on ransomware samples. Studied execution flow, behavior patterns, and documented findings through structured reports and GitHub repositories.
+        </div>
+        <div class="timeline-skills">
+          <span class="skill-tag">Malware Analysis</span>
+          <span class="skill-tag">Ransomware</span>
+          <span class="skill-tag">Reverse Engineering</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corizo -->
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date"><i class="fas fa-calendar"></i> Jun 2024 – Jul 2024</div>
+        <div class="timeline-title">Artificial Intelligence Intern</div>
+        <div class="timeline-company"><i class="fas fa-building"></i> Corizo</div>
+        <div class="timeline-description">
+          Gained practical exposure to artificial intelligence and machine learning concepts. Worked with Python-based algorithms and developed foundational understanding of model behavior and data processing.
+        </div>
+        <div class="timeline-skills">
+          <span class="skill-tag">Artificial Intelligence</span>
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Python</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cyber Security Internship -->
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date"><i class="fas fa-calendar"></i> Apr 2024 – May 2024</div>
+        <div class="timeline-title">Cyber Security Intern</div>
+        <div class="timeline-company"><i class="fas fa-building"></i> Cyber Security Training Program</div>
+        <div class="timeline-description">
+          Completed comprehensive training in cybersecurity principles, tools, and practices. Covered web server security, vulnerability assessment, Linux security, and penetration testing fundamentals.
+        </div>
+        <div class="timeline-skills">
+          <span class="skill-tag">Vulnerability Assessment</span>
+          <span class="skill-tag">Web Security</span>
+          <span class="skill-tag">Linux</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- B-RIG -->
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date"><i class="fas fa-calendar"></i> Feb 2023 – Jul 2024</div>
+        <div class="timeline-title">Executive Committee Member</div>
+        <div class="timeline-company"><i class="fas fa-building"></i> Blockchain – Research Interest Group (B-RIG)</div>
+        <div class="timeline-description">
+          Actively involved in blockchain-focused research initiatives, technical discussions, and event organization. Collaborated with peers on emerging technology exploration and knowledge sharing.
+        </div>
+        <div class="timeline-skills">
+          <span class="skill-tag">Blockchain</span>
+          <span class="skill-tag">Research</span>
+          <span class="skill-tag">Technical Leadership</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Parthiv Kumar Nikku | Built with </> and coffee :)</p>
+  <p style="font-style: italic;"></p>
+  <p style="font-style: italic; color: #286601;">Last Updated: 23 Jan 2026</p>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Highlight active menu item
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.primary-nav a');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href').split('/').pop() || 'index.html';
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("primary-nav");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".primary-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggle.classList.remove("active");
+      nav.classList.remove("active");
+    });
+  });
+
+  const text = "Practical experience spanning operating system security research, penetration testing, malware analysis, cybersecurity training, artificial intelligence, and web development through internships, research roles, and independent work.";
+  let i = 0;
+  const el = document.getElementById("experience-sp");
+
+  (function type() {
+    if (i < text.length) {
+      el.textContent += text[i++];
+      setTimeout(type, 45);
+    }
+  })();
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  backToTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+      } else {
+        e.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".fade-in, .timeline-item").forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>

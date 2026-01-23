@@ -9,147 +9,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
   <link rel="stylesheet" href="../css/styles.css">
-  
-  <style>
-    .certification-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .certification-card {
-      background: #1a1a1a;
-      border: 2px solid #00ff00;
-      padding: 1.5rem;
-      transition: 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .certification-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #00ff00, #00cc00, #00ff00);
-    }
-
-    .certification-card:hover {
-      box-shadow: 0 0 15px #00ff00;
-      transform: translateY(-5px);
-    }
-
-    .cert-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #00ff00;
-    }
-
-    .cert-title {
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      color: #00ff00;
-    }
-
-    .cert-issuer {
-      color: #888;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #333;
-      padding-bottom: 0.5rem;
-    }
-
-    .cert-field {
-      margin-bottom: 0.8rem;
-      font-size: 0.95rem;
-    }
-
-    .cert-field strong {
-      color: #00ff00;
-      display: inline-block;
-      min-width: 100px;
-    }
-
-    .cert-date {
-      background: #0f0f0f;
-      padding: 0.5rem;
-      border-radius: 3px;
-      display: inline-block;
-      font-size: 0.85rem;
-      margin-top: 1rem;
-    }
-
-    .cert-links {
-      margin-top: 1rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .cert-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #00ff00;
-      text-decoration: none;
-      padding: 0.5rem 0.8rem;
-      border: 1px solid #00ff00;
-      border-radius: 3px;
-      transition: 0.3s;
-      font-size: 0.9rem;
-    }
-
-    .cert-links a:hover {
-      background: #00ff00;
-      color: #000;
-    }
-
-    .cert-status {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      border-radius: 3px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-
-    .status-active {
-      background: #00ff00;
-      color: #000;
-    }
-
-    .status-expired {
-      background: #666;
-      color: #fff;
-    }
-
-    .filter-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
-    .filter-btn {
-      padding: 0.6rem 1.2rem;
-      border: 1px solid #00ff00;
-      background: transparent;
-      color: #00ff00;
-      cursor: pointer;
-      transition: 0.3s;
-      font-family: 'Fira Code', monospace;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: #00ff00;
-      color: #000;
-    }
-  </style>
 </head>
 
 <body>
@@ -163,15 +22,16 @@
       <span class="brand-name">NPK</span>
 
       <nav class="primary-nav" id="primary-nav">
-        <a href="../index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="about.html"><i class="fas fa-user"></i> About</a>
-        <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
-        <a href="disclosures.html"><i class="fas fa-bug"></i> Disclosures</a>
-        <a href="./html/certifications.html"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="../index.html" data-label="Home"><i class="fas fa-home"></i> Home</a>
+        <a href="experience.html" data-label="Experience"><i class="fas fa-timeline"></i> Experience</a>
+        <a href="projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="./html/certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="about.html" data-label="About"><i class="fas fa-user"></i> About</a>
       </nav>
 
-      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download>
-        <i class="fas fa-download"></i> Download Resume
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download data-label="Resume">
+        <i class="fas fa-download"></i> Resume
       </a>
 
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
@@ -189,213 +49,584 @@
 
   <section id="certifications-intro" class="fade-in">
     <h2>Professional Certifications</h2>
-    <p>
-      I am committed to continuous professional development and maintaining current industry certifications. 
-      Below are my credentials that validate my expertise in cybersecurity and ethical hacking.
-    </p>
+    <p style="color: #d0d0d0;"><span id="certifications-sp"></span><span class="cursor">|</span></p>
   </section>
 
-  <section id="certifications-list" class="fade-in">
+<section id="certifications-list" class="fade-in">
     
-    <div class="certification-grid">
+  <div class="certification-grid">
 
-      <!-- Certified Ethical Hacker -->
-      <div class="certification-card">
-        <div class="cert-icon">
-          <i class="fas fa-certificate"></i>
-        </div>
-        <div class="cert-title">Certified Ethical Hacker (CEHv13)</div>
-        <div class="cert-issuer">EC-Council</div>
+    <!-- Certified Ethical Hacker -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-certificate"></i>
+      </div>
+      <div class="cert-title">Certified Ethical Hacker (CEH)</div>
+      <div class="cert-issuer">EC-Council</div>
 
-        <div class="cert-field">
-          <strong>Credential ID:</strong> [Your Credential ID]
-        </div>
-
-        <div class="cert-field">
-          <strong>Issued:</strong> [Issue Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Expires:</strong> [Expiration Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Skills:</strong> Penetration Testing, Network Security, Ethical Hacking Methodologies
-        </div>
-
-        <div class="cert-status status-active">
-          <i class="fas fa-check-circle"></i> Active
-        </div>
-
-        <div class="cert-links">
-          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
-          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
-          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
-        </div>
+      <div class="cert-field">
+        <strong>Credential ID:</strong> ECC1497263058
       </div>
 
-      <!-- Ethical Hacking Essentials -->
-      <div class="certification-card">
-        <div class="cert-icon">
-          <i class="fas fa-lock"></i>
-        </div>
-        <div class="cert-title">Ethical Hacking Essentials (EHE)</div>
-        <div class="cert-issuer">EC-Council</div>
-
-        <div class="cert-field">
-          <strong>Credential ID:</strong> [Your Credential ID]
-        </div>
-
-        <div class="cert-field">
-          <strong>Issued:</strong> [Issue Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Expires:</strong> [Expiration Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Skills:</strong> Hacking Fundamentals, Security Tools, Vulnerability Assessment
-        </div>
-
-        <div class="cert-status status-active">
-          <i class="fas fa-check-circle"></i> Active
-        </div>
-
-        <div class="cert-links">
-          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
-          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
-          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
-        </div>
+      <div class="cert-field">
+        <strong>Issued:</strong> December 2025
       </div>
 
-      <!-- CCIO -->
-      <div class="certification-card">
-        <div class="cert-icon">
-          <i class="fas fa-shield-alt"></i>
-        </div>
-        <div class="cert-title">Certified Chief Information Officer (CCIO)</div>
-        <div class="cert-issuer">[Issuing Organization]</div>
-
-        <div class="cert-field">
-          <strong>Credential ID:</strong> [Your Credential ID]
-        </div>
-
-        <div class="cert-field">
-          <strong>Issued:</strong> [Issue Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Expires:</strong> [Expiration Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Skills:</strong> Information Security Management, Risk Assessment, Governance
-        </div>
-
-        <div class="cert-status status-active">
-          <i class="fas fa-check-circle"></i> Active
-        </div>
-
-        <div class="cert-links">
-          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
-          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
-          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
-        </div>
+      <div class="cert-field">
+        <strong>Expires:</strong> January 2027
       </div>
 
-      <!-- Template for Additional Certifications -->
-      <div class="certification-card">
-        <div class="cert-icon">
-          <i class="fas fa-star"></i>
-        </div>
-        <div class="cert-title">[Certification Name]</div>
-        <div class="cert-issuer">[Issuing Organization]</div>
-
-        <div class="cert-field">
-          <strong>Credential ID:</strong> [Your Credential ID]
-        </div>
-
-        <div class="cert-field">
-          <strong>Issued:</strong> [Issue Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Expires:</strong> [Expiration Date]
-        </div>
-
-        <div class="cert-field">
-          <strong>Skills:</strong> [Key skills validated by this certification]
-        </div>
-
-        <div class="cert-status status-active">
-          <i class="fas fa-check-circle"></i> Active
-        </div>
-
-        <div class="cert-links">
-          <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
-          <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
-          <a href="#" download><i class="fas fa-download"></i> Certificate</a>
-        </div>
+      <div class="cert-field">
+        <strong>Skills:</strong> Penetration Testing, Network Security, Ethical Hacking, VAPT
       </div>
 
-      <!-- Template for Expired Certification -->
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Active
+      </div>
+
+      <div class="cert-links">
+        <a href="https://aspen.eccouncil.org/VerifyBadge?type=certification&a=h/MZkpSH0lhg9X/aVNaJVh+Jjmnuqyi8Qb5qbCU/LtQ=" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+        <a href="https://aspen.eccouncil.org/VerifyBadge?type=certification&a=h/MZkpSH0lhg9X/aVNaJVh+Jjmnuqyi8Qb5qbCU/LtQ=" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+        <a href="../assets/certificates/CyberSecurity/CEH/ECC-CEH-Certificate.pdf" download><i class="fas fa-download"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Ethical Hacking Essentials -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-lock"></i>
+      </div>
+      <div class="cert-title">Ethical Hacking Essentials (EHE)</div>
+      <div class="cert-issuer">EC-Council (Coursera)</div>
+
+      <div class="cert-field">
+        <strong>Credential ID:</strong> U0LYBP1006A6
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> November 2024
+      </div>
+
+      <div class="cert-field">
+        <strong>Expires:</strong> —
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> Hacking Fundamentals, Security Tools, Vulnerability Assessment
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Active
+      </div>
+
+      <div class="cert-links">
+        <a href="https://www.coursera.org/account/accomplishments/verify/U0LYBP1006A6" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/U0LYBP1006A6" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+        <a href="../assets/certificates/CyberSecurity/Coursera U0LYBP1006A6.pdf" download><i class="fas fa-download"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Certified Cyber Crime Intervention Officer -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <div class="cert-title">Certified Cyber Crime Intervention Officer</div>
+      <div class="cert-issuer">ISAC</div>
+
+      <div class="cert-field">
+        <strong>Credential ID:</strong> P3YIRRNT
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> July 2024
+      </div>
+
+      <div class="cert-field">
+        <strong>Expires:</strong> July 2027
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> Cyber Crime Investigation, Digital Evidence, Incident Handling
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Active
+      </div>
+
+      <div class="cert-links">
+        <a href="#" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+        <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+        <a href="#" download><i class="fas fa-download"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- AWS Academy -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-cloud"></i>
+      </div>
+      <div class="cert-title">AWS Academy Graduate – Cloud Foundations</div>
+      <div class="cert-issuer">AWS Academy</div>
+
+      <div class="cert-field">
+        <strong>Credential ID:</strong> qG5Ftou7
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> September 2025
+      </div>
+
+      <div class="cert-field">
+        <strong>Expires:</strong> —
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> AWS Architecture, AWS Cloud Services, Cloud Computing Basics, AWS Core Services, AWS Security
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Active
+      </div>
+
+      <div class="cert-links">
+        <a href="https://www.credly.com/go/qG5Ftou7" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+        <a href="https://www.credly.com/go/qG5Ftou7" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+        <a href="../assets/certificates/AWS_Cloud_Computing_Fundamentals.pdf" download><i class="fas fa-download"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Cloud Security Fundamentals -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-cloud"></i>
+      </div>
+      <div class="cert-title">Cloud Security Fundamentals</div>
+      <div class="cert-issuer">Palo Alto Networks Cybersecurity Academy</div>
+
+      <div class="cert-field">
+        <strong>Credential ID:</strong> dIDt2sAoJC
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> August 2025
+      </div>
+
+      <div class="cert-field">
+        <strong>Expires:</strong> —
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> Cloud Security, Threat Prevention, Zero Trust
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Active
+      </div>
+
+      <div class="cert-links">
+        <a href="https://paloaltonetworksacademy.net/mod/customcert/verify_certificate.php" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+        <a href="https://paloaltonetworksacademy.net/mod/customcert/verify_certificate.php" target="_blank"><i class="fas fa-file-pdf"></i> Badge</a>
+        <a href="../assets/certificates/Cloud_Security_Fundamentals_Student_Certificate.pdf" download><i class="fas fa-download"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- COMMENTED: Expired Template -->
+    <!--
       <div class="certification-card">
-        <div class="cert-icon">
-          <i class="fas fa-graduation-cap"></i>
-        </div>
-        <div class="cert-title">[Previous Certification Name]</div>
-        <div class="cert-issuer">[Issuing Organization]</div>
+              <div class="cert-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="cert-title">[Previous Certification Name]</div>
+              <div class="cert-issuer">[Issuing Organization]</div>
 
-        <div class="cert-field">
-          <strong>Credential ID:</strong> [Your Credential ID]
-        </div>
+              <div class="cert-field">
+                <strong>Credential ID:</strong> [Your Credential ID]
+              </div>
 
-        <div class="cert-field">
-          <strong>Issued:</strong> [Issue Date]
-        </div>
+              <div class="cert-field">
+                <strong>Issued:</strong> [Issue Date]
+              </div>
 
-        <div class="cert-field">
-          <strong>Expired:</strong> [Expiration Date]
-        </div>
+              <div class="cert-field">
+                <strong>Expired:</strong> [Expiration Date]
+              </div>
 
         <div class="cert-status status-expired">
           <i class="fas fa-exclamation-circle"></i> Expired
         </div>
       </div>
+    -->
 
+  </div>
+<br>
+
+<!-- certificates section -->
+<section id="certificates-list" class="fade-in">
+  <h2>Certificates</h2>
+
+  <div class="certification-grid">
+
+    <!-- Hands-on Linux for DevOps & Cloud Engineers -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-terminal"></i>
+      </div>
+      <div class="cert-title">Hands-on Linux for DevOps & Cloud Engineers</div>
+      <div class="cert-issuer">EC-Council</div>
+
+      <div class="cert-field">
+        <strong>Credential ID:</strong> 349106
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> July 2024
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> Linux Internals, Shell, System Administration, DevOps Fundamentals
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/CyberSecurity/devops_hands-on-linux_certificate.png" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
     </div>
 
-  </section>
+    <!-- Reverse Engineering using Memory Hacking -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-bug"></i>
+      </div>
+      <div class="cert-title">Reverse Engineering using Memory Hacking</div>
+      <div class="cert-issuer">EC-Council</div>
+      
+      <div class="cert-field">
+        <strong>Credential ID:</strong> 311893
+      </div>
 
-  <section id="certifications-info" class="fade-in bordered">
-    <h2>Certification Details</h2>
+      <div class="cert-field">
+        <strong>Issued:</strong> June 2024
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> Reverse Engineering, Memory Analysis, Debugging
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/CyberSecurity/reverse_enginering_and_memory_hacking.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Digital Forensics & Incident Response -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="cert-title">Digital Forensics & Incident Response</div>
+      <div class="cert-issuer">Udemy</div>
+      
+      <div class="cert-field">
+        <strong>Credential ID:</strong> UC-737fc993-b821-4bca-801c-a58bc9680577
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> July 2025
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> DFIR, Log Analysis, Incident Handling, Evidence Collection
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+
+      <div class="cert-links">
+        <a href="https://www.udemy.com/certificate/UC-737fc993-b821-4bca-801c-a58bc9680577/" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+        <a href="../assets/certificates/CyberSecurity/Udemy-DFIR_16-07-2025.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Advanced OSINT -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-eye"></i>
+      </div>
+      <div class="cert-title">Advanced OSINT Techniques</div>
+      <div class="cert-issuer">EC-Council</div>
+      
+      <div class="cert-field">
+        <strong>Credential ID:</strong> 304005
+      </div>
+      
+      <div class="cert-field">
+        <strong>Issued:</strong> 2024
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> OSINT, Reconnaissance, Digital Footprinting
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/CyberSecurity/advanced_osint.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Web Application Security -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-globe"></i>
+      </div>
+      <div class="cert-title">Web Application Security</div>
+      <div class="cert-issuer">Google / Online Platform</div>
+      
+      <div class="cert-field">
+        <strong>Credential ID:</strong> 304144
+      </div>
+      
+      <div class="cert-field">
+        <strong>Issued:</strong> 2024
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> OWASP Top 10, Web Attacks, Secure Coding
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/CyberSecurity/web_application_security_google_hacking.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Linux Zero to Expert -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+      <div class="cert-title">Linux Zero to Expert</div>
+      <div class="cert-issuer">EC-Council</div>
+
+      <div class="cert-field">
+        <strong>Credential ID:</strong> 288694
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> 2023
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> Ethical Hacking, Networking, Exploitation Techniques
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/CyberSecurity/2023_linux_from_zero_to_expert.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+    </div>
+
+    <!-- Networking Fundamentals -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-network-wired"></i>
+      </div>
+      <div class="cert-title">Networking Fundamentals</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+
+      <div class="cert-field">
+        <strong>Credential ID:</strong> 5a60ff6f-d132-4113-b474-ab0869b63c22
+      </div>
+
+      <div class="cert-field">
+        <strong>Issued:</strong> 2023
+      </div>
+
+      <div class="cert-field">
+        <strong>Skills:</strong> Networking, Network Protocols, Network Communication
+      </div>
+
+      <div class="cert-status status-active">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+
+      <div class="cert-links">
+        <a href="https://www.credly.com/badges/5a60ff6f-d132-4113-b474-ab0869b63c22/print" target="_blank"><i class="fas fa-certificate"></i> Verify</a>
+        <a href="../assets/certificates/Networking_Basics_Badge20240728-8-lbvhwb.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+
+
+<br>
+<section id="ctfs-hackathons" class="fade-in">
+  <h2>CTFs & Hackathons</h2>
+
+  <div class="certification-grid">
     
-    <div style="margin-bottom: 2rem;">
-      <h3>Continuing Education</h3>
-      <p>
-        I am committed to maintaining and renewing my certifications through continuous learning and professional development. 
-        My goal is to stay current with the latest cybersecurity trends, technologies, and best practices.
-      </p>
+    <!-- IIT Bombay Trust Lab CTF 2026-->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <div class="cert-title">IIT Bombay Trust Lab CTF</div>
+      <div class="cert-issuer">IIT Bombay Trust Lab</div>
+
+      <div class="cert-field">
+        <strong>Achievement:</strong> 25th Place
+      </div>
+
+      <div class="cert-field">
+        <strong>Date:</strong> January 2026
+      </div>
+
+      <div class="cert-field">
+        <strong>Details:</strong> Hardware-focused national hackathon (80 teams)
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/iitb26.jpeg" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+    </div>
+    
+    <!-- AIC RAISE Hackathon 2025-->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <div class="cert-title">AIC Raise Hackathon</div>
+      <div class="cert-issuer">Government of India</div>
+
+      <div class="cert-field">
+        <strong>Achievement:</strong> 14th Place
+      </div>
+
+      <div class="cert-field">
+        <strong>Date:</strong> February 2025
+      </div>
+
+      <div class="cert-field">
+        <strong>Details:</strong> Hardware-focused national hackathon (80 teams)
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/AIC_RAISE.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
     </div>
 
-    <div style="margin-bottom: 2rem;">
-      <h3>Planned Certifications</h3>
-      <ul>
-        <li><strong>OSCP</strong> (Offensive Security Certified Professional) - [Target Date]</li>
-        <li><strong>CISSP</strong> (Certified Information Systems Security Professional) - [Target Date]</li>
-        <li><strong>CompTIA Security+</strong> - [Target Date]</li>
-        <li><strong>AWS Certified Security - Specialty</strong> - [Target Date]</li>
-      </ul>
+    <!-- VishwaCTF 2024 -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-flag"></i>
+      </div>
+      <div class="cert-title">VishwaCTF 2024</div>
+      <div class="cert-issuer">CyberCell VIIT</div>
+
+      <div class="cert-field">
+        <strong>Achievement:</strong> Participant
+      </div>
+
+      <div class="cert-field">
+        <strong>Date:</strong> March 2024
+      </div>
+
+      <div class="cert-field">
+        <strong>Details:</strong> Jeopardy-style online CTF
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/Vishwa_CTF.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+
     </div>
 
-  </section>
+    <!-- IIT Bombay Trust Lab CTF 2023 -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <div class="cert-title">ACN CTF</div>
+      <div class="cert-issuer">IIT Bombay – Trust Lab</div>
+
+      <div class="cert-field">
+        <strong>Achievement:</strong> Finalist (Top 50)
+      </div>
+
+      <div class="cert-field">
+        <strong>Date:</strong> October 2023
+      </div>
+
+      <div class="cert-field">
+        <strong>Details:</strong> Ranked 6<sup>th</sup> out of 132 participants
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/2023_ACN_ctf_amrita_chennai.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+
+    </div>
+
+    <!-- IIT Bombay Trust Lab CTF 2023 -->
+    <div class="certification-card">
+      <div class="cert-icon">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <div class="cert-title">IIT Bombay Trust Lab CTF</div>
+      <div class="cert-issuer">IIT Bombay – Trust Lab</div>
+
+      <div class="cert-field">
+        <strong>Achievement:</strong> Finalist (Top 50)
+      </div>
+
+      <div class="cert-field">
+        <strong>Date:</strong> October 2023
+      </div>
+
+      <div class="cert-field">
+        <strong>Details:</strong> Ranked 37<sup>th</sup> out of 800+ teams nationwide
+      </div>
+
+      <div class="cert-links">
+        <a href="../assets/certificates/2023_IITB_trustlab_ctf.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Certificate</a>
+      </div>
+
+    </div>
+
+
+    
+
+  </div>
+</section>
+
+
 <br>
 </main>
 
 <footer>
-  <p>&copy; 2025 Parthiv Kumar Nikku</p>
-  <p style="font-style: italic;">Site under development</p>
+  <p>&copy; 2026 Parthiv Kumar Nikku | Built with </> and coffee :)</p>
+  <p style="font-style: italic;"></p>
+  <p style="font-style: italic; color: #286601;">Last Updated: 23 Jan 2026</p>
 </footer>
 
 <button id="back-to-top" aria-label="Back to top">
@@ -430,6 +661,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  
+  const text = "I am committed to continuous professional development and maintaining current industry certifications. Below are my credentials that validate my expertise in cybersecurity and ethical hacking.";
+  let i = 0;
+  const el = document.getElementById("certifications-sp");
+
+  (function type() {
+    if (i < text.length) {
+      el.textContent += text[i++];
+      setTimeout(type, 45);
+    }
+  })();
+  
   const backToTop = document.getElementById("back-to-top");
   window.addEventListener("scroll", () => {
     backToTop.style.display = window.scrollY > 300 ? "block" : "none";

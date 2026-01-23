@@ -22,15 +22,16 @@
       <span class="brand-name">NPK</span>
 
       <nav class="primary-nav" id="primary-nav">
-        <a href="../index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="about.html"><i class="fas fa-user"></i> About</a>
-        <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
-        <a href="disclosures.html"><i class="fas fa-bug"></i> Disclosures</a>
-        <a href="certifications.html"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="../index.html" data-label="Home"><i class="fas fa-home"></i> Home</a>
+        <a href="experience.html" data-label="Experience"><i class="fas fa-timeline"></i> Experience</a>
+        <a href="projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
+        <a href="certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="about.html" data-label="About"><i class="fas fa-user"></i> About</a>
       </nav>
 
-      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download>
-        <i class="fas fa-download"></i> Download Resume
+      <a class="resume-btn" href="../assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" download data-label="Resume">
+        <i class="fas fa-download"></i> Resume
       </a>
 
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
@@ -51,130 +52,152 @@
     <p style="color: #d0d0d0;">Here are my key cybersecurity projects, research work, and hands-on lab exercises showcasing practical security implementation:</p>
   </section>
 
-  <div class="project-grid">
+<div class="project-grid">
+  
+  <!-- 1. Conorch -->
+  <div class="project bordered">
+    <h3><i class="fas fa-cubes"></i> Conorch – Container Orchestration Technology</h3>
+    <p><strong>Description:</strong> Lightweight Linux container orchestration technology developed using native kernel primitives, focusing on isolation, resource control, and secure execution without reliance on external container runtimes.</p>
+    <p><strong>Technologies:</strong> Linux Namespaces, Cgroups v2, Bash, iptables, Virtual Networking</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Designed secure container lifecycle management with process, network, and filesystem isolation</li>
+        <li>Implemented resource controls for CPU, memory, I/O, and process limits</li>
+        <li>Built a custom bridge-based networking model with NAT support</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/parthivkumarnikku/LG_conorch.git" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+      <br><a href="https://www.linkedin.com/posts/parthivkumarnikku_aws-google-microsoftazure-activity-7401949288484032512-Linq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-8aI8B7-GxBa0Q5vdPtaPX9zGXHHkj9Ek"><i class="fas fa-external-link-alt"></i> Blog Post</a>
+    </p>
+    </div>
+  </div>
+
+  <!-- 2. CEHv13 Pentesting Lab -->
+  <div class="project bordered">
+    <h3><i class="fas fa-flask"></i> Penetration Testing Lab (CEHv13 Practice)</h3>
+    <p><strong>Description:</strong> Custom-built virtual penetration testing lab designed for CEHv13 preparation, simulating enterprise Windows and Linux environments with Active Directory infrastructure.</p>
+    <p><strong>Technologies:</strong> Kali Linux, Windows Server 2019, Windows Server 2022, Windows 10, Lubuntu, Active Directory</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Deployed Active Directory and practiced domain-based attack techniques</li>
+        <li>Captured NTLMv2-SSP hashes using Responder and successfully cracked credentials</li>
+        <li>Created reverse shell payloads and exploited PowerShell scripting using HoaxShell</li>
+        <li>Escalated privileges by bypassing UAC and exploiting Sticky Keys mechanisms</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://www.linkedin.com/posts/parthivkumarnikku_activedirectory-windowsserver-identitymanagement-activity-7368326780727779328-fsx5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-8aI8B7-GxBa0Q5vdPtaPX9zGXHHkj9Ek"><i class="fas fa-external-link-alt"></i> Blog Post</a>
+    </p>
+    </div>
+  </div>
+
+  <!-- 3. IoT IDS -->
+  <div class="project bordered">
+    <h3><i class="fas fa-network-wired"></i> IoT-Based Smart Home Intrusion Detection System</h3>
+    <p><strong>Description:</strong> Honeypot-driven intrusion detection system for smart home environments designed to detect, redirect, and analyze malicious network activity.</p>
+    <p><strong>Technologies:</strong> Raspberry Pi, Linux Networking, iptables, Virtual Access Point, DHCP</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Built a decoy network to attract and analyze attackers performing port scans</li>
+        <li>Monitored and redirected malicious traffic to isolated honeypot services</li>
+        <li>Generated attack behavior insights for IoT threat modeling</li>
+      </ul>
+    </p>
+    <div class="social-links">
+      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="../assets/reports/24CYS333_IoT_Project_Report.pdf"><i class="fas fa-file-pdf"></i> Technical Report</a>
+    </p>
+    </div>
     
-    <div class="project bordered">
-      <h3><i class="fas fa-flask"></i> Penetration Testing Lab</h3>
-      <p><strong>Description:</strong> Comprehensive local exploitation lab environment for hands-on penetration testing practice and vulnerability assessment techniques.</p>
-      <p><strong>Technologies:</strong> Kali Linux, Metasploitable, Burp Suite, Metasploit Framework, Nmap</p>
-      <p><strong>Key Achievements:</strong> 
-        <ul style="margin-top: 0.5rem;">
-          <li>Exploitation workflow mastery</li>
-          <li>Vulnerability identification and exploitation</li>
-          <li>Attack simulation and documentation</li>
-        </ul>
-      </p>
-      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
-        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
-        <br><a href="#"><i class="fas fa-file-alt"></i> Lab Documentation</a>
-        <br><a href="#"><i class="fas fa-external-link-alt"></i> Blog Post</a>
-      </p>
-    </div>
+  </div>
 
-    <div class="project bordered">
-      <h3><i class="fas fa-wave-square"></i> Network Traffic Analysis & Forensics</h3>
-      <p><strong>Description:</strong> Advanced packet inspection and network forensics for identifying malicious traffic patterns, anomalies, and attack signatures.</p>
-      <p><strong>Technologies:</strong> Wireshark, TCPDump, Tshark, Snort, Suricata, ELK Stack</p>
-      <p><strong>Key Achievements:</strong> 
-        <ul style="margin-top: 0.5rem;">
-          <li>Incident response capability development</li>
-          <li>Threat detection and identification</li>
-          <li>Network behavior baseline analysis</li>
-        </ul>
-      </p>
-      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
-        <br><a href="#"><i class="fas fa-file-pdf"></i> Lab Guide & Procedures</a>
-        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
-        <br><a href="#"><i class="fas fa-external-link-alt"></i> Case Studies</a>
-      </p>
-    </div>
-
-    <div class="project bordered">
-      <h3><i class="fas fa-globe"></i> Web Application Security Testing</h3>
-      <p><strong>Description:</strong> Comprehensive OWASP Top 10 vulnerability testing, secure code analysis, and remediation guidance for web applications.</p>
-      <p><strong>Technologies:</strong> Burp Suite Professional, OWASP ZAP, SQLMap, Nikto, Flask/Django Vulnerable Apps</p>
-      <p><strong>Key Achievements:</strong> 
-        <ul style="margin-top: 0.5rem;">
-          <li>Vulnerability report generation</li>
-          <li>Remediation guidance and secure coding practices</li>
-          <li>Security best practices documentation</li>
-        </ul>
-      </p>
-      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
-        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
-        <br><a href="#"><i class="fas fa-external-link-alt"></i> Live Demo Environment</a>
-        <br><a href="#"><i class="fas fa-file-alt"></i> Vulnerability Reports</a>
-      </p>
-    </div>
-
-    <div class="project bordered">
-      <h3><i class="fas fa-lock"></i> API Security Assessment</h3>
-      <p><strong>Description:</strong> Security assessment and hardening of RESTful APIs including authentication, authorization, and data protection mechanisms.</p>
-      <p><strong>Technologies:</strong> Postman, Burp Suite, Python, OAuth2, JWT, SSL/TLS</p>
-      <p><strong>Key Achievements:</strong> 
-        <ul style="margin-top: 0.5rem;">
-          <li>API vulnerability identification</li>
-          <li>Authentication bypass prevention</li>
-          <li>Secure API design guidelines</li>
-        </ul>
-      </p>
-      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
-        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
-        <br><a href="#"><i class="fas fa-file-alt"></i> API Security Checklist</a>
-        <br><a href="#"><i class="fas fa-external-link-alt"></i> Documentation</a>
-      </p>
-    </div>
-
-    <div class="project bordered">
-      <h3><i class="fas fa-shield-alt"></i> Incident Response Simulation</h3>
-      <p><strong>Description:</strong> Tabletop exercises and simulations for incident response procedures, threat detection, and breach containment.</p>
-      <p><strong>Technologies:</strong> Python, SIEM Tools, Log Analysis, Threat Intelligence Platforms</p>
-      <p><strong>Key Achievements:</strong> 
-        <ul style="margin-top: 0.5rem;">
-          <li>Incident timeline reconstruction</li>
-          <li>Root cause analysis</li>
-          <li>Response procedure optimization</li>
-        </ul>
-      </p>
-      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
-        <br><a href="#"><i class="fas fa-file-pdf"></i> Incident Report Templates</a>
-        <br><a href="#"><i class="fas fa-external-link-alt"></i> Response Playbooks</a>
-        <br><a href="#"><i class="fas fa-book"></i> Lessons Learned</a>
-      </p>
-    </div>
-
-    <div class="project bordered">
-      <h3><i class="fas fa-code"></i> Secure Code Review Tool</h3>
-      <p><strong>Description:</strong> Automated security code review tool for identifying common vulnerabilities and anti-patterns in source code.</p>
-      <p><strong>Technologies:</strong> Python, AST Analysis, Regex Pattern Matching, Static Analysis</p>
-      <p><strong>Key Achievements:</strong> 
-        <ul style="margin-top: 0.5rem;">
-          <li>Vulnerability pattern detection</li>
-          <li>Code quality metrics</li>
-          <li>Remediation recommendations</li>
-        </ul>
-      </p>
-      <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
-        <br><a href="https://github.com" target="_blank"><i class="fas fa-github"></i> GitHub Repository</a>
-        <br><a href="#"><i class="fas fa-file-alt"></i> Tool Documentation</a>
-        <br><a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-      </p>
+  <!-- 4. WiFiSnipe -->
+  <div class="project bordered">
+    <h3><i class="fas fa-wifi"></i> WiFiSnipe</h3>
+    <p><strong>Description:</strong> Automated wireless network security testing tool designed to streamline Wi-Fi penetration testing and attack simulation workflows.</p>
+    <p><strong>Technologies:</strong> Aircrack-ng, Wifite, Bash, Kali Linux</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Automated scanning of nearby wireless networks</li>
+        <li>Captured WPA/WPA2 handshakes for offline password cracking</li>
+        <li>Performed targeted deauthentication and jamming attacks</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/scap3sh4rk/WiFiSnipe" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </p>
     </div>
 
   </div>
 
-  <section id="project-summary" class="fade-in bordered" style="margin-top: 2rem;">
-    <h2>Project Methodology</h2>
-    <p><strong>Approach:</strong> All projects follow industry-standard security assessment methodologies including NIST, OWASP, and PTES frameworks.</p>
-    <p style="margin-top: 1rem;"><strong>Documentation:</strong> Each project includes comprehensive documentation, test cases, and findings reports available upon request.</p>
-    <p style="margin-top: 1rem;"><strong>Collaboration:</strong> Open to discussing project details, security findings, and best practices. <a href="../index.html#contact">Contact me</a> for more information.</p>
-  </section>
+  <!-- 5. Malware Analysis -->
+  <div class="project bordered">
+    <h3><i class="fas fa-virus"></i> Malware Analysis</h3>
+    <p><strong>Description:</strong> Independent research project focused on understanding malware behavior through static and dynamic analysis techniques.</p>
+    <p><strong>Technologies:</strong> Linux, Windows, Ghidra, ProcMon, Static & Dynamic Analysis Tools</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Analyzed ransomware, worms, adware, and trojans</li>
+        <li>Studied execution flow, persistence mechanisms, and indicators of compromise</li>
+        <li>Documented analysis findings and mitigation techniques</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/parthivkumarnikku/-My_projects/tree/main/Malware_analysis" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </p>
+    </div>
+  </div>
+
+  <!-- 6. Socket Programming -->
+  <div class="project bordered">
+    <h3><i class="fas fa-code"></i> Socket Programming</h3>
+    <p><strong>Description:</strong> Low-level networking project exploring client-server communication models using socket programming concepts.</p>
+    <p><strong>Technologies:</strong> C, Linux Sockets, TCP/IP, Client–Server Architecture</p>
+    <p><strong>Key Achievements:</strong> 
+      <ul style="margin-top: 0.5rem;">
+        <li>Implemented reliable client-server communication over TCP</li>
+        <li>Studied connection handling, data transmission, and error management</li>
+        <li>Gained practical understanding of network protocol behavior</li>
+      </ul>
+    </p>
+    <div class="social-links">
+    <p style="margin-top: 0.8rem;"><strong>References & Links:</strong> 
+      <br><a href="https://github.com/parthivkumarnikku/Socket_programming.git" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </p>
+    </div>
+  </div>
+
+</div>
+
+
+<section id="project-summary" class="fade-in bordered" style="margin-top: 2rem;">
+  <h2>Project Methodology</h2>
+  <p>
+    <strong>Approach:</strong> Projects are executed using a research-driven, hands-on methodology combining real-world attack simulation, defensive validation, and system-level analysis. Work spans hardware-enforced security, wireless and IoT threat modeling, Linux OS internals, malware behavior analysis, and enterprise penetration testing aligned with practical VAPT workflows.
+  </p>
+  <p style="margin-top: 1rem;">
+    <strong>Execution:</strong> Each project emphasizes controlled lab environments, realistic threat scenarios, and iterative testing. This includes Active Directory exploitation, wireless attack simulations, container isolation testing, honeypot deployment, reverse engineering, and low-level network programming.
+  </p>
+  <p style="margin-top: 1rem;">
+    <strong>Documentation:</strong> All projects are supported by structured technical documentation, architecture notes, attack paths, proof-of-concept results, and remediation insights, with sensitive or proprietary details intentionally abstracted where required.
+  </p>
+  <p style="margin-top: 1rem;">
+    <strong>Collaboration:</strong> Open to technical discussions on project architecture, attack methodologies, and security design decisions. <a href="../index.html#contact">Contact me</a> for further details.
+  </p>
+</section>
+
 <br>
 </main>
 
 <footer>
-  <p>&copy; 2025 Parthiv Kumar Nikku</p>
-  <p style="font-style: italic;">Site under development</p>
+  <p>&copy; 2026 Parthiv Kumar Nikku | Built with &lt;/&gt; and coffee :)</p>
+  <p style="font-style: italic;"></p>
+  <p style="font-style: italic; color: #286601;">Last Updated: 23 Jan 2026</p>
 </footer>
 
 <button id="back-to-top" aria-label="Back to top">
