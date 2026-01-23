@@ -101,21 +101,21 @@ footer {
   padding: 0.4rem 0.6rem;
   font-size: 1rem;
   white-space: nowrap;
-  border-bottom: 2px solid transparent;
   transition: 0.3s;
   position: relative;
 }
 
 .primary-nav a:hover {
-  background: #cece00;
+  background: #ffff00;
   color: #000 !important;
   border-radius: 3px;
   font-weight: bold;
+  box-shadow: 0 0 10px #ffff00;
 }
 
 .primary-nav a.active {
-  border-bottom: 2px solid #cece00;
-  color: #cece00;
+  border-bottom: 2px solid #ffff00;
+  color: #ffff00;
   font-weight: bold;
 }
 
@@ -223,6 +223,7 @@ footer {
   background: #fbff00;
   color: #000;
   text-shadow: none;
+  box-shadow: 0 0 10px #fbff00;
 }
 
 .resume-btn i {
