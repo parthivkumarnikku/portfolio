@@ -1,67 +1,25 @@
-# Blog Section Implementation Plan - COMPLETED
+# Blog Section Updates - TODO
 
-## ✅ Files Created
+## Task List:
+- [x] 1. Update blog CSS - navigation from right, right-aligned items, hamburger style
+- [x] 2. Update blog HTML (index.html) - remove NPK brand, update navbar structure
+- [x] 3. Update blog HTML (blog1.html, blog2.html) - remove NPK brand, update navbar structure  
+- [x] 4. Update blog CSS - fix header covering content issue (added padding-top to blog-layout)
+- [x] 5. Update blog CSS - single icon for theme toggle (replaced toggle with icon button)
+- [x] 6. Update blog JS - handle new theme toggle functionality
 
-### 1. docs/blog/css/blog.css ✅
-- **Purpose**: All blog-specific styling
-- **Content**:
-  - CSS variables for theming (light/dark)
-  - Layout styles (grid/flexbox)
-  - Navbar styles (minimal, sticky)
-  - Sidebar styles (sticky, collapsible)
-  - Blog cards styling
-  - Code block styling
-  - Responsive media queries
-  - Theme transition animations
+## Files edited:
+- docs/blog/css/blog.css
+- docs/blog/index.html
+- docs/blog/html/blog1.html
+- docs/blog/html/blog2.html
+- docs/blog/js/blog.js
 
-### 2. docs/blog/index.html ✅
-- **Purpose**: Home page for blogs
-- **Content**:
-  - Minimal navbar with theme toggle
-  - Link back to main portfolio
-  - Blog posts grid with cards (title, description, date, link)
-  - Modern UI with hover effects
-  - 6 blog cards (2 active + 4 placeholders)
-
-### 3. docs/blog/html/blog1.html ✅
-- **Purpose**: Sample blog post 1 - Network Penetration Testing
-- **Content**:
-  - Reusable navbar with portfolio link and theme toggle
-  - Left sidebar with blog links (sticky, highlights active)
-  - Right content area with comprehensive network pentesting guide
-  - Code blocks, lists, headings, blockquotes
-
-### 4. docs/blog/html/blog2.html ✅
-- **Purpose**: Sample blog post 2 - Web Application Security
-- **Content**:
-  - Same layout as blog1
-  - Comprehensive OWASP Top 10 guide with code examples
-
-### 5. docs/blog/js/blog.js ✅
-- **Purpose**: JavaScript for interactivity
-- **Content**:
-  - Theme toggle functionality with localStorage persistence
-  - Sidebar toggle on mobile
-  - Active link highlighting
-  - Smooth scroll for anchor links
-  - Fade-in animations on scroll
-
-## Implementation Complete
-
-All requirements have been implemented:
-- ✅ Responsive mobile-first design
-- ✅ Clean, professional cybersecurity-themed look
-- ✅ Minimal navigation bar at top
-- ✅ Link back to main portfolio
-- ✅ Light/Dark theme toggle with localStorage persistence
-- ✅ Blog home page with card grid
-- ✅ Individual blog pages with sticky sidebar
-- ✅ Sidebar highlights active blog
-- ✅ Sidebar collapsible on mobile
-- ✅ Support for headings, images, code blocks, lists
-- ✅ All styling in blog.css
-- ✅ Reusable components
-- ✅ No frameworks (pure HTML, CSS, JS)
-- ✅ Smooth theme transitions
-- ✅ Hover effects on cards
+## Changes Summary:
+1. **Navigation from right** - Mobile menu now slides from the right side
+2. **Right-aligned nav items** - Navbar items aligned to the right with Blog link on left
+3. **Hamburger menu** - Uses 3-line hamburger style (like portfolio) with animation
+4. **Removed NPK brand** - Only "Blog" heading remains in navbar
+5. **Fixed header covering content** - Added padding-top to blog-layout for individual blog pages
+6. **Single icon for theme toggle** - Replaced toggle switch with circular icon button (sun/moon)
 

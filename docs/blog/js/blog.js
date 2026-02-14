@@ -136,6 +136,9 @@
     if (navLinks) {
       navLinks.classList.toggle('mobile-open');
     }
+    if (mobileMenuBtn) {
+      mobileMenuBtn.classList.toggle('active');
+    }
   }
   
   if (mobileMenuBtn) {
