@@ -52,11 +52,11 @@ def update_blog_index(posts):
         post_list_html += f"""
       <article class="blog-card">
         <a href="{post['url']}" class="blog-card-content">
-          <h2 class="blog-card-title">{post['title']}</h2>
-          <p class="blog-card-description">
-            A new writeup.
+          <h2 class="title">{post['title']}</h2>
+          <p class="description">
+            A new writeup about {post['title']}.
           </p>
-          <span class="blog-card-link">
+          <span class="read-more">
             Read More <i class="fas fa-arrow-right"></i>
           </span>
         </a>
@@ -67,9 +67,19 @@ def update_blog_index(posts):
     start_marker = '<section class="blog-grid">'
     end_marker = '</section>'
     
-    start_index = index_content.find(start_marker) + len(start_marker)
+    start_index = index_content.find(start_marker)
+    if start_index == -1:
+        print(f"Warning: Could not find start marker in {BLOG_INDEX_FILE}")
+        return
+
+    start_index += len(start_marker)
     end_index = index_content.find(end_marker, start_index)
     
+    if end_index == -1:
+        print(f"Warning: Could not find end marker in {BLOG_INDEX_FILE}")
+        return
+
+    # Find all article tags within the blog grid and replace them
     new_index_content = index_content[:start_index] + post_list_html + index_content[end_index:]
 
     with open(BLOG_INDEX_FILE, "w") as f:
