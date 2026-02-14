@@ -18,8 +18,8 @@
   --card-bg: #051005;
   --card-hover: #0a150a;
   --shadow-color: rgba(0, 255, 0, 0.3);
-  --code-bg: #1a1a1a;
-  --sidebar-width: 260px;
+  --code-bg: #000000;
+  --sidebar-width: 280px;
   --navbar-height: 60px;
   
   /* Transitions */
@@ -565,7 +565,6 @@ body {
   height: auto;
   border-radius: 8px;
   margin: 1.5rem 0;
-  border: 1px solid var(--border-color);
 }
 
 .blog-content figure {
