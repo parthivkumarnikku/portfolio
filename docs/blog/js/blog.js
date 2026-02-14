@@ -141,9 +141,34 @@
     }
   }
   
+  function closeMobileNav() {
+    if (navLinks) {
+      navLinks.classList.remove('mobile-open');
+    }
+    if (mobileMenuBtn) {
+      mobileMenuBtn.classList.remove('active');
+    }
+  }
+  
   if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', toggleMobileNav);
   }
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (navLinks && navLinks.classList.contains('mobile-open')) {
+      if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        closeMobileNav();
+      }
+    }
+  });
+  
+  // Close mobile menu when pressing Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeMobileNav();
+    }
+  });
   
 
   // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
