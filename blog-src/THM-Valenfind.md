@@ -1,20 +1,28 @@
->challenge:
-> *There’s this new dating app called “Valenfind” that just popped up out of nowhere. I hear the creator only learned to code this year; surely this must be vibe-coded. Can you exploit it?*
-## Metadata
-Room Name : Valenfind
-Platform: TryHackMe
-url: https://tryhackme.com/room/lafb2026e10
-Difficulty: Medium
-Category: web
-Points: 200
+# THM-Valenfind Write-up
 
-## Tags
-tryhackme
-web
-mediumlevel
+> There’s this new dating app called “Valenfind” that just popped up out of nowhere. The creator only learned to code this year — which suggests insecure design decisions. The objective was to identify and exploit weaknesses in the web application to retrieve the flag.
 
 ---
-# Scanning
+
+title: THM - Valenfind Write-up  
+date: 2026-02-14  
+author: pardhu nikku  
+tags: [tryhackme, web, path-traversal, medium]  
+read_time: 8 min read  
+
+---
+
+## Challenge Metadata
+
+- **Room Name:** Valenfind  
+- **Platform:** TryHackMe  
+- **URL:** https://tryhackme.com/room/lafb2026e10  
+- **Difficulty:** Medium  
+- **Category:** Web  
+- **Points:** 200  
+
+---
+### Scanning
 I started scanning the target for potential open ports.. and i found the ssh port open.
 
 ```bash
@@ -50,16 +58,15 @@ Nmap done: 1 IP address (1 host up) scanned in 11.07 seconds
 
 ```
 
-I tried connecting to it to check if i can use hydra to brute-force the password but yea, its key based authentication..
+- I tried connecting to it to check if i can use hydra to brute-force the password but yea, its key based authentication..
 
-I then headed to the target webapp to start scanning.
+- I then headed to the target webapp to start scanning.
 
-# 
-i created an account in the application and then logged in.. initially i thought its a injection kinda stuff but realized not because we have option to sign up!.
+- I created an account in the application and then logged in.. initially i thought its a injection kinda stuff but realized not because we have option to sign up!.
 
-One user amongest all seems suspecious for me.. the `cupid` his discription says something like this - *"I keep the database secure. No peeking."* and this guy caught my attention for obvious reasons
+- One user amongest all seems suspecious for me.. the `cupid` his discription says something like this - *"I keep the database secure. No peeking."* and this guy caught my attention for obvious reasons
 
-but no lead for a while and slowly i noticed a option to change the profile theme.
+- but no lead for a while and slowly i noticed a option to change the profile theme.
 ![[Pasted image 20260214173729.png]]
 
 
@@ -73,7 +80,7 @@ The endpoint is `/api/fetch_layout`
 Time for [[Path Traversal]], tried to fetch the `/etc/passwd`
 ![[2026-02-14_16-26-40.png]]
 
-# some commands that made my work easier
+### some commands that made my work easier
 In linux we have 
 > `/proc/self/cmdline`
 > The command stated will return the exact process that handles/started current process, (self).
