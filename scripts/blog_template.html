@@ -45,13 +45,78 @@
     </button>
   </nav>
 
-  <!-- MAIN CONTENT -->
-  <main class="blog-main">
-    <div class="blog-content">
-      <article>
-        {{ content | safe }}
-      </article>
-    </div>
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li>
+          <a href="blog1.html">
+            <i class="fas fa-network-wired"></i> Network Pentesting
+          </a>
+        </li>
+        <li>
+          <a href="blog2.html">
+            <i class="fas fa-bug"></i> Web App Security
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-terminal"></i> Linux Hardening
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-user-secret"></i> Ethical Hacking
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-wifi"></i> Wireless Security
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-search"></i> OSINT Techniques
+          </a>
+        </li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="../../index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="../../html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="../../html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      {{ content | safe }}
+    </article>
+    
   </main>
 
   <!-- FOOTER -->
