@@ -1,14 +1,16 @@
----
-title: "Your Awesome Write-up Title"
-date: "YYYY-MM-DD"
-author: "Your Name"
-tags: ["tag1", "tag2", "tag3"]
-read_time: "X min read"
----
-
 # Your Awesome Write-up Title
 
 > A brief and engaging description of the challenge or topic goes here. What was the main objective? What makes this interesting?
+
+---
+title: "Your Awesome Write-up Title"<br>
+date: "YYYY-MM-DD"<br>
+author: "Your Name"<br>
+tags: ["tag1", "tag2", "tag3"]<br>
+read_time: "X min read"<br>
+---
+
+
 
 ## Challenge Metadata
 
