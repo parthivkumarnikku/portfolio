@@ -87,6 +87,22 @@ def update_blog_index(posts):
     print(f"Updated blog index at {BLOG_INDEX_FILE}")
 
 
+def get_all_posts():
+    """Returns a list of all blog posts."""
+    md_files = [f for f in os.listdir(SRC_DIR) if f.endswith(".md")]
+    posts = []
+    for md_file in md_files:
+        md_file_path = os.path.join(SRC_DIR, md_file)
+        with open(md_file_path, "r") as f:
+            content = f.read()
+        title = get_post_title(content)
+        output_filename = os.path.splitext(md_file)[0] + ".html"
+        posts.append({
+            "title": title,
+            "url": f"html/{output_filename}"
+        })
+    return posts
+
 def main():
     # Ensure output directories exist
     os.makedirs(HTML_OUTPUT_DIR, exist_ok=True)
@@ -95,6 +111,14 @@ def main():
     # Set up Jinja2 environment
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     template = env.get_template(TEMPLATE_NAME)
+
+    # Get all posts
+    all_posts = get_all_posts()
+
+    # Generate HTML for the list of posts in the sidebar
+    posts_html = ""
+    for post in all_posts:
+        posts_html += f'<li><a href="{post["url"]}"><i class="fas fa-file-alt"></i> {post["title"]}</a></li>'
 
     # Find all markdown files in the source directory
     md_files = [f for f in os.listdir(SRC_DIR) if f.endswith(".md")]
@@ -117,7 +141,7 @@ def main():
         html_fragment = markdown.markdown(content, extensions=['fenced_code', 'tables'])
 
         # Render the template
-        final_html = template.render(title=title, content=html_fragment)
+        final_html = template.render(title=title, content=html_fragment, posts=posts_html)
 
         # Save the HTML file
         output_filename = os.path.splitext(md_file)[0] + ".html"

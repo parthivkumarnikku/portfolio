@@ -52,36 +52,7 @@
     <aside class="blog-sidebar" id="blog-sidebar">
       <h3><i class="fas fa-list"></i> Blog Posts</h3>
       <ul>
-        <li>
-          <a href="blog1.html">
-            <i class="fas fa-network-wired"></i> Network Pentesting
-          </a>
-        </li>
-        <li>
-          <a href="blog2.html">
-            <i class="fas fa-bug"></i> Web App Security
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-terminal"></i> Linux Hardening
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-user-secret"></i> Ethical Hacking
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-wifi"></i> Wireless Security
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fas fa-search"></i> OSINT Techniques
-          </a>
-        </li>
+        {{ posts | safe }}
       </ul>
       
       <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
