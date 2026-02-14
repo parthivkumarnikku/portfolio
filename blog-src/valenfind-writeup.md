@@ -1,5 +1,7 @@
+THM-Valenfind
 >challenge:
 > *There’s this new dating app called “Valenfind” that just popped up out of nowhere. I hear the creator only learned to code this year; surely this must be vibe-coded. Can you exploit it?*
+
 ## Metadata
 Room Name : Valenfind
 Platform: TryHackMe
@@ -50,20 +52,19 @@ Nmap done: 1 IP address (1 host up) scanned in 11.07 seconds
 
 ```
 
-I tried connecting to it to check if i can use hydra to brute-force the password but yea, its key based authentication..
+- I tried connecting to it to check if i can use hydra to brute-force the password but yea, its key based authentication..
 
-I then headed to the target webapp to start scanning.
+- I then headed to the target webapp to start scanning.
 
-# 
-i created an account in the application and then logged in.. initially i thought its a injection kinda stuff but realized not because we have option to sign up!.
+- I created an account in the application and then logged in.. initially i thought its a injection kinda stuff but realized not because we have option to sign up!.
 
-One user amongest all seems suspecious for me.. the `cupid` his discription says something like this - *"I keep the database secure. No peeking."* and this guy caught my attention for obvious reasons
+- One user amongest all seems suspecious for me.. the `cupid` his discription says something like this - *"I keep the database secure. No peeking."* and this guy caught my attention for obvious reasons
 
-but no lead for a while and slowly i noticed a option to change the profile theme.
+- But no lead for a while and slowly i noticed a option to change the profile theme.
 ![[Pasted image 20260214173729.png]]
 
 
-Opened up burp suite and noticed that the profile themes are being fetched dynamically.
+- Opened up burp suite and noticed that the profile themes are being fetched dynamically.
 
 
 ![[2026-02-14_17-03-18.png]]
