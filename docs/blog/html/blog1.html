@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Penetration Testing Guide | Security Blog</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
+  
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="../../index.html" class="brand">
+        <i class="fas fa-shield-alt"></i> NPK
+      </a>
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../../index.html" class="nav-link">
+        <i class="fas fa-home"></i> Portfolio
+      </a>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li>
+          <a href="blog1.html" class="active">
+            <i class="fas fa-network-wired"></i> Network Pentesting
+          </a>
+        </li>
+        <li>
+          <a href="blog2.html">
+            <i class="fas fa-bug"></i> Web App Security
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-terminal"></i> Linux Hardening
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-user-secret"></i> Ethical Hacking
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-wifi"></i> Wireless Security
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-search"></i> OSINT Techniques
+          </a>
+        </li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="../../index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="../../html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="../../html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      <header>
+        <h1>Network Penetration Testing: A Comprehensive Guide</h1>
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar-alt"></i> January 20, 2026</span>
+          <span><i class="fas fa-user"></i> Parthiv Kumar Nikku</span>
+          <span><i class="fas fa-tag"></i> Network Security</span>
+          <span><i class="fas fa-clock"></i> 10 min read</span>
+        </div>
+      </header>
+      
+      <section>
+        <h2>Introduction</h2>
+        <p>
+          Network penetration testing is a critical component of any comprehensive security program. It involves simulating real-world attacks to identify vulnerabilities in network infrastructure, services, and applications before malicious actors can exploit them.
+        </p>
+        <p>
+          In this guide, we'll explore the essential phases of penetration testing, tools, and best practices that every security professional should know.
+        </p>
+      </section>
+      
+      <section>
+        <h2>The Penetration Testing Lifecycle</h2>
+        <p>
+          A structured approach to penetration testing ensures comprehensive coverage. The methodology typically follows these phases:
+        </p>
+        
+        <h3>1. Reconnaissance</h3>
+        <p>
+          Also known as information gathering, this phase involves collecting as much information about the target network as possible. This includes:
+        </p>
+        <ul>
+          <li><strong>Passive Reconnaissance:</strong> Using publicly available sources like search engines, WHOIS databases, and social media</li>
+          <li><strong>Active Reconnaissance:</strong> Direct interaction with the target through port scans, network mapping, and service enumeration</li>
+          <li><strong>OSINT:</strong> Open Source Intelligence gathering from various public sources</li>
+        </ul>
+        
+        <h3>2. Scanning and Enumeration</h3>
+        <p>
+          Once initial information is gathered, the next step is to identify live hosts, open ports, and running services. Key tools include:
+        </p>
+        
+        <pre><code># Nmap scan examples
+# Basic port scan
+nmap -sV -p- 192.168.1.1
+
+# SYN scan with service detection
+nmap -sS -sV -O 192.168.1.0/24
+
+# Vulnerability scan with Nmap scripts
+nmap --script vuln 192.168.1.1</code></pre>
+        
+        <h3>3. Gaining Access</h3>
+        <p>
+          This phase involves exploiting identified vulnerabilities to gain initial access to the target system. Common techniques include:
+        </p>
+        <ul>
+          <li>Exploiting misconfigured services</li>
+          <li>Brute forcing weak credentials</li>
+          <li>Exploiting known CVEs</li>
+          <li>Social engineering attacks</li>
+        </ul>
+        
+        <h3>4. Maintaining Access</h3>
+        <p>
+          After gaining initial access, testers aim to establish persistent access for further exploration. This may involve:
+        </p>
+        <ul>
+          <li>Installing backdoors</li>
+          <li>Creating new user accounts</li>
+          <li>Privilege escalation</li>
+          <li>Pivoting to other systems</li>
+        </ul>
+        
+        <h3>5. Covering Tracks</h3>
+        <p>
+          In a real attack, adversaries try to hide their presence. Penetration testers should understand these techniques to help clients detect and prevent them:
+        </p>
+        <ul>
+          <li>Log clearing/modification</li>
+          <li>File timestamp modification</li>
+          <li>Removing installed payloads</li>
+          <li>Disabling security mechanisms</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>Essential Tools</h2>
+        <p>
+          Every penetration tester should be familiar with these industry-standard tools:
+        </p>
+        
+        <h3>Network Scanners</h3>
+        <ul>
+          <li><strong>Nmap:</strong> The gold standard for network scanning and enumeration</li>
+          <li><strong>Masscan:</strong> Ultra-fast Internet-scale port scanner</li>
+          <li><strong>Netcat:</strong> The "Swiss Army knife" for network connections</li>
+        </ul>
+        
+        <h3>Vulnerability Assessment</h3>
+        <ul>
+          <li><strong>Nessus:</strong> Comprehensive vulnerability scanner</li>
+          <li><strong>OpenVAS:</strong> Open-source vulnerability scanner</li>
+          <li><strong>Nexpose:</strong> Rapid7's vulnerability management solution</li>
+        </ul>
+        
+        <h3>Exploitation Frameworks</h3>
+        <ul>
+          <li><strong>Metasploit:</strong> The most widely used exploitation framework</li>
+          <li><strong>Cobalt Strike:</strong> Advanced threat emulation platform</li>
+          <li><strong>Burp Suite:</strong> Web application security testing</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>Best Practices</h2>
+        <p>
+          Follow these best practices to ensure effective and ethical penetration testing:
+        </p>
+        
+        <h3>Before Testing</h3>
+        <ul>
+          <li>Obain proper written authorization</li>
+          <li>Define clear scope and rules of engagement</li>
+          <li>Establish communication channels with the client</li>
+          <li>Document the target systems and IP ranges</li>
+          <li>Create backup procedures for critical systems</li>
+        </ul>
+        
+        <h3>During Testing</h3>
+        <ul>
+          <li>Document all findings in real-time</li>
+          <li>Communicate any critical findings immediately</li>
+          <li>Follow the agreed-upon testing schedule</li>
+          <li>Avoid testing during peak business hours when possible</li>
+          <li>Never exfiltrate sensitive data</li>
+        </ul>
+        
+        <h3>After Testing</h3>
+        <ul>
+          <li>Provide comprehensive documentation</li>
+          <li>Include proof-of-concept for each vulnerability</li>
+          <li>Prioritize findings by risk level</li>
+          <li>Provide remediation recommendations</li>
+          <li>Offer retesting after fixes are applied</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>Conclusion</h2>
+        <p>
+          Network penetration testing is an essential security practice that helps organizations identify and address vulnerabilities before they can be exploited by malicious actors. By following a structured methodology and adhering to best practices, security professionals can provide valuable insights that significantly improve an organization's security posture.
+        </p>
+        <blockquote>
+          <p>"Security is not a product, but a process." — Bruce Schneier</p>
+        </blockquote>
+        <p>
+          Remember that penetration testing is just one component of a comprehensive security program. Regular testing, combined with robust security policies, employee training, and incident response planning, creates a layered defense strategy.
+        </p>
+      </section>
+      
+      <hr>
+      
+      <footer>
+        <p style="text-align: center; color: var(--text-muted);">
+          <em>Author: Parthiv Kumar Nikku | CEHv13 | Security Researcher</em>
+        </p>
+        <p style="text-align: center; margin-top: 1rem;">
+          <a href="../index.html" class="blog-card-link">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </p>
+      </footer>
+      
+    </article>
+    
+  </main>
+
+  <!-- JavaScript -->
+  <script src="../js/blog.js"></script>
+</body>
+</html>
+

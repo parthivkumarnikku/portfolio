@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Application Security | Security Blog</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
+  
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="../../index.html" class="brand">
+        <i class="fas fa-shield-alt"></i> NPK
+      </a>
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../../index.html" class="nav-link">
+        <i class="fas fa-home"></i> Portfolio
+      </a>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li>
+          <a href="blog1.html">
+            <i class="fas fa-network-wired"></i> Network Pentesting
+          </a>
+        </li>
+        <li>
+          <a href="blog2.html" class="active">
+            <i class="fas fa-bug"></i> Web App Security
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-terminal"></i> Linux Hardening
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-user-secret"></i> Ethical Hacking
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-wifi"></i> Wireless Security
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-search"></i> OSINT Techniques
+          </a>
+        </li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="../../index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="../../html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="../../html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      <header>
+        <h1>Web Application Security: Understanding OWASP Top 10</h1>
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar-alt"></i> January 18, 2026</span>
+          <span><i class="fas fa-user"></i> Parthiv Kumar Nikku</span>
+          <span><i class="fas fa-tag"></i> Web Security</span>
+          <span><i class="fas fa-clock"></i> 12 min read</span>
+        </div>
+      </header>
+      
+      <section>
+        <h2>Introduction</h2>
+        <p>
+          Web applications are the backbone of modern digital services, making their security critically important. The OWASP (Open Web Application Security Project) Top 10 is the de facto standard for understanding the most critical web application security risks.
+        </p>
+        <p>
+          In this article, we'll explore each of the OWASP Top 10 vulnerabilities, how they can be exploited, and most importantly, how to prevent them.
+        </p>
+      </section>
+      
+      <section>
+        <h2>A01:2021 – Broken Access Control</h2>
+        <p>
+          Access control enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of data or performing business functions outside the user's limits.
+        </p>
+        
+        <h3>Common Vulnerabilities</h3>
+        <ul>
+          <li>Violation of the principle of least privilege</li>
+          <li>Bypassing access control checks by modifying the URL</li>
+          <li>Permitting viewing or editing someone else's account</li>
+          <li>Accessing API with missing access controls</li>
+        </ul>
+        
+        <h3>Prevention</h3>
+        <ul>
+          <li>Implement access control mechanisms once and re-use</li>
+          <li>Enforce record ownership vs. accepting user records</li>
+          <li>Disable directory listing</li>
+          <li>Log access control failures and alert administrators</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>A02:2021 – Cryptographic Failures</h2>
+        <p>
+          The first thing is to determine the protection needs of data in transit and at rest. For example, passwords, credit card numbers, health records, personal information, and business secrets require extra protection.
+        </p>
+        
+        <h3>Common Vulnerabilities</h3>
+        <ul>
+          <li>Transmitting data in clear text</li>
+          <li>Using outdated or weak cryptographic algorithms</li>
+          <li>Default crypto keys or using weak keys</li>
+          <li>Not enforcing encryption (missing HTTPS)</li>
+        </ul>
+        
+        <pre><code># Example: Weak SSL/TLS configuration (BAD)
+# Using deprecated protocols and weak ciphers
+SSLProtocol all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+
+# Example: Strong configuration (GOOD)
+SSLProtocol -all +TLSv1.2 +TLSv1.3
+SSLCipherSuite TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256</code></pre>
+      </section>
+      
+      <section>
+        <h2>A03:2021 – Injection</h2>
+        <p>
+          An application is vulnerable to attack when:
+        </p>
+        <ul>
+          <li>User-supplied data is not validated, filtered, or sanitized</li>
+          <li>Dynamic queries or non-parameterized calls are used</li>
+          <li>Hostile data is used within ORM search parameters</li>
+          <li>Hostile data is directly used or concatenated</li>
+        </ul>
+        
+        <h3>Prevention</h3>
+        <ul>
+          <li>Use parameterized queries (prepared statements)</li>
+          <li>Use LIMIT and other SQL controls to prevent mass disclosure</li>
+          <li>Use stored procedures</li>
+          <li>Validate, filter, and sanitize user input</li>
+        </ul>
+        
+        <pre><code>// Vulnerable code (BAD)
+String query = "SELECT * FROM users WHERE name = '" + userName + "'";
+
+// Secure code (GOOD)
+PreparedStatement pstmt = connection.prepareStatement(
+    "SELECT * FROM users WHERE name = ?"
+);
+pstmt.setString(1, userName);</code></pre>
+      </section>
+      
+      <section>
+        <h2>A04:2021 – Insecure Design</h2>
+        <p>
+          Insecure design is a broad category representing different weaknesses, expressed as "missing or ineffective control design." There is a difference between insecure design and insecure implementation.
+        </p>
+        
+        <h3>Prevention</h3>
+        <ul>
+          <li>Use threat modeling for critical authentication</li>
+          <li>Use secure design pattern libraries</li>
+          <li>Implement segregation in the tenant (for multi-tenant)</li>
+          <li>Limit resource consumption per user</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>A05:2021 – Security Misconfiguration</h2>
+        <p>
+          The application might be vulnerable if it is:
+        </p>
+        <ul>
+          <li>Missing security hardening across any part of the application stack</li>
+          <li>Using default credentials</li>
+          <li>Having unnecessary features enabled or installed</li>
+          <li>Error handling reveals stack traces</li>
+        </ul>
+        
+        <h3>Prevention</h3>
+        <ul>
+          <li>Repeatable hardening process</li>
+          <li>Minimal platform without unnecessary features</li>
+          <li>Review and update configurations per review</li>
+          <li>Segmented application architecture</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>A06:2021 – Vulnerable and Outdated Components</h2>
+        <p>
+          You are likely vulnerable if:
+        </p>
+        <ul>
+          <li>You do not know all component versions</li>
+          <li>Software is unsupported or end-of-life</li>
+          <li>You do not scan for vulnerabilities regularly</li>
+          <li>You do not fix dependencies in a timely fashion</li>
+        </ul>
+        
+        <h3>Prevention</h3>
+        <ul>
+          <li>Remove unused dependencies</li>
+          <li>Continuously inventory component versions</li>
+          <li>Monitor for CVEs affecting your components</li>
+          <li>Only obtain components from official sources</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>A07:2021 – Identification and Authentication Failures</h2>
+        <p>
+          Confirmation of the user's identity, authentication, and session management is critical to protect against authentication-related attacks.
+        </p>
+        
+        <h3>Common Vulnerabilities</h3>
+        <ul>
+          <li>Allowing automated attacks like credential stuffing</li>
+          <li>Permitting weak or default passwords</li>
+          <li>Having session IDs in the URL</li>
+          <li>Not rotating session IDs after login</li>
+        </ul>
+        
+        <pre><code>// Example: Secure session management
+// 1. Generate secure random session IDs
+session_id = os.urandom(32).hex()
+
+// 2. Set secure cookie attributes
+response.set_cookie(
+    'session_id',
+    session_id,
+    secure=True,        // HTTPS only
+    httponly=True,     // No JavaScript access
+    samesite='Strict'  // CSRF protection
+)</code></pre>
+      </section>
+      
+      <section>
+        <h2>A08:2021 – Software and Data Integrity Failures</h2>
+        <p>
+          Software and data integrity failures relate to code and infrastructure that does not protect against integrity violations.
+        </p>
+        
+        <h3>Prevention</h3>
+        <ul>
+          <li>Use digital signatures for software/data</li>
+          <li>Verify NPM/Maven dependencies</li>
+          <li>Use a Software Composition Analysis (SCA) tool</li>
+          <li>Ensure CI/CD pipeline has proper access controls</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>A09:2021 – Security Logging and Monitoring Failures</h2>
+        <p>
+          Insufficient logging, detection, monitoring, and active response occurs any time:
+        </p>
+        <ul>
+          <li>Logins, access control failures, and server-side input validation are not logged</li>
+          <li>Warning and errors generate no, inadequate, or unclear log messages</li>
+          <li>Application cannot detect, escalate, or alert for active attacks</li>
+        </ul>
+        
+        <h3>Prevention</h3>
+        <ul>
+          <li>Ensure logs contain sufficient context</li>
+          <li>Use centralized log management</li>
+          <li>Establish alerting thresholds and escalation</li>
+          <li>Implement incident response and recovery plans</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>A10:2021 – Server-Side Request Forgery (SSRF)</h2>
+        <p>
+          SSRF flaws occur whenever a web application fetches remote resources without validating the user-supplied URL.
+        </p>
+        
+        <pre><code>// Vulnerable code (BAD)
+@app.route('/fetch_url')
+def fetch_url():
+    url = request.args.get('url')
+    response = requests.get(url)  # No validation!
+    return response.text
+
+// Secure code (GOOD)
+from urllib.parse import urlparse
+
+@app.route('/fetch_url')
+def fetch_url():
+    url = request.args.get('url')
+    parsed = urlparse(url)
+    
+    # Only allow http/https and specific domains
+    if parsed.scheme not in ('http', 'https'):
+        return "Invalid scheme", 400
+    if parsed.hostname not in ('trusted.com',):
+        return "Domain not allowed", 400
+    
+    response = requests.get(url)
+    return response.text</code></pre>
+      </section>
+      
+      <section>
+        <h2>Conclusion</h2>
+        <p>
+          Understanding and addressing the OWASP Top 10 is essential for building secure web applications. Regular security assessments, code reviews, and staying updated with the latest security practices will help mitigate these vulnerabilities.
+        </p>
+        <blockquote>
+          <p>"Applications security is not an afterthought, it's a feature."</p>
+        </blockquote>
+        <p>
+          Remember that security is an ongoing process. New vulnerabilities are discovered regularly, and your security practices should evolve accordingly.
+        </p>
+      </section>
+      
+      <hr>
+      
+      <footer>
+        <p style="text-align: center; color: var(--text-muted);">
+          <em>Author: Parthiv Kumar Nikku | CEHv13 | Security Researcher</em>
+        </p>
+        <p style="text-align: center; margin-top: 1rem;">
+          <a href="../index.html" class="blog-card-link">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </p>
+      </footer>
+      
+    </article>
+    
+  </main>
+
+  <!-- JavaScript -->
+  <script src="../js/blog.js"></script>
+</body>
+</html>
+
