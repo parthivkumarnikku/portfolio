@@ -209,5 +209,39 @@
     observer.observe(el);
   });
 
+  // ===== CODE BLOCK COPY FUNCTIONALITY =====
+  document.querySelectorAll('pre').forEach(preBlock => {
+    // Create copy button
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-btn';
+    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+    copyBtn.title = 'Copy code to clipboard';
+    
+    preBlock.appendChild(copyBtn);
+    
+    // Add click handler
+    copyBtn.addEventListener('click', () => {
+      const code = preBlock.textContent.trim();
+      navigator.clipboard.writeText(code).then(() => {
+        // Show success feedback
+        const originalHTML = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        copyBtn.classList.add('copied');
+        
+        // Reset after 3 seconds
+        setTimeout(() => {
+          copyBtn.innerHTML = originalHTML;
+          copyBtn.classList.remove('copied');
+        }, 3000);
+      }).catch(err => {
+        console.error('Failed to copy code:', err);
+        copyBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        }, 2000);
+      });
+    });
+  });
+
 })();
 

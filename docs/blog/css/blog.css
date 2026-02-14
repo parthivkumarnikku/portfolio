@@ -483,6 +483,39 @@ body {
   padding: 1.25rem;
   overflow-x: auto;
   margin: 1.5rem 0;
+  position: relative;
+}
+
+.blog-content pre:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast), background-color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.copy-btn:hover {
+  background: var(--accent-secondary);
+}
+
+.copy-btn.copied {
+  background: #00ff00;
+  color: var(--bg-primary);
 }
 
 .blog-content code {

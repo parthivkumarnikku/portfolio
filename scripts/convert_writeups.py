@@ -46,45 +46,31 @@ def update_blog_index(posts):
     """Updates the blog index file with a list of posts."""
     with open(BLOG_INDEX_FILE, "r") as f:
         index_content = f.read()
+        post_list_html = ""
+        for post in posts:
+                # Posts listed on the index should reference the HTML output relative
+                # to docs/blog/index.html, so keep the "html/" prefix here.
+                post_list_html += f"""
+            <article class=\"blog-card\">\n        <a href=\"{post['url']}\" class=\"blog-card-content\">\n          <h2 class=\"title\">{post['title']}</h2>\n          <p class=\"description\">\n            A new writeup about {post['title']}.\n          </p>\n          <span class=\"read-more\">\n            Read More <i class=\"fas fa-arrow-right\"></i>\n          </span>\n        </a>\n      </article>\n"""
 
-    post_list_html = ""
-    for post in posts:
-        post_list_html += f"""
-      <article class="blog-card">
-        <a href="{post['url']}" class="blog-card-content">
-          <h2 class="title">{post['title']}</h2>
-          <p class="description">
-            A new writeup about {post['title']}.
-          </p>
-          <span class="read-more">
-            Read More <i class="fas fa-arrow-right"></i>
-          </span>
-        </a>
-      </article>
-"""
+        # Use a regex to find the opening <section ... class="blog-grid" ...> tag
+        # so this works even when the tag has attributes (like an id).
+        start_tag_re = re.search(r'<section[^>]*class=["\'][^"\']*blog-grid[^"\']*["\'][^>]*>', index_content)
+        if not start_tag_re:
+                print(f"Warning: Could not find blog-grid section start in {BLOG_INDEX_FILE}")
+                return
 
-    # Replace the content within the blog grid
-    start_marker = '<section class="blog-grid">'
-    end_marker = '</section>'
-    
-    start_index = index_content.find(start_marker)
-    if start_index == -1:
-        print(f"Warning: Could not find start marker in {BLOG_INDEX_FILE}")
-        return
+        start_index = start_tag_re.end()
+        end_index = index_content.find('</section>', start_index)
+        if end_index == -1:
+                print(f"Warning: Could not find closing </section> in {BLOG_INDEX_FILE}")
+                return
 
-    start_index += len(start_marker)
-    end_index = index_content.find(end_marker, start_index)
-    
-    if end_index == -1:
-        print(f"Warning: Could not find end marker in {BLOG_INDEX_FILE}")
-        return
+        new_index_content = index_content[:start_index] + '\n' + post_list_html + index_content[end_index:]
 
-    # Find all article tags within the blog grid and replace them
-    new_index_content = index_content[:start_index] + post_list_html + index_content[end_index:]
-
-    with open(BLOG_INDEX_FILE, "w") as f:
-        f.write(new_index_content)
-    print(f"Updated blog index at {BLOG_INDEX_FILE}")
+        with open(BLOG_INDEX_FILE, "w") as f:
+                f.write(new_index_content)
+        print(f"Updated blog index at {BLOG_INDEX_FILE}")
 
 
 def get_all_posts():
@@ -118,7 +104,12 @@ def main():
     # Generate HTML for the list of posts in the sidebar
     posts_html = ""
     for post in all_posts:
-        posts_html += f'<li><a href="{post["url"]}"><i class="fas fa-file-alt"></i> {post["title"]}</a></li>'
+        # Sidebar lives in docs/blog/html/*.html so links to other posts
+        # should be relative filenames (e.g. "blog1.html"), not
+        # "html/blog1.html" which would resolve to html/html/... when
+        # rendered from inside the html/ directory.
+        post_filename = os.path.basename(post["url"])
+        posts_html += f'<li><a href="{post_filename}"><i class="fas fa-file-alt"></i> {post["title"]}</a></li>'
 
     # Find all markdown files in the source directory
     md_files = [f for f in os.listdir(SRC_DIR) if f.endswith(".md")]
