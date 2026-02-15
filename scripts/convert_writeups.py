@@ -181,6 +181,9 @@ def update_blog_index(posts):
 def get_all_posts():
     """Returns a list of all blog posts."""
     md_files = [f for f in os.listdir(SRC_DIR) if f.endswith(".md")]
+    # Exclude helper/template markdown files (including hidden template files)
+    md_files = [f for f in md_files if 'template' not in f.lower() and not f.startswith('.')]
+
     posts = []
 
     for md_file in md_files:
@@ -203,6 +206,12 @@ def get_all_posts():
             "difficulty": challenge_meta.get('difficulty','')
         })
 
+    # Make ordering deterministic: prefer date (descending), then title
+    try:
+        posts.sort(key=lambda p: (p.get('date') or ''), reverse=True)
+    except Exception:
+        posts.sort(key=lambda p: (p.get('title') or ''))
+
     return posts
 
 
@@ -220,7 +229,8 @@ def main():
         post_filename = os.path.basename(post["url"])
         posts_html += f'<li><a href="{post_filename}"><i class="fas fa-file-alt"></i> {post["title"]}</a></li>'
 
-    md_files = [f for f in os.listdir(SRC_DIR) if f.endswith(".md")]
+    # Ensure we generate posts in a stable, predictable order and skip template.md
+    md_files = sorted([f for f in os.listdir(SRC_DIR) if f.endswith(".md") and 'template' not in f.lower() and not f.startswith('.')])
 
     generated_posts = []
 
