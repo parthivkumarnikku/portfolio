@@ -293,6 +293,24 @@ body {
   overflow: hidden;
 }
 
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+}
+
+.blog-meta {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .blog-card-link {
   display: inline-flex;
   align-items: center;

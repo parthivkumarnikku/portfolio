@@ -59,26 +59,77 @@ def convert_obsidian_images(content, md_file_path):
     return re.sub(image_pattern, replace_link, content)
 
 
+def extract_metadata(markdown_content):
+    """Extract simple metadata lines like Title, Date, Author, Tags from the top of the markdown.
+    Returns a dict and the markdown with those metadata lines removed.
+    """
+    meta = {}
+    lines = markdown_content.splitlines()
+    remaining_lines = []
+
+    meta_re = re.compile(r'^(Title|Date|Author|Tags|Read_time)\s*:\s*(.*)$', re.IGNORECASE)
+
+    for line in lines:
+        m = meta_re.match(line.strip())
+        if m:
+            key = m.group(1).strip().lower()
+            value = m.group(2).strip().strip('"')
+            # Normalize tags (simple comma/ bracket handling)
+            if key == 'tags':
+                # remove surrounding brackets if present
+                v = value
+                v = v.strip()
+                if v.startswith('[') and v.endswith(']'):
+                    v = v[1:-1]
+                meta['tags'] = [t.strip() for t in re.split(r',\s*', v) if t.strip()]
+            else:
+                meta[key] = value
+            # Skip writing this line into remaining content (we remove metadata lines)
+        else:
+            remaining_lines.append(line)
+
+    cleaned = "\n".join(remaining_lines)
+    return meta, cleaned
+
+
+def compute_read_time_from_lines(markdown_content, lines_per_min=20):
+    """Simple read time estimate based on number of lines in the markdown.
+    Defaults to 20 lines per minute; always returns at least 1 minute.
+    """
+    if not markdown_content:
+        return "1 min read"
+    num_lines = markdown_content.count('\n') + 1
+    minutes = max(1, round(num_lines / float(lines_per_min)))
+    return f"{minutes} min read"
+
+
 def update_blog_index(posts):
     """Updates the blog index file with a list of posts."""
     with open(BLOG_INDEX_FILE, "r") as f:
         index_content = f.read()
 
-    post_list_html = ""
-    for post in posts:
-        post_list_html += f"""
-      <article class="blog-card">
-        <a href="{post['url']}" class="blog-card-content">
-          <h2 class="title">{post['title']}</h2>
-          <p class="description">
-            A new writeup about {post['title']}.
-          </p>
-          <span class="read-more">
-            Read More <i class="fas fa-arrow-right"></i>
-          </span>
-        </a>
-      </article>
-    """
+        post_list_html = ""
+        for post in posts:
+                # Build simple tag HTML
+                tags_html = ""
+                if post.get('tags'):
+                        tags_html = ' '.join([f"<span class=\"tag\">{t}</span>" for t in post.get('tags')])
+
+                post_list_html += f"""
+            <article class=\"blog-card\">
+                <a href=\"{post['url']}\" class=\"blog-card-content\">
+                    <div class=\"blog-card-date\"><i class=\"fas fa-calendar-alt\"></i> {post.get('date','')}</div>
+                    <h2 class=\"blog-card-title\">{post['title']}</h2>
+                    <p class=\"blog-card-description\">A new writeup about {post['title']}.</p>
+                    <div style=\"display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;flex-wrap:wrap;\">
+                        <span class=\"blog-meta\"><i class=\"fas fa-clock\"></i> {post.get('read_time','')} </span>
+                        <span class=\"blog-meta\"><i class=\"fas fa-user\"></i> {post.get('author','')}</span>
+                        <span style=\"margin-left:0.25rem;\">{tags_html}</span>
+                    </div>
+                    <span class=\"read-more blog-card-link\">Read More <i class=\"fas fa-arrow-right\"></i></span>
+                </a>
+            </article>
+        """
 
     start_tag_re = re.search(r'<section[^>]*class=["\'][^"\']*blog-grid[^"\']*["\'][^>]*>', index_content)
     if not start_tag_re:
@@ -109,12 +160,17 @@ def get_all_posts():
         with open(md_file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        title = get_post_title(content)
+        meta, cleaned = extract_metadata(content)
+        title = meta.get('title') or get_post_title(content)
         output_filename = os.path.splitext(md_file)[0] + ".html"
 
         posts.append({
             "title": title,
-            "url": f"html/{output_filename}"
+            "url": f"html/{output_filename}",
+            "date": meta.get('date',''),
+            "author": meta.get('author',''),
+            "tags": meta.get('tags',[]),
+            "read_time": compute_read_time_from_lines(cleaned)
         })
 
     return posts
@@ -144,10 +200,17 @@ def main():
         with open(md_file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        content = convert_obsidian_images(content, md_file_path)
-        title = get_post_title(content)
+        # First convert obsidian-style images and extract metadata lines
+        content_with_images = convert_obsidian_images(content, md_file_path)
+        meta, cleaned_content = extract_metadata(content_with_images)
 
-        html_fragment = markdown.markdown(content, extensions=["fenced_code", "tables"])
+        # Title preference: metadata Title else first H1
+        title = meta.get('title') or get_post_title(content_with_images)
+
+        # Compute read time from cleaned content (metadata removed)
+        read_time = compute_read_time_from_lines(cleaned_content)
+
+        html_fragment = markdown.markdown(cleaned_content, extensions=["fenced_code", "tables"])
 
         final_html = template.render(title=title, content=html_fragment, posts=posts_html)
 
@@ -161,7 +224,11 @@ def main():
 
         generated_posts.append({
             "title": title,
-            "url": f"html/{output_filename}"
+            "url": f"html/{output_filename}",
+            "date": meta.get('date',''),
+            "author": meta.get('author',''),
+            "tags": meta.get('tags',[]),
+            "read_time": read_time
         })
 
     if generated_posts:
