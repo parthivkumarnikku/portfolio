@@ -164,22 +164,22 @@ Nmap done: 1 IP address (1 host up) scanned in 11.07 seconds
 <p>but no lead for a while and slowly i noticed a option to change the profile theme.</p>
 </li>
 </ul>
-<figure class="post-figure" id="fig-2-13">
+<figure class="post-figure" id="fig-2-1">
   <img src="../../assets/images/writeups/Pasted image 20260214173729.png" alt="Pasted image 20260214173729"/>
-  <figcaption>Fig2.13 - Pasted image 20260214173729</figcaption>
+  <figcaption>Fig2.1 - Pasted image 20260214173729</figcaption>
 </figure>
 
 <p>Opened up burp suite and noticed that the profile themes are being fetched dynamically.</p>
-<figure class="post-figure" id="fig-2-14">
+<figure class="post-figure" id="fig-2-2">
   <img src="../../assets/images/writeups/2026-02-14_17-03-18.png" alt="2026-02-14_17-03-18"/>
-  <figcaption>Fig2.14 - 2026-02-14_17-03-18</figcaption>
+  <figcaption>Fig2.2 - 2026-02-14_17-03-18</figcaption>
 </figure>
 
 <p>The endpoint is <code>/api/fetch_layout</code></p>
 <p>Time for [[Path Traversal]], tried to fetch the <code>/etc/passwd</code></p>
-<figure class="post-figure" id="fig-2-15">
+<figure class="post-figure" id="fig-2-3">
   <img src="../../assets/images/writeups/2026-02-14_16-26-40.png" alt="2026-02-14_16-26-40"/>
-  <figcaption>Fig2.15 - 2026-02-14_16-26-40</figcaption>
+  <figcaption>Fig2.3 - 2026-02-14_16-26-40</figcaption>
 </figure>
 
 <h3>some commands that made my work easier</h3>
@@ -191,16 +191,16 @@ In this case all the processes are being handeled by the webapp and hence this r
 <p><code>/proc/self/envron</code>
 This is quite obvyous -  returns the environment variables</p>
 </blockquote>
-<figure class="post-figure" id="fig-2-16">
+<figure class="post-figure" id="fig-2-4">
   <img src="../../assets/images/writeups/2026-02-14_16-37-54.png" alt="2026-02-14_16-37-54"/>
-  <figcaption>Fig2.16 - 2026-02-14_16-37-54</figcaption>
+  <figcaption>Fig2.4 - 2026-02-14_16-37-54</figcaption>
 </figure>
 
 <p>The above screenshot show the path of the <code>app.py</code></p>
 <p>Now i tried to read up the source code of the app and the code has the following details:</p>
-<figure class="post-figure" id="fig-2-17">
+<figure class="post-figure" id="fig-2-5">
   <img src="../../assets/images/writeups/2026-02-14_16-51-42.png" alt="2026-02-14_16-51-42"/>
-  <figcaption>Fig2.17 - 2026-02-14_16-51-42</figcaption>
+  <figcaption>Fig2.5 - 2026-02-14_16-51-42</figcaption>
 </figure>
 
 <pre><code class="language-python">ADMIN_API_KEY = &quot;CUPID_MASTER_KEY_2024_XOXO&quot;
@@ -231,9 +231,9 @@ Connection: keep-alive
 
 
 </code></pre>
-<figure class="post-figure" id="fig-2-18">
+<figure class="post-figure" id="fig-2-6">
   <img src="../../assets/images/writeups/2026-02-14_17-00-44 1.png" alt="2026-02-14_17-00-44 1"/>
-  <figcaption>Fig2.18 - 2026-02-14_17-00-44 1</figcaption>
+  <figcaption>Fig2.6 - 2026-02-14_17-00-44 1</figcaption>
 </figure>
 
 <p>This brings up the flag.</p></div>

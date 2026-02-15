@@ -144,11 +144,11 @@ def update_blog_index(posts):
                         difficulty_html = f"<span class=\"meta-item difficulty difficulty-{post.get('difficulty').lower()}\">{post.get('difficulty')}</span>"
 
                 post_list_html += f"""
-            <article class=\"blog-card\"> 
-                <a href=\"{post['url']}\" class=\"blog-card-content\"> 
+            <article class=\"blog-card\">
+                <a href=\"{post['url']}\" class=\"blog-card-content\">
                     <div class=\"blog-card-date\"><i class=\"fas fa-calendar-alt\"></i> {post.get('date','')}</div>
                     <h2 class=\"blog-card-title\">{post['title']}</h2>
-                    <div style=\"display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;flex-wrap:wrap;\"> 
+                    <div style=\"display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;flex-wrap:wrap;\">
                         <span class=\"blog-meta\"><i class=\"fas fa-clock\"></i> {post.get('read_time','')} </span>
                         <span class=\"blog-meta\"><i class=\"fas fa-user\"></i> {post.get('author','')}</span>
                         {difficulty_html}
@@ -244,27 +244,27 @@ def main():
         # Process figures: replace markdown image syntax, Obsidian images, and HTML <img> with <figure> blocks and generate ids
         def process_figures(md_text, post_index):
             fig_i = 1
-            placeholders = {}
             mapping = {}
 
             # Protect fenced code blocks and inline code by replacing with placeholders
             code_placeholders = {}
-            cp_i = 0
             def mask_code(text):
-                nonlocal cp_i
+                i = 0
+                # mask fenced code blocks
                 def fenced_repl(m):
-                    nonlocal cp_i
-                    key = f"__CODE_BLOCK_{cp_i}__"
+                    nonlocal i
+                    key = f"__CODE_BLOCK_{i}__"
                     code_placeholders[key] = m.group(0)
-                    cp_i += 1
+                    i += 1
                     return key
                 text = re.sub(r'```[\s\S]*?```', fenced_repl, text)
 
+                # mask inline code
                 def inline_repl(m):
-                    nonlocal cp_i
-                    key = f"__INLINE_CODE_{cp_i}__"
+                    nonlocal i
+                    key = f"__INLINE_CODE_{i}__"
                     code_placeholders[key] = m.group(0)
-                    cp_i += 1
+                    i += 1
                     return key
                 text = re.sub(r'`[^`]*`', inline_repl, text)
                 return text
@@ -276,272 +276,15 @@ def main():
 
             masked = mask_code(md_text)
 
-            # Normalize Obsidian-style ![[name]] to markdown-like references
-            masked = re.sub(r'!\[\[(.*?)\]\]', lambda m: f'![]({m.group(1).strip()})', masked)
-
-            # Helper to create a placeholder for a figure and record mapping
-            def make_placeholder_for_img(src, alt, original_img_tag=None):
+            # helper to build figure html
+            def build_figure(src, alt):
                 nonlocal fig_i
                 fig_id = f"fig-{post_index}-{fig_i}"
                 caption = f"Fig{post_index}.{fig_i} - {alt}"
-                if original_img_tag:
-                    html = f'<figure class="post-figure" id="{fig_id}">\n  {original_img_tag}\n  <figcaption>{caption}</figcaption>\n</figure>'
-                else:
-                    html = f'<figure class="post-figure" id="{fig_id}">\n  <img src="{src}" alt="{alt}"/>\n  <figcaption>{caption}</figcaption>\n</figure>'
-                placeholder = f"__FIG_PLACEHOLDER_{fig_i}__"
-                placeholders[placeholder] = html
-                mapping[os.path.basename(src)] = (fig_id, caption, placeholder)
+                html = f'<figure class="post-figure" id="{fig_id}">\n  <img src="{src}" alt="{alt}"/>\n  <figcaption>{caption}</figcaption>\n</figure>'
+                mapping[os.path.basename(src)] = (fig_id, caption)
                 fig_i += 1
-                return placeholder
-
-            # Replace markdown images ![alt](src) with placeholders
-            def md_img_repl(m):
-                alt = m.group(1).strip() or os.path.splitext(os.path.basename(m.group(2).strip()))[0]
-                src = m.group(2).strip()
-                return make_placeholder_for_img(src, alt)
-            masked = re.sub(r'!\[(.*?)\]\((.*?)\)', md_img_repl, masked)
-
-            # Replace HTML <img ...> tags with placeholders, preserving original tag
-            def html_img_repl(m):
-                full_tag = m.group(0)
-                attrs = m.group(1)
-                src_m = re.search(r'src\s*=\s*"([^\"]+)"', attrs)
-                alt_m = re.search(r'alt\s*=\s*"([^\"]+)"', attrs)
-                src = src_m.group(1) if src_m else ''
-                alt = alt_m.group(1) if alt_m else os.path.splitext(os.path.basename(src))[0]
-                return make_placeholder_for_img(src, alt, full_tag)
-            masked = re.sub(r'<img\s+([^>]+?)\s*/?>', html_img_repl, masked)
-
-            # Replace bare mentions of the image filename with links to the figure, but only in text nodes
-            parts = re.split(r'(<[^>]+>)', masked)
-            for i, part in enumerate(parts):
-                if i % 2 == 0:
-                    for basename, (fid, caption, placeholder) in mapping.items():
-                        part = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#'+fid+f'">{caption}</a>', part)
-                    parts[i] = part
-            masked = ''.join(parts)
-
-            # Replace placeholders with actual figure HTML
-            for placeholder, html in placeholders.items():
-                masked = masked.replace(placeholder, html)
-
-            final = unmask_code(masked)
-            simple_map = {k: (v[0], v[1]) for k, v in mapping.items()}
-            return final, simple_map
-
-        cleaned_no_h1, figures = process_figures(cleaned_no_h1, post_idx)
-
-        # Compute read time from cleaned content (metadata removed)
-        read_time = compute_read_time_from_lines(cleaned_no_h1)
-
-        # Extract challenge-specific metadata from the body (Room Name, Difficulty, Category)
-        challenge_meta = extract_challenge_metadata(cleaned_no_h1)
-        challenge_name = challenge_meta.get('room_name') or challenge_meta.get('room') or ''
-
-        html_fragment = markdown.markdown(cleaned_no_h1, extensions=["fenced_code", "tables"])
-
-        final_html = template.render(
-            title=title,
-            content=html_fragment,
-            posts=posts_html,
-            page_date=meta.get('date',''),
-            page_author=meta.get('author',''),
-            page_tags=meta.get('tags',[]),
-            read_time=read_time,
-            challenge=challenge_meta,
-            challenge_name=challenge_name
-        )
-
-        output_filename = os.path.splitext(md_file)[0] + ".html"
-        output_path = os.path.join(HTML_OUTPUT_DIR, output_filename)
-
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(final_html)
-
-        print(f"Converted {md_file} -> {output_path}")
-
-        generated_posts.append({
-            "title": title,
-            "url": f"html/{output_filename}",
-            "date": meta.get('date',''),
-            "author": meta.get('author',''),
-            "tags": meta.get('tags',[]),
-            "read_time": read_time
-        })
-
-    if generated_posts:
-        update_blog_index(generated_posts)
-
-
-if __name__ == "__main__":
-    main()
-import os
-import re
-import shutil
-import markdown
-from jinja2 import Environment, FileSystemLoader
-
-# --- CONFIGURATION ---
-SRC_DIR = "blog-src"
-DEST_DIR = "docs/blog"
-HTML_OUTPUT_DIR = os.path.join(DEST_DIR, "html")
-ASSETS_DIR = "docs/assets/images/writeups"
-TEMPLATE_DIR = "scripts"
-TEMPLATE_NAME = "blog_template.html"
-BLOG_INDEX_FILE = os.path.join(DEST_DIR, "index.html")
-
-
-def get_post_title(markdown_content):
-    """Extracts the first H1 header from markdown content."""
-    match = re.search(r"^#\s+(.*)", markdown_content, re.MULTILINE)
-    if match:
-        def process_figures(md_text, post_index):
-            fig_i = 1
-            placeholders = {}
-            mapping = {}
-
-            # Protect fenced code blocks and inline code by replacing with placeholders
-            code_placeholders = {}
-            cp_i = 0
-            def mask_code(text):
-                nonlocal cp_i
-                def fenced_repl(m):
-                    nonlocal cp_i
-                    key = f"__CODE_BLOCK_{cp_i}__"
-                    code_placeholders[key] = m.group(0)
-                    cp_i += 1
-                    return key
-                text = re.sub(r'```[\s\S]*?```', fenced_repl, text)
-
-                def inline_repl(m):
-                    nonlocal cp_i
-                    key = f"__INLINE_CODE_{cp_i}__"
-                    code_placeholders[key] = m.group(0)
-                    cp_i += 1
-                    return key
-                text = re.sub(r'`[^`]*`', inline_repl, text)
-                return text
-
-            def unmask_code(text):
-                for k, v in code_placeholders.items():
-                    text = text.replace(k, v)
-                return text
-
-            masked = mask_code(md_text)
-
-            # Normalize Obsidian-style ![[name]] to markdown-like references
-            masked = re.sub(r'!\[\[(.*?)\]\]', lambda m: f'![]({m.group(1).strip()})', masked)
-
-            # Helper to create a placeholder for a figure and record mapping
-            def make_placeholder_for_img(src, alt, original_img_tag=None):
-                nonlocal fig_i
-                fig_id = f"fig-{post_index}-{fig_i}"
-                caption = f"Fig{post_index}.{fig_i} - {alt}"
-                if original_img_tag:
-                    html = f'<figure class="post-figure" id="{fig_id}">\n  {original_img_tag}\n  <figcaption>{caption}</figcaption>\n</figure>'
-                else:
-                    html = f'<figure class="post-figure" id="{fig_id}">\n  <img src="{src}" alt="{alt}"/>\n  <figcaption>{caption}</figcaption>\n</figure>'
-                placeholder = f"__FIG_PLACEHOLDER_{fig_i}__"
-                placeholders[placeholder] = html
-                mapping[os.path.basename(src)] = (fig_id, caption, placeholder)
-                fig_i += 1
-                return placeholder
-
-            # Replace markdown images ![alt](src) with placeholders
-            def md_img_repl(m):
-                alt = m.group(1).strip() or os.path.splitext(os.path.basename(m.group(2).strip()))[0]
-                src = m.group(2).strip()
-                return make_placeholder_for_img(src, alt)
-            masked = re.sub(r'!\[(.*?)\]\((.*?)\)', md_img_repl, masked)
-
-            # Replace HTML <img ...> tags with placeholders, preserving original tag
-            def html_img_repl(m):
-                def process_figures(md_text, post_index):
-                    fig_i = 1
-                    placeholders = {}
-                    mapping = {}
-
-                    # Protect fenced code blocks and inline code by replacing with placeholders
-                    code_placeholders = {}
-                    cp_i = 0
-                    def mask_code(text):
-                        nonlocal cp_i
-                        def fenced_repl(m):
-                            nonlocal cp_i
-                            key = f"__CODE_BLOCK_{cp_i}__"
-                            code_placeholders[key] = m.group(0)
-                            cp_i += 1
-                            return key
-                        text = re.sub(r'```[\s\S]*?```', fenced_repl, text)
-
-                        def inline_repl(m):
-                            nonlocal cp_i
-                            key = f"__INLINE_CODE_{cp_i}__"
-                            code_placeholders[key] = m.group(0)
-                            cp_i += 1
-                            return key
-                        text = re.sub(r'`[^`]*`', inline_repl, text)
-                        return text
-
-                    def unmask_code(text):
-                        for k, v in code_placeholders.items():
-                            text = text.replace(k, v)
-                        return text
-
-                    masked = mask_code(md_text)
-
-                    # Normalize Obsidian-style ![[name]] to markdown-like references
-                    masked = re.sub(r'!\[\[(.*?)\]\]', lambda m: f'![]({m.group(1).strip()})', masked)
-
-                    # Helper to create a placeholder for a figure and record mapping
-                    def make_placeholder_for_img(src, alt, original_img_tag=None):
-                        nonlocal fig_i
-                        fig_id = f"fig-{post_index}-{fig_i}"
-                        caption = f"Fig{post_index}.{fig_i} - {alt}"
-                        if original_img_tag:
-                            html = f'<figure class="post-figure" id="{fig_id}">\n  {original_img_tag}\n  <figcaption>{caption}</figcaption>\n</figure>'
-                        else:
-                            html = f'<figure class="post-figure" id="{fig_id}">\n  <img src="{src}" alt="{alt}"/>\n  <figcaption>{caption}</figcaption>\n</figure>'
-                        placeholder = f"__FIG_PLACEHOLDER_{fig_i}__"
-                        placeholders[placeholder] = html
-                        mapping[os.path.basename(src)] = (fig_id, caption, placeholder)
-                        fig_i += 1
-                        return placeholder
-
-                    # Replace markdown images ![alt](src) with placeholders
-                    def md_img_repl(m):
-                        alt = m.group(1).strip() or os.path.splitext(os.path.basename(m.group(2).strip()))[0]
-                        src = m.group(2).strip()
-                        return make_placeholder_for_img(src, alt)
-                    masked = re.sub(r'!\[(.*?)\]\((.*?)\)', md_img_repl, masked)
-
-                    # Replace HTML <img ...> tags with placeholders, preserving original tag
-                    def html_img_repl(m):
-                        full_tag = m.group(0)
-                        attrs = m.group(1)
-                        src_m = re.search(r'src\s*=\s*"([^\"]+)"', attrs)
-                        alt_m = re.search(r'alt\s*=\s*"([^\"]+)"', attrs)
-                        src = src_m.group(1) if src_m else ''
-                        alt = alt_m.group(1) if alt_m else os.path.splitext(os.path.basename(src))[0]
-                        return make_placeholder_for_img(src, alt, full_tag)
-                    masked = re.sub(r'<img\s+([^>]+?)\s*/?>', html_img_repl, masked)
-
-                    # Replace bare mentions of the image filename with links to the figure, but only in text nodes
-                    parts = re.split(r'(<[^>]+>)', masked)
-                    for i, part in enumerate(parts):
-                        if i % 2 == 0:
-                            for basename, (fid, caption, placeholder) in mapping.items():
-                                part = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#'+fid+f'">{caption}</a>', part)
-                            parts[i] = part
-                    masked = ''.join(parts)
-
-                    # Replace placeholders with actual figure HTML
-                    for placeholder, html in placeholders.items():
-                        masked = masked.replace(placeholder, html)
-
-                    final = unmask_code(masked)
-                    simple_map = {k: (v[0], v[1]) for k, v in mapping.items()}
-                    return final, simple_map
+                return html
 
             # 1) Convert Obsidian-style image links ![[name]] -> markdown image syntax (if not already converted)
             def obsidian_repl(m):
