@@ -154,7 +154,7 @@ def update_blog_index(posts):
                         {difficulty_html}
                         <span style=\"margin-left:0.25rem;\">{tags_html}</span>
                     </div>
-                    <span class=\"read-more blog-card-link\"> <i class=\"fas fa-arrow-right\"></i></span>
+                    <!--<span class=\"read-more blog-card-link\"> <i class=\"fas fa-arrow-right\"></i></span>-->
                 </a>
             </article>
         """
@@ -320,49 +320,63 @@ def main():
                         part = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#{fid}">{caption}</a>', part)
                     parts[i] = part
 
+            masked = mask_code(md_text)
+
+            # helper to build figure html and a placeholder mapping so we don't replace inside generated HTML
+            placeholders = {}
+
+            def build_figure_and_placeholder(src, alt):
+                nonlocal fig_i
+                fig_id = f"fig-{post_index}-{fig_i}"
+                caption = f"Fig{post_index}.{fig_i} - {alt}"
+                html = f'<figure class="post-figure" id="{fig_id}">\n  <img src="{src}" alt="{alt}"/>\n  <figcaption>{caption}</figcaption>\n</figure>'
+                placeholder = f"__FIG_PLACEHOLDER_{fig_i}__"
+                placeholders[placeholder] = html
+                mapping[os.path.basename(src)] = (fig_id, caption, placeholder)
+                fig_i += 1
+                return placeholder
+
+            # 1) Convert Obsidian-style image links ![[name]] -> markdown-like, but will be handled below
+            def obsidian_repl(m):
+                inner = m.group(1).strip()
+                return f'![]({inner})'
+            masked = re.sub(r'!\[\[(.*?)\]\]', obsidian_repl, masked)
+
+            # 2) Replace markdown images ![alt](src) with placeholders
+            def md_img_repl(m):
+                alt = m.group(1).strip() or os.path.splitext(os.path.basename(m.group(2).strip()))[0]
+                src = m.group(2).strip()
+                return build_figure_and_placeholder(src, alt)
+            masked = re.sub(r'!\[(.*?)\]\((.*?)\)', md_img_repl, masked)
+
+            # 3) Replace HTML <img ...> tags with placeholders
+            def html_img_repl(m):
+                attrs = m.group(1)
+                src_m = re.search(r'src\s*=\s*"([^"]+)"', attrs)
+                alt_m = re.search(r'alt\s*=\s*"([^"]+)"', attrs)
+                src = src_m.group(1) if src_m else ''
+                alt = alt_m.group(1) if alt_m else os.path.splitext(os.path.basename(src))[0]
+                return build_figure_and_placeholder(src, alt)
+            masked = re.sub(r'<img\s+([^>]+?)\s*/?>', html_img_repl, masked)
+
+            # 4) Replace bare mentions of the image filename with links to the figure, only in text nodes
+            parts = re.split(r'(<[^>]+>)', masked)
+            for i, part in enumerate(parts):
+                if i % 2 == 0:
+                    for basename, (fid, caption, placeholder) in mapping.items():
+                        part = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#{fid}">{caption}</a>', part)
+                    parts[i] = part
+
             masked = ''.join(parts)
+
+            # 5) Replace placeholders with actual figure HTML
+            for placeholder, html in placeholders.items():
+                masked = masked.replace(placeholder, html)
+
             final = unmask_code(masked)
-            return final, mapping
-
-        cleaned_no_h1, figures = process_figures(cleaned_no_h1, post_idx)
-
-        # Compute read time from cleaned content (metadata removed)
-        read_time = compute_read_time_from_lines(cleaned_no_h1)
-
-        # Extract challenge-specific metadata from the body (Room Name, Difficulty, Category)
-        challenge_meta = extract_challenge_metadata(cleaned_no_h1)
-        challenge_name = challenge_meta.get('room_name') or challenge_meta.get('room') or ''
-
-        html_fragment = markdown.markdown(cleaned_no_h1, extensions=["fenced_code", "tables"])
-
-        final_html = template.render(
-            title=title,
-            content=html_fragment,
-            posts=posts_html,
-            page_date=meta.get('date',''),
-            page_author=meta.get('author',''),
-            page_tags=meta.get('tags',[]),
-            read_time=read_time,
-            challenge=challenge_meta,
-            challenge_name=challenge_name
-        )
-
-        output_filename = os.path.splitext(md_file)[0] + ".html"
-        output_path = os.path.join(HTML_OUTPUT_DIR, output_filename)
-
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(final_html)
-
-        print(f"Converted {md_file} -> {output_path}")
-
-        generated_posts.append({
-            "title": title,
-            "url": f"html/{output_filename}",
-            "date": meta.get('date',''),
-            "author": meta.get('author',''),
-            "tags": meta.get('tags',[]),
-            "read_time": read_time
-        })
+            # convert mapping values to fid,caption only for caller convenience
+            simple_map = {k: (v[0], v[1]) for k, v in {k: (v[0], v[1]) for k, v in mapping.items()}.items()}
+            return final, simple_map
 
     if generated_posts:
         update_blog_index(generated_posts)

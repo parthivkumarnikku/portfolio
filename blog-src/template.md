@@ -39,6 +39,10 @@ HTML-style image (example with external GitHub-hosted image):
 
 You can refer to the image later in text by mentioning `sample.png` (or the external filename) and the converter will link it to the generated figure caption.
 
+If you prefer to write HTML directly (including for local images copied by Obsidian), use the assets path the converter creates, for example:
+
+<img src="../../assets/images/writeups/sample.png" alt="sample" />
+
 ## 1. Reconnaissance
 
 This is where the information gathering process begins. Describe the initial steps you took to understand the target.
