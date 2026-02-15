@@ -310,10 +310,17 @@ def main():
                 return build_figure(src, alt)
             masked = re.sub(r'<img\s+([^>]+?)\s*/?>', html_img_repl, masked)
 
-            # 4) Replace bare mentions of the image filename with links to the figure (outside code)
-            for basename, (fid, caption) in mapping.items():
-                masked = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#{fid}">{caption}</a>', masked)
+            # 4) Replace bare mentions of the image filename with links to the figure,
+            # but only in text nodes (not inside HTML tags/attributes) to avoid breaking src attributes.
+            parts = re.split(r'(<[^>]+>)', masked)
+            for i, part in enumerate(parts):
+                # even indices are text outside tags
+                if i % 2 == 0:
+                    for basename, (fid, caption) in mapping.items():
+                        part = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#{fid}">{caption}</a>', part)
+                    parts[i] = part
 
+            masked = ''.join(parts)
             final = unmask_code(masked)
             return final, mapping
 
