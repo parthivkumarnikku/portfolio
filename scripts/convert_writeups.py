@@ -221,7 +221,6 @@ def main():
         posts_html += f'<li><a href="{post_filename}"><i class="fas fa-file-alt"></i> {post["title"]}</a></li>'
 
     md_files = [f for f in os.listdir(SRC_DIR) if f.endswith(".md")]
-    print(f"DEBUG: Found markdown files in {SRC_DIR}: {md_files}")
 
     generated_posts = []
 
