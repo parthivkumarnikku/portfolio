@@ -354,7 +354,9 @@ body {
 .tag-path-traversal { background: #16a085; color: white; }
 
 /* Copy button and pre formatting */
-pre { position: relative; padding: 1rem; padding-right: 4rem; }
+/* Code wrapper to hold the pre (which can scroll) and a fixed-position button */
+.code-wrapper { position: relative; }
+.code-wrapper pre { position: relative; padding: 1rem; padding-right: 1rem; overflow: auto; }
 .copy-btn {
   position: absolute;
   top: 8px;
@@ -362,14 +364,14 @@ pre { position: relative; padding: 1rem; padding-right: 4rem; }
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   cursor: pointer;
   opacity: 0;
   transition: opacity var(--transition-fast), color var(--transition-fast);
 }
-pre:hover .copy-btn { opacity: 1; }
+.code-wrapper:hover .copy-btn { opacity: 1; }
 .copy-btn.copied { color: var(--accent-primary); }
 
 .blog-card-link {

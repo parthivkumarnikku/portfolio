@@ -211,14 +211,19 @@
 
   // ===== CODE BLOCK COPY FUNCTIONALITY =====
   document.querySelectorAll('pre').forEach(preBlock => {
-    // Create copy button
+    // Wrap pre in a non-scrolling wrapper so the copy button doesn't scroll horizontally
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-wrapper';
+    preBlock.parentNode.insertBefore(wrapper, preBlock);
+    wrapper.appendChild(preBlock);
+
+    // Create copy button and place it in wrapper (outside the scrolling <pre>)
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy-btn';
     copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
     copyBtn.title = 'Copy code to clipboard';
-    
-    preBlock.appendChild(copyBtn);
-    
+    wrapper.appendChild(copyBtn);
+
     // Add click handler
     copyBtn.addEventListener('click', () => {
       // Prefer the inner <code> text when present to avoid copying button text

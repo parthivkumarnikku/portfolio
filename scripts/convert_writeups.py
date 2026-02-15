@@ -111,6 +111,21 @@ def extract_challenge_metadata(markdown_content):
         val = m.group(2).strip()
         challenge[key] = val
     return challenge
+
+
+def remove_leading_h1(markdown_content):
+    """Remove the first H1 (`# Title`) line from markdown to avoid duplicate titles.
+    Returns modified markdown.
+    """
+    lines = markdown_content.splitlines()
+    new_lines = []
+    removed = False
+    for line in lines:
+        if not removed and re.match(r"^#\s+", line):
+            removed = True
+            continue
+        new_lines.append(line)
+    return "\n".join(new_lines)
 def update_blog_index(posts):
     """Updates the blog index file with a list of posts."""
     with open(BLOG_INDEX_FILE, "r") as f:
@@ -222,14 +237,17 @@ def main():
         # Title preference: metadata Title else first H1
         title = meta.get('title') or get_post_title(content_with_images)
 
+        # Remove leading H1 from content so template title doesn't duplicate it
+        cleaned_no_h1 = remove_leading_h1(cleaned_content)
+
         # Compute read time from cleaned content (metadata removed)
-        read_time = compute_read_time_from_lines(cleaned_content)
+        read_time = compute_read_time_from_lines(cleaned_no_h1)
 
         # Extract challenge-specific metadata from the body (Room Name, Difficulty, Category)
-        challenge_meta = extract_challenge_metadata(cleaned_content)
+        challenge_meta = extract_challenge_metadata(cleaned_no_h1)
         challenge_name = challenge_meta.get('room_name') or challenge_meta.get('room') or ''
 
-        html_fragment = markdown.markdown(cleaned_content, extensions=["fenced_code", "tables"])
+        html_fragment = markdown.markdown(cleaned_no_h1, extensions=["fenced_code", "tables"])
 
         final_html = template.render(
             title=title,
