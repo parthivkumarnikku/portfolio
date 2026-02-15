@@ -3,11 +3,10 @@
 > Challange Description:
 > The admin email of Acme Surveys was leaked, but the identity of the admin is unknown. The objective was to identify the admin email using the provided leak-checking service and derive the flag through a cryptographic HMAC comparison implemented in the backend. The challenge highlights how auxiliary endpoints can undermine otherwise secure cryptographic constructions.
 
-Title: Breached<br>
-Date: 2025-11-29<br>
-Author: scap3sh4rk<br>
-Tags: [web, endpoint-detection, medium]<br>
-Read_time: "8 min read"<br>
+Title: Breached
+Date: 2025-11-29
+Author: scap3sh4rk
+Tags: [web, endpoint-detection, medium]
 
 ---
 

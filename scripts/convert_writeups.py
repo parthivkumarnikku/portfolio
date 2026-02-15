@@ -3,6 +3,7 @@ import re
 import shutil
 import markdown
 from jinja2 import Environment, FileSystemLoader
+from datetime import datetime
 
 # --- CONFIGURATION ---
 SRC_DIR = "blog-src"
@@ -207,8 +208,25 @@ def get_all_posts():
         })
 
     # Make ordering deterministic: prefer date (descending), then title
+    def try_parse_date(d):
+        if not d:
+            return datetime.min
+        fmts = ["%B %d, %Y", "%Y-%m-%d", "%d %B %Y", "%b %d, %Y"]
+        for f in fmts:
+            try:
+                return datetime.strptime(d, f)
+            except Exception:
+                continue
+        m = re.search(r"(19|20)\d{2}", d)
+        if m:
+            try:
+                return datetime(int(m.group(0)), 1, 1)
+            except Exception:
+                return datetime.min
+        return datetime.min
+
     try:
-        posts.sort(key=lambda p: (p.get('date') or ''), reverse=True)
+        posts.sort(key=lambda p: try_parse_date(p.get('date','')), reverse=True)
     except Exception:
         posts.sort(key=lambda p: (p.get('title') or ''))
 
