@@ -29,9 +29,15 @@ Start with an introduction to the topic. Briefly explain the context and what th
 
 Here is an example figure. The converter will automatically number figures and add captions.
 
-![Sample Image](assets/images/sample.png)
+Obsidian-style image (will be copied from `blog-src/assets/images/sample.png`):
 
-You can refer to the image by using the filename `sample.png` in the text and it will be linked to the figure.
+![[sample.png]]
+
+HTML-style image (example with external GitHub-hosted image):
+
+<img width="1214" height="274" alt="image" src="https://github.com/user-attachments/assets/f5bc8cf6-e182-4f24-8131-5324eeaf99cd" />
+
+You can refer to the image later in text by mentioning `sample.png` (or the external filename) and the converter will link it to the generated figure caption.
 
 ## 1. Reconnaissance
 

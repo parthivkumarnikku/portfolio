@@ -240,15 +240,44 @@ def main():
         # Remove leading H1 from content so template title doesn't duplicate it
         cleaned_no_h1 = remove_leading_h1(cleaned_content)
 
-        # Process figures: replace markdown image syntax with <figure> blocks and generate ids
+        # Process figures: replace markdown image syntax, Obsidian images, and HTML <img> with <figure> blocks and generate ids
         def process_figures(md_text, post_index):
             fig_i = 1
             mapping = {}
 
-            def repl(match):
+            # Protect fenced code blocks and inline code by replacing with placeholders
+            code_placeholders = {}
+            def mask_code(text):
+                i = 0
+                # mask fenced code blocks
+                def fenced_repl(m):
+                    nonlocal i
+                    key = f"__CODE_BLOCK_{i}__"
+                    code_placeholders[key] = m.group(0)
+                    i += 1
+                    return key
+                text = re.sub(r'```[\s\S]*?```', fenced_repl, text)
+
+                # mask inline code
+                def inline_repl(m):
+                    nonlocal i
+                    key = f"__INLINE_CODE_{i}__"
+                    code_placeholders[key] = m.group(0)
+                    i += 1
+                    return key
+                text = re.sub(r'`[^`]*`', inline_repl, text)
+                return text
+
+            def unmask_code(text):
+                for k, v in code_placeholders.items():
+                    text = text.replace(k, v)
+                return text
+
+            masked = mask_code(md_text)
+
+            # helper to build figure html
+            def build_figure(src, alt):
                 nonlocal fig_i
-                alt = match.group(1).strip() or os.path.splitext(os.path.basename(match.group(2).strip()))[0]
-                src = match.group(2).strip()
                 fig_id = f"fig-{post_index}-{fig_i}"
                 caption = f"Fig{post_index}.{fig_i} - {alt}"
                 html = f'<figure class="post-figure" id="{fig_id}">\n  <img src="{src}" alt="{alt}"/>\n  <figcaption>{caption}</figcaption>\n</figure>'
@@ -256,15 +285,37 @@ def main():
                 fig_i += 1
                 return html
 
-            # replace markdown image syntax ![alt](src)
-            new_md = re.sub(r'!\[(.*?)\]\((.*?)\)', repl, md_text)
+            # 1) Convert Obsidian-style image links ![[name]] -> markdown image syntax (if not already converted)
+            def obsidian_repl(m):
+                inner = m.group(1).strip()
+                # leave as markdown-like reference; convert_obsidian_images will have already handled file copying
+                return f'![]({inner})'
+            masked = re.sub(r'!\[\[(.*?)\]\]', obsidian_repl, masked)
 
-            # Replace bare mentions of the image filename with links to the figure
+            # 2) Replace markdown images ![alt](src)
+            def md_img_repl(m):
+                alt = m.group(1).strip() or os.path.splitext(os.path.basename(m.group(2).strip()))[0]
+                src = m.group(2).strip()
+                return build_figure(src, alt)
+            masked = re.sub(r'!\[(.*?)\]\((.*?)\)', md_img_repl, masked)
+
+            # 3) Replace HTML <img ...> tags
+            def html_img_repl(m):
+                attrs = m.group(1)
+                # find src and alt
+                src_m = re.search(r'src\s*=\s*"([^"]+)"', attrs)
+                alt_m = re.search(r'alt\s*=\s*"([^"]+)"', attrs)
+                src = src_m.group(1) if src_m else ''
+                alt = alt_m.group(1) if alt_m else os.path.splitext(os.path.basename(src))[0]
+                return build_figure(src, alt)
+            masked = re.sub(r'<img\s+([^>]+?)\s*/?>', html_img_repl, masked)
+
+            # 4) Replace bare mentions of the image filename with links to the figure (outside code)
             for basename, (fid, caption) in mapping.items():
-                # Replace standalone occurrences of the basename with a link to the figure
-                new_md = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#{fid}">{caption}</a>', new_md)
+                masked = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#{fid}">{caption}</a>', masked)
 
-            return new_md, mapping
+            final = unmask_code(masked)
+            return final, mapping
 
         cleaned_no_h1, figures = process_figures(cleaned_no_h1, post_idx)
 
