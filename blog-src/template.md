@@ -8,7 +8,7 @@ Title: "Your Awesome Write-up Title"<br>
 Date: "YYYY-MM-DD"<br>
 Author: "Your Name"<br>
 Tags: ["tag1", "tag2", "tag3"]<br>
-
+Read_time: "X min read"<br>
 
 
 ## Challenge Metadata

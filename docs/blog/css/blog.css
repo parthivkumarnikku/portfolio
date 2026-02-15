@@ -311,6 +311,67 @@ body {
   gap: 0.35rem;
 }
 
+/* Post header and metadata */
+.post-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+.post-title {
+  font-size: 1.5rem;
+  color: var(--accent-primary);
+  margin-bottom: 0.25rem;
+}
+.challenge-name {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+.meta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Difficulty color mapping */
+.difficulty-low { background: #2ecc71; color: #022c12; border-radius: 4px; padding: 0.25rem 0.5rem; }
+.difficulty-medium { background: #f39c12; color: #2f1a00; border-radius: 4px; padding: 0.25rem 0.5rem; }
+.difficulty-hard { background: #e74c3c; color: #2b0b06; border-radius: 4px; padding: 0.25rem 0.5rem; }
+
+/* Tag color hints */
+.tag-web { background: #3498db; color: white; }
+.tag-tryhackme { background: #8e44ad; color: white; }
+.tag-path-traversal { background: #16a085; color: white; }
+
+/* Copy button and pre formatting */
+pre { position: relative; padding: 1rem; padding-right: 4rem; }
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+pre:hover .copy-btn { opacity: 1; }
+.copy-btn.copied { color: var(--accent-primary); }
+
 .blog-card-link {
   display: inline-flex;
   align-items: center;

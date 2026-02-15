@@ -214,30 +214,34 @@
     // Create copy button
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy-btn';
-    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+    copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
     copyBtn.title = 'Copy code to clipboard';
     
     preBlock.appendChild(copyBtn);
     
     // Add click handler
     copyBtn.addEventListener('click', () => {
-      const code = preBlock.textContent.trim();
+      // Prefer the inner <code> text when present to avoid copying button text
+      const codeElem = preBlock.querySelector('code');
+      const code = codeElem ? codeElem.textContent.trim() : preBlock.textContent.trim();
+
       navigator.clipboard.writeText(code).then(() => {
-        // Show success feedback
+        // Show success feedback (small icon change)
         const originalHTML = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        copyBtn.innerHTML = '<i class="fas fa-check"></i>';
         copyBtn.classList.add('copied');
-        
-        // Reset after 3 seconds
+
+        // Reset after 2 seconds
         setTimeout(() => {
           copyBtn.innerHTML = originalHTML;
           copyBtn.classList.remove('copied');
-        }, 3000);
+        }, 2000);
       }).catch(err => {
         console.error('Failed to copy code:', err);
-        copyBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed';
+        const originalHTML = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
         setTimeout(() => {
-          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+          copyBtn.innerHTML = originalHTML;
         }, 2000);
       });
     });

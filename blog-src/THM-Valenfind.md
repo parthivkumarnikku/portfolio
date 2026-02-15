@@ -9,12 +9,11 @@ Author: Parthiv Kumar Nikku
 Tags: [tryhackme, web, path-traversal, medium]  
 
 
-
 ## Challenge Metadata
 
 - **Room Name:** Valenfind  
 - **Platform:** TryHackMe  
-- **URL:** https://tryhackme.com/room/lafb2026e10  
+- **URL:** [Link to challange](https://tryhackme.com/room/lafb2026e10)
 - **Difficulty:** Medium  
 - **Category:** Web  
 - **Points:** 200  

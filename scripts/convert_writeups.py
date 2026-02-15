@@ -103,6 +103,14 @@ def compute_read_time_from_lines(markdown_content, lines_per_min=20):
     return f"{minutes} min read"
 
 
+def extract_challenge_metadata(markdown_content):
+    """Parse markdown bullet lines like '- **Key:** Value' into a dict."""
+    challenge = {}
+    for m in re.finditer(r"^\s*-\s*\*\*(.+?)\*\*\s*:\s*(.+)$", markdown_content, re.MULTILINE):
+        key = m.group(1).strip().lower().replace(' ', '_')
+        val = m.group(2).strip()
+        challenge[key] = val
+    return challenge
 def update_blog_index(posts):
     """Updates the blog index file with a list of posts."""
     with open(BLOG_INDEX_FILE, "r") as f:
@@ -110,23 +118,28 @@ def update_blog_index(posts):
 
         post_list_html = ""
         for post in posts:
-                # Build simple tag HTML
+                # Build simple tag HTML with per-tag classes
                 tags_html = ""
                 if post.get('tags'):
-                        tags_html = ' '.join([f"<span class=\"tag\">{t}</span>" for t in post.get('tags')])
+                        tags_html = ' '.join([f"<span class=\"tag tag-{t.lower().replace(' ','-')}\">{t}</span>" for t in post.get('tags')])
+
+                # Difficulty badge
+                difficulty_html = ''
+                if post.get('difficulty'):
+                        difficulty_html = f"<span class=\"meta-item difficulty difficulty-{post.get('difficulty').lower()}\">{post.get('difficulty')}</span>"
 
                 post_list_html += f"""
             <article class=\"blog-card\">
                 <a href=\"{post['url']}\" class=\"blog-card-content\">
                     <div class=\"blog-card-date\"><i class=\"fas fa-calendar-alt\"></i> {post.get('date','')}</div>
                     <h2 class=\"blog-card-title\">{post['title']}</h2>
-                    <p class=\"blog-card-description\">A new writeup about {post['title']}.</p>
                     <div style=\"display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;flex-wrap:wrap;\">
                         <span class=\"blog-meta\"><i class=\"fas fa-clock\"></i> {post.get('read_time','')} </span>
                         <span class=\"blog-meta\"><i class=\"fas fa-user\"></i> {post.get('author','')}</span>
+                        {difficulty_html}
                         <span style=\"margin-left:0.25rem;\">{tags_html}</span>
                     </div>
-                    <span class=\"read-more blog-card-link\">Read More <i class=\"fas fa-arrow-right\"></i></span>
+                    <span class=\"read-more blog-card-link\"> <i class=\"fas fa-arrow-right\"></i></span>
                 </a>
             </article>
         """
@@ -161,6 +174,7 @@ def get_all_posts():
             content = f.read()
 
         meta, cleaned = extract_metadata(content)
+        challenge_meta = extract_challenge_metadata(cleaned)
         title = meta.get('title') or get_post_title(content)
         output_filename = os.path.splitext(md_file)[0] + ".html"
 
@@ -170,7 +184,8 @@ def get_all_posts():
             "date": meta.get('date',''),
             "author": meta.get('author',''),
             "tags": meta.get('tags',[]),
-            "read_time": compute_read_time_from_lines(cleaned)
+            "read_time": compute_read_time_from_lines(cleaned),
+            "difficulty": challenge_meta.get('difficulty','')
         })
 
     return posts
@@ -210,9 +225,23 @@ def main():
         # Compute read time from cleaned content (metadata removed)
         read_time = compute_read_time_from_lines(cleaned_content)
 
+        # Extract challenge-specific metadata from the body (Room Name, Difficulty, Category)
+        challenge_meta = extract_challenge_metadata(cleaned_content)
+        challenge_name = challenge_meta.get('room_name') or challenge_meta.get('room') or ''
+
         html_fragment = markdown.markdown(cleaned_content, extensions=["fenced_code", "tables"])
 
-        final_html = template.render(title=title, content=html_fragment, posts=posts_html)
+        final_html = template.render(
+            title=title,
+            content=html_fragment,
+            posts=posts_html,
+            page_date=meta.get('date',''),
+            page_author=meta.get('author',''),
+            page_tags=meta.get('tags',[]),
+            read_time=read_time,
+            challenge=challenge_meta,
+            challenge_name=challenge_name
+        )
 
         output_filename = os.path.splitext(md_file)[0] + ".html"
         output_path = os.path.join(HTML_OUTPUT_DIR, output_filename)
