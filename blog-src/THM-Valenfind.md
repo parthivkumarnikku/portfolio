@@ -1,16 +1,14 @@
 # THM-Valenfind Write-up
 
+> Challange Description:
 > There’s this new dating app called “Valenfind” that just popped up out of nowhere. The creator only learned to code this year — which suggests insecure design decisions. The objective was to identify and exploit weaknesses in the web application to retrieve the flag.
 
----
+Title: THM - Valenfind Write-up  
+Date: 2026-02-14  
+Author: Parthiv Kumar Nikku  
+Tags: [tryhackme, web, path-traversal, medium]  
 
-title: THM - Valenfind Write-up  
-date: 2026-02-14  
-author: pardhu nikku  
-tags: [tryhackme, web, path-traversal, medium]  
-read_time: 8 min read  
 
----
 
 ## Challenge Metadata
 
@@ -22,6 +20,7 @@ read_time: 8 min read
 - **Points:** 200  
 
 ---
+
 ### Scanning
 I started scanning the target for potential open ports.. and i found the ssh port open.
 
