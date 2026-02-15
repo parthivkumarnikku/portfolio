@@ -36,9 +36,9 @@
   --text-primary: #006400;
   --text-secondary: #333333;
   --text-muted: #666666;
-  --accent-primary: #ccaa00;
+  --accent-primary: #754a00;
   --accent-secondary: #999900;
-  --accent-orange: #cc7700;
+  --accent-orange: ##ff6c00;
   --border-color: #006400;
   --card-bg: #ffffff;
   --card-hover: #f0f8f0;
@@ -146,7 +146,7 @@ body {
 }
 
 .theme-toggle .icon.sun {
-  color: #ffaa00;
+  color: #513800;
   display: none;
 }
 
