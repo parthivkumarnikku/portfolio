@@ -221,6 +221,7 @@ def main():
         posts_html += f'<li><a href="{post_filename}"><i class="fas fa-file-alt"></i> {post["title"]}</a></li>'
 
     md_files = [f for f in os.listdir(SRC_DIR) if f.endswith(".md")]
+    print(f"DEBUG: Found markdown files in {SRC_DIR}: {md_files}")
 
     generated_posts = []
 
@@ -351,12 +352,22 @@ def main():
 
             # 3) Replace HTML <img ...> tags with placeholders
             def html_img_repl(m):
+                full_tag = m.group(0)
                 attrs = m.group(1)
                 src_m = re.search(r'src\s*=\s*"([^"]+)"', attrs)
                 alt_m = re.search(r'alt\s*=\s*"([^"]+)"', attrs)
                 src = src_m.group(1) if src_m else ''
                 alt = alt_m.group(1) if alt_m else os.path.splitext(os.path.basename(src))[0]
-                return build_figure_and_placeholder(src, alt)
+                # Build figure that contains the original img tag to preserve attributes
+                nonlocal fig_i
+                fig_id = f"fig-{post_index}-{fig_i}"
+                caption = f"Fig{post_index}.{fig_i} - {alt}"
+                html = f'<figure class="post-figure" id="{fig_id}">\n  {full_tag}\n  <figcaption>{caption}</figcaption>\n</figure>'
+                placeholder = f"__FIG_PLACEHOLDER_{fig_i}__"
+                placeholders[placeholder] = html
+                mapping[os.path.basename(src)] = (fig_id, caption, placeholder)
+                fig_i += 1
+                return placeholder
             masked = re.sub(r'<img\s+([^>]+?)\s*/?>', html_img_repl, masked)
 
             # 4) Replace bare mentions of the image filename with links to the figure, only in text nodes
@@ -375,8 +386,48 @@ def main():
 
             final = unmask_code(masked)
             # convert mapping values to fid,caption only for caller convenience
-            simple_map = {k: (v[0], v[1]) for k, v in {k: (v[0], v[1]) for k, v in mapping.items()}.items()}
+            simple_map = {k: (v[0], v[1]) for k, v in mapping.items()}
             return final, simple_map
+
+        cleaned_no_h1, figures = process_figures(cleaned_no_h1, post_idx)
+
+        # Compute read time from cleaned content (metadata removed)
+        read_time = compute_read_time_from_lines(cleaned_no_h1)
+
+        # Extract challenge-specific metadata from the body (Room Name, Difficulty, Category)
+        challenge_meta = extract_challenge_metadata(cleaned_no_h1)
+        challenge_name = challenge_meta.get('room_name') or challenge_meta.get('room') or ''
+
+        html_fragment = markdown.markdown(cleaned_no_h1, extensions=["fenced_code", "tables"])
+
+        final_html = template.render(
+            title=title,
+            content=html_fragment,
+            posts=posts_html,
+            page_date=meta.get('date',''),
+            page_author=meta.get('author',''),
+            page_tags=meta.get('tags',[]),
+            read_time=read_time,
+            challenge=challenge_meta,
+            challenge_name=challenge_name
+        )
+
+        output_filename = os.path.splitext(md_file)[0] + ".html"
+        output_path = os.path.join(HTML_OUTPUT_DIR, output_filename)
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(final_html)
+
+        print(f"Converted {md_file} -> {output_path}")
+
+        generated_posts.append({
+            "title": title,
+            "url": f"html/{output_filename}",
+            "date": meta.get('date',''),
+            "author": meta.get('author',''),
+            "tags": meta.get('tags',[]),
+            "read_time": read_time
+        })
 
     if generated_posts:
         update_blog_index(generated_posts)
