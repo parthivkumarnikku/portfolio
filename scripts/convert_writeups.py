@@ -224,7 +224,7 @@ def main():
 
     generated_posts = []
 
-    for md_file in md_files:
+    for post_idx, md_file in enumerate(md_files, start=1):
         md_file_path = os.path.join(SRC_DIR, md_file)
 
         with open(md_file_path, "r", encoding="utf-8") as f:
@@ -239,6 +239,34 @@ def main():
 
         # Remove leading H1 from content so template title doesn't duplicate it
         cleaned_no_h1 = remove_leading_h1(cleaned_content)
+
+        # Process figures: replace markdown image syntax with <figure> blocks and generate ids
+        def process_figures(md_text, post_index):
+            fig_i = 1
+            mapping = {}
+
+            def repl(match):
+                nonlocal fig_i
+                alt = match.group(1).strip() or os.path.splitext(os.path.basename(match.group(2).strip()))[0]
+                src = match.group(2).strip()
+                fig_id = f"fig-{post_index}-{fig_i}"
+                caption = f"Fig{post_index}.{fig_i} - {alt}"
+                html = f'<figure class="post-figure" id="{fig_id}">\n  <img src="{src}" alt="{alt}"/>\n  <figcaption>{caption}</figcaption>\n</figure>'
+                mapping[os.path.basename(src)] = (fig_id, caption)
+                fig_i += 1
+                return html
+
+            # replace markdown image syntax ![alt](src)
+            new_md = re.sub(r'!\[(.*?)\]\((.*?)\)', repl, md_text)
+
+            # Replace bare mentions of the image filename with links to the figure
+            for basename, (fid, caption) in mapping.items():
+                # Replace standalone occurrences of the basename with a link to the figure
+                new_md = re.sub(rf'\b{re.escape(basename)}\b', f'<a href="#{fid}">{caption}</a>', new_md)
+
+            return new_md, mapping
+
+        cleaned_no_h1, figures = process_figures(cleaned_no_h1, post_idx)
 
         # Compute read time from cleaned content (metadata removed)
         read_time = compute_read_time_from_lines(cleaned_no_h1)

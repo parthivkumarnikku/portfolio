@@ -8,7 +8,6 @@ Title: "Your Awesome Write-up Title"<br>
 Date: "YYYY-MM-DD"<br>
 Author: "Your Name"<br>
 Tags: ["tag1", "tag2", "tag3"]<br>
-Read_time: "X min read"<br>
 
 
 ## Challenge Metadata
@@ -25,6 +24,14 @@ Read_time: "X min read"<br>
 ## Introduction
 
 Start with an introduction to the topic. Briefly explain the context and what the reader can expect to learn from this write-up.
+
+## Figures (example)
+
+Here is an example figure. The converter will automatically number figures and add captions.
+
+![Sample Image](assets/images/sample.png)
+
+You can refer to the image by using the filename `sample.png` in the text and it will be linked to the figure.
 
 ## 1. Reconnaissance
 
