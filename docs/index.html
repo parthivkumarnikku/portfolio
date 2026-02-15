@@ -27,6 +27,7 @@
         <a href="html/projects.html" data-label="Projects"><i class="fas fa-project-diagram"></i> Projects</a>
         <a href="html/disclosures.html" data-label="Disclosures"><i class="fas fa-bug"></i> Disclosures</a>
         <a href="html/certifications.html" data-label="Certifications"><i class="fas fa-certificate"></i> Certifications</a>
+        <a href="blog/index.html" data-label="Blog"><i class="fas fa-blog"></i> Blog</a>
         <a href="html/about.html" data-label="About"><i class="fas fa-user"></i> About</a>
         <a class="resume-btn" href="assets/resume/Parthiv_Kumar_Nikku_Resume.pdf" data-label="Resume" target="_blank" rel="noopener noreferrer">
           <i class="fas fa-download"></i> Resume
@@ -256,12 +257,25 @@
 <script>
 // Highlight active menu item and handle mobile menu
 document.addEventListener("DOMContentLoaded", () => {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPath = window.location.pathname;
+  const currentPage = currentPath.split('/').pop() || 'index.html';
+  // Get the full relative path from document root
+  const fullCurrentPath = currentPath.replace(/^\//, '').replace(/docs\//, '');
   const navLinks = document.querySelectorAll('.primary-nav a');
   
   navLinks.forEach(link => {
-    const href = link.getAttribute('href').split('/').pop() || 'index.html';
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    const href = link.getAttribute('href');
+    
+    // Skip external links and PDF links
+    if (href.startsWith('http') || href.startsWith('mailto') || href.endsWith('.pdf')) {
+      return;
+    }
+    
+    // Get full path from href
+    const fullHref = href.replace(/^\.\//, '').replace(/^\//, '');
+    
+    // Check if current path matches the href path
+    if (currentPath.includes(href) || fullCurrentPath === fullHref || currentPath.endsWith(href)) {
       link.classList.add('active');
     }
   });

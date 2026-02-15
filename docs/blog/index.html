@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Parthiv Kumar Nikku</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/logos/favicon.ico">
+  
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-link active">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+    
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i> Portfolio
+      </a>
+    </div>
+    
+    <!-- Theme Toggle - Single Icon -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+    </div>
+    
+    <!-- Mobile Menu Button - Hamburger Style -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="blog-main">
+    
+    <!-- Hero Section -->
+    <section class="blog-hero">
+      <h1>Blog <i class="fas fa-pen-alt" style="font-size: 1rem; vertical-align: middle;"></i></h1>
+      <p>Exploring cybersecurity research, penetration testing techniques, and ethical hacking methodologies.</p>
+    </section>
+    
+    <!-- Blog Grid -->
+    <section class="blog-grid" id="blog-posts">
+
+            <article class="blog-card"> 
+                <a href="html/THM-Valenfind.html" class="blog-card-content"> 
+                    <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 2026-02-14</div>
+                    <h2 class="blog-card-title">THM - Valenfind Write-up</h2>
+                    <div style="display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;flex-wrap:wrap;"> 
+                        <span class="blog-meta"><i class="fas fa-clock"></i>  </span>
+                        <span class="blog-meta"><i class="fas fa-user"></i> Parthiv Kumar Nikku</span>
+                        <span style="margin-left:0.25rem;"><span class="tag tag-tryhackme">tryhackme</span> <span class="tag tag-web">web</span> <span class="tag tag-path-traversal">path-traversal</span> <span class="tag tag-medium">medium</span></span>
+                    </div>
+                </a>
+            </article>
+            <article class="blog-card"> 
+                <a href="html/IITB25-Breached-Writeup.html" class="blog-card-content"> 
+                    <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 2025-11-29<br></div>
+                    <h2 class="blog-card-title">Breached<br></h2>
+                    <div style="display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;flex-wrap:wrap;"> 
+                        <span class="blog-meta"><i class="fas fa-clock"></i> 8 min read"<br> </span>
+                        <span class="blog-meta"><i class="fas fa-user"></i> scap3sh4rk<br></span>
+                        <span style="margin-left:0.25rem;"><span class="tag tag-[web">[web</span> <span class="tag tag-endpoint-detection">endpoint-detection</span> <span class="tag tag-medium]<br>">medium]<br></span></span>
+                    </div>
+                </a>
+            </article></section>
+    
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-secondary);">
+    <p>&copy; 2026 Parthiv Kumar Nikku | Security Blog</p>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+      <i class="fas fa-lock"></i> Secured with </> and coffee
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/blog.js"></script>
+</body>
+</html>

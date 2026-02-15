@@ -1,0 +1,35 @@
+name: Convert Writeups
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+    paths:
+      - 'blog-src/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install Markdown Jinja2
+
+      - name: Run conversion script
+        run: python3 scripts/convert_writeups.py
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update blog with new writeups"
+          file_pattern: docs/**

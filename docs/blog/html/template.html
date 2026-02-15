@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Awesome Write-up Title"<br> | Parthiv Kumar Nikku</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
+
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a href="../../index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i> Portfolio
+      </a>
+    </div>
+
+    <!-- Theme Toggle - Single Icon -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <!-- Mobile Menu Button - Hamburger Style -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached<br></a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="template.html"><i class="fas fa-file-alt"></i> Your Awesome Write-up Title"<br></a></li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="../../index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="../../html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="../../html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      <header class="post-header">
+        <h1 class="post-title">Your Awesome Write-up Title"<br></h1>
+        
+
+        <div class="meta-row">
+          <span class="meta-item"><i class="fas fa-calendar-alt"></i> YYYY-MM-DD"<br></span>
+          <span class="meta-item"><i class="fas fa-clock"></i> 6 min read</span>
+          <span class="meta-item"><i class="fas fa-user"></i> Your Name"<br></span>
+          
+          
+          <span class="meta-item tags"><span class="tag tag-["tag1"">["tag1"</span><span class="tag tag-"tag2"">"tag2"</span><span class="tag tag-"tag3"]<br>">"tag3"]<br></span></span>
+          
+        </div>
+      </header>
+
+      <div class="post-body"><blockquote>
+<p>Challange Description:
+A brief and engaging description of the challenge or topic goes here. What was the main objective? What makes this interesting?</p>
+</blockquote>
+<h2>Challenge Metadata</h2>
+<ul>
+<li><strong>Room Name:</strong> Name of the CTF Room/Challenge</li>
+<li><strong>Platform:</strong> TryHackMe, HackTheBox, etc.</li>
+<li><strong>URL:</strong> <a href="https://example.com">Link to the challenge</a></li>
+<li><strong>Difficulty:</strong> Easy, Medium, Hard</li>
+<li><strong>Category:</strong> Web, PWN, Forensics, etc.</li>
+<li><strong>Points:</strong> Points awarded for the challenge</li>
+</ul>
+<hr />
+<h2>Introduction</h2>
+<p>Start with an introduction to the topic. Briefly explain the context and what the reader can expect to learn from this write-up.</p>
+<h2>Figures (example)</h2>
+<p>Here is an example figure. The converter will automatically number figures and add captions.</p>
+<p>Obsidian-style image (will be copied from <code>blog-src/assets/images/sample.png</code>):</p>
+<figure class="post-figure" id="fig-3-1">
+  <img src="../../assets/images/writeups/sample.png" alt="sample"/>
+  <figcaption>Fig3.1 - sample</figcaption>
+</figure>
+
+<p>HTML-style image (example with external GitHub-hosted image):</p>
+<figure class="post-figure" id="fig-3-2">
+  <img width="1214" height="274" alt="image" src="https://github.com/user-attachments/assets/f5bc8cf6-e182-4f24-8131-5324eeaf99cd" />
+  <figcaption>Fig3.2 - image</figcaption>
+</figure>
+
+<p>You can refer to the image later in text by mentioning <code>sample.png</code> (or the external filename) and the converter will link it to the generated figure caption.</p>
+<p>If you prefer to write HTML directly (including for local images copied by Obsidian), use the assets path the converter creates, for example:</p>
+<figure class="post-figure" id="fig-3-3">
+  <img src="../../assets/images/writeups/sample.png" alt="sample" />
+  <figcaption>Fig3.3 - sample</figcaption>
+</figure>
+
+<h2>1. Reconnaissance</h2>
+<p>This is where the information gathering process begins. Describe the initial steps you took to understand the target.</p>
+<h3>Passive Reconnaissance</h3>
+<ul>
+<li>Publicly available information</li>
+<li>WHOIS lookups</li>
+<li>Google dorking</li>
+</ul>
+<h3>Active Reconnaissance</h3>
+<ul>
+<li>Port scanning</li>
+<li>Service enumeration</li>
+</ul>
+<p>Here's an example of how to format a code snippet. The copy-to-clipboard functionality is automatically handled by the site's script when the markdown is converted to HTML.</p>
+<pre><code class="language-bash"># Example of a command
+nmap -sV -A -p- 127.0.0.1
+</code></pre>
+<h2>2. Scanning and Enumeration</h2>
+<p>Detail the results of your scans. What ports are open? What services are running?</p>
+<pre><code class="language-plaintext">PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+80/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
+</code></pre>
+<h2>3. Gaining Access (Exploitation)</h2>
+<p>This is the core of the write-up. Explain the vulnerability you found and how you exploited it.</p>
+<h3>Vulnerability Analysis</h3>
+<ul>
+<li>Describe the vulnerability (e.g., SQL Injection, Path Traversal, RCE).</li>
+<li>Explain why it exists.</li>
+</ul>
+<h3>Exploitation Steps</h3>
+<ul>
+<li>Provide a step-by-step guide on how to exploit the vulnerability.</li>
+<li>Include code snippets and screenshots where necessary.</li>
+</ul>
+<pre><code class="language-python"># Example of an exploit script
+import requests
+
+url = &quot;http://example.com/vulnerable_endpoint&quot;
+payload = {&quot;param&quot;: &quot;' OR 1=1 --&quot;}
+
+response = requests.post(url, data=payload)
+print(response.text)
+</code></pre>
+<h2>4. Privilege Escalation</h2>
+<p>If applicable, describe how you escalated your privileges on the system.</p>
+<ul>
+<li><strong>Enumeration:</strong> What did you look for after getting initial access? (e.g., SUID binaries, cron jobs, kernel exploits)</li>
+<li><strong>Exploitation:</strong> How did you get root/administrator access?</li>
+</ul>
+<h2>5. Post-Exploitation &amp; Loot</h2>
+<p>What did you do after gaining full control? Did you find any flags or interesting data?</p>
+<h2>Conclusion</h2>
+<p>Summarize the key takeaways from this write-up. What did you learn? What are the main remediation steps to prevent this kind of vulnerability?</p>
+<blockquote>
+<p>"A cool quote or a final thought." — Author</p>
+</blockquote>
+<hr />
+<p><em>This is a template for a CTF write-up. Replace the placeholder text with your own content.</em></p></div>
+    </article>
+    
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-secondary);">
+    <p>&copy; 2026 Parthiv Kumar Nikku | Security Blog</p>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+      <i class="fas fa-lock"></i> Secured with &lt;/&gt; and coffee
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../js/blog.js"></script>
+</body>
+</html>

