@@ -3,9 +3,12 @@ name: Convert Writeups
 on:
   push:
     branches:
-      - main # Or your default branch
+      - main
     paths:
       - 'blog-src/**'
+
+permissions:
+  contents: write
 
 jobs:
   build:
