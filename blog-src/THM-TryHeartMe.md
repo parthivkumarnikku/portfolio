@@ -4,10 +4,10 @@
 > *The TryHeartMe shop is open for business. Can you find a way to purchase the hidden “Valenflag” item?*
 
 
-Title: "Love at first breach - TryHeartMe"
-Date: "2026-02-16"
-Author: "scap3sh4rk"
-Tags: ["web", "jwt", "informative"]
+Title: Love at first breach - TryHeartMe
+Date: 2026-02-16
+Author: scap3sh4rk
+Tags: [web, jwt, informative]
 
 ## Challenge Metadata
 
