@@ -62,7 +62,7 @@ A JWT is commonly stored as a cookie or authorization header and allows users to
 
 The captured authentication cookie is shown below:
 
-<img width="1506" height="93" alt="3" src="https://github.com/user-attachments/assets/4971088c-91ed-43a1-96cc-bc5e6861c266" />
+<img width="1506" height="93" alt="cookie" src="https://github.com/user-attachments/assets/4971088c-91ed-43a1-96cc-bc5e6861c266" />
 
 ### JWT Structure
 
