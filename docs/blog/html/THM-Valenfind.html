@@ -52,7 +52,7 @@
     <aside class="blog-sidebar" id="blog-sidebar">
       <h3><i class="fas fa-list"></i> Blog Posts</h3>
       <ul>
-        <li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached<br></a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="template.html"><i class="fas fa-file-alt"></i> Your Awesome Write-up Title"<br></a></li>
+        <li><a href="THM-TryHeartMe.html"><i class="fas fa-file-alt"></i> Love at first breach - TryHeartMe</a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached</a></li>
       </ul>
       
       <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
@@ -164,22 +164,22 @@ Nmap done: 1 IP address (1 host up) scanned in 11.07 seconds
 <p>but no lead for a while and slowly i noticed a option to change the profile theme.</p>
 </li>
 </ul>
-<figure class="post-figure" id="fig-2-1">
+<figure class="post-figure" id="fig-3-1">
   <img src="../../assets/images/writeups/Pasted image 20260214173729.png" alt="Pasted image 20260214173729"/>
-  <figcaption>Fig2.1 - Pasted image 20260214173729</figcaption>
+  <figcaption>Fig3.1 - Pasted image 20260214173729</figcaption>
 </figure>
 
 <p>Opened up burp suite and noticed that the profile themes are being fetched dynamically.</p>
-<figure class="post-figure" id="fig-2-2">
+<figure class="post-figure" id="fig-3-2">
   <img src="../../assets/images/writeups/2026-02-14_17-03-18.png" alt="2026-02-14_17-03-18"/>
-  <figcaption>Fig2.2 - 2026-02-14_17-03-18</figcaption>
+  <figcaption>Fig3.2 - 2026-02-14_17-03-18</figcaption>
 </figure>
 
 <p>The endpoint is <code>/api/fetch_layout</code></p>
 <p>Time for [[Path Traversal]], tried to fetch the <code>/etc/passwd</code></p>
-<figure class="post-figure" id="fig-2-3">
+<figure class="post-figure" id="fig-3-3">
   <img src="../../assets/images/writeups/2026-02-14_16-26-40.png" alt="2026-02-14_16-26-40"/>
-  <figcaption>Fig2.3 - 2026-02-14_16-26-40</figcaption>
+  <figcaption>Fig3.3 - 2026-02-14_16-26-40</figcaption>
 </figure>
 
 <h3>some commands that made my work easier</h3>
@@ -191,16 +191,16 @@ In this case all the processes are being handeled by the webapp and hence this r
 <p><code>/proc/self/envron</code>
 This is quite obvyous -  returns the environment variables</p>
 </blockquote>
-<figure class="post-figure" id="fig-2-4">
+<figure class="post-figure" id="fig-3-4">
   <img src="../../assets/images/writeups/2026-02-14_16-37-54.png" alt="2026-02-14_16-37-54"/>
-  <figcaption>Fig2.4 - 2026-02-14_16-37-54</figcaption>
+  <figcaption>Fig3.4 - 2026-02-14_16-37-54</figcaption>
 </figure>
 
 <p>The above screenshot show the path of the <code>app.py</code></p>
 <p>Now i tried to read up the source code of the app and the code has the following details:</p>
-<figure class="post-figure" id="fig-2-5">
+<figure class="post-figure" id="fig-3-5">
   <img src="../../assets/images/writeups/2026-02-14_16-51-42.png" alt="2026-02-14_16-51-42"/>
-  <figcaption>Fig2.5 - 2026-02-14_16-51-42</figcaption>
+  <figcaption>Fig3.5 - 2026-02-14_16-51-42</figcaption>
 </figure>
 
 <pre><code class="language-python">ADMIN_API_KEY = &quot;CUPID_MASTER_KEY_2024_XOXO&quot;
@@ -231,9 +231,9 @@ Connection: keep-alive
 
 
 </code></pre>
-<figure class="post-figure" id="fig-2-6">
+<figure class="post-figure" id="fig-3-6">
   <img src="../../assets/images/writeups/2026-02-14_17-00-44 1.png" alt="2026-02-14_17-00-44 1"/>
-  <figcaption>Fig2.6 - 2026-02-14_17-00-44 1</figcaption>
+  <figcaption>Fig3.6 - 2026-02-14_17-00-44 1</figcaption>
 </figure>
 
 <p>This brings up the flag.</p></div>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love at first breach - TryHeartMe | Parthiv Kumar Nikku</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
+
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a href="../../index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i> Portfolio
+      </a>
+    </div>
+
+    <!-- Theme Toggle - Single Icon -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <!-- Mobile Menu Button - Hamburger Style -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li><a href="THM-TryHeartMe.html"><i class="fas fa-file-alt"></i> Love at first breach - TryHeartMe</a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached</a></li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="../../index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="../../html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="../../html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      <header class="post-header">
+        <h1 class="post-title">Love at first breach - TryHeartMe</h1>
+        
+
+        <div class="meta-row">
+          <span class="meta-item"><i class="fas fa-calendar-alt"></i> 2026-02-16</span>
+          <span class="meta-item"><i class="fas fa-clock"></i> 10 min read</span>
+          <span class="meta-item"><i class="fas fa-user"></i> scap3sh4rk</span>
+          
+          
+          <span class="meta-item tags"><span class="tag tag-web">web</span><span class="tag tag-jwt">jwt</span><span class="tag tag-informative">informative</span></span>
+          
+        </div>
+      </header>
+
+      <div class="post-body"><blockquote>
+<p>Challange Description:
+<em>The TryHeartMe shop is open for business. Can you find a way to purchase the hidden “Valenflag” item?</em></p>
+</blockquote>
+<hr />
+<h2>Challenge Metadata</h2>
+<ul>
+<li><strong>Room Name:</strong> TryHeartMe</li>
+<li><strong>Platform:</strong> TryHackMe</li>
+<li><strong>URL:</strong> <a href="https://tryhackme.com/room/lafb2026e5">Link to the challenge</a></li>
+<li><strong>Difficulty:</strong> Easy</li>
+<li><strong>Category:</strong> Web</li>
+<li><strong>Points:</strong> 100</li>
+</ul>
+<hr />
+<h2>Introduction</h2>
+<p>The challenge presents a web-based shop application as the landing page. The objective is to identify and purchase a hidden item named <strong>“Valenflag.”</strong></p>
+<p>Initially, I explored the client-side resources such as <code>styles.css</code> and JavaScript files, assuming the challenge might involve UI-level manipulation or hidden elements. While analyzing the JavaScript, I noticed a <code>.toast</code> implementation. Toast messages are typically lightweight UI notifications used to display acknowledgements or alerts temporarily. In this case, however, they were only used for user feedback messages and were not directly related to the vulnerability.</p>
+<p>This write-up focuses on how authentication and authorization logic were implemented insecurely, leading to privilege escalation.</p>
+<hr />
+<h2>1. Reconnaissance</h2>
+<p>This phase focused on understanding the application structure and discovering hidden endpoints.</p>
+<p>I started with directory brute forcing using <strong>ffuf</strong> and quickly identified an interesting directory:</p>
+<pre><code class="language-bash">ffuf -u http://$TARGET:5000/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt
+</code></pre>
+<figure class="post-figure" id="fig-2-1">
+  <img width="951" height="661" alt="ffuf" src="https://github.com/user-attachments/assets/d6431321-fc58-4e50-b86a-2a61504f5dbb" />
+  <figcaption>Fig2.1 - ffuf</figcaption>
+</figure>
+
+<p>While exploring the discovered paths, I found an <code>/admin</code> directory. Attempting to access it resulted in a <strong>403 Forbidden</strong> response, indicating that access restrictions were based on authorization rather than missing resources.</p>
+<figure class="post-figure" id="fig-2-2">
+  <img width="1918" height="1079" alt="forbidden" src="https://github.com/user-attachments/assets/eeb29372-65e7-4109-9c40-8c3b489da925" />
+  <figcaption>Fig2.2 - forbidden</figcaption>
+</figure>
+
+<p>At this point, I created a normal user account and observed that the homepage displayed my current role and privilege level. This hinted that authorization decisions might be tied to client-controlled data.</p>
+<p>Further inspection revealed that the site was using <strong>JWT (JSON Web Tokens)</strong> for authentication.</p>
+<hr />
+<h2>2. Understanding JWT</h2>
+<p>JWT (JSON Web Token) is a compact, URL-safe token format used for stateless authentication. Instead of storing session data on the server, the server issues a signed token containing user information that the client sends with future requests.</p>
+<p>A JWT is commonly stored as a cookie or authorization header and allows users to stay authenticated without repeatedly sending credentials.</p>
+<p>The captured authentication cookie is shown below:</p>
+<figure class="post-figure" id="fig-2-3">
+  <img width="1506" height="93" alt="3" src="https://github.com/user-attachments/assets/4971088c-91ed-43a1-96cc-bc5e6861c266" />
+  <figcaption>Fig2.3 - 3</figcaption>
+</figure>
+
+<h3>JWT Structure</h3>
+<p>A JWT consists of <strong>three parts</strong>, separated by dots (<code>.</code>):</p>
+<ol>
+<li>
+<p><strong>Header</strong></p>
+</li>
+<li>
+<p>Contains metadata about the token.</p>
+</li>
+<li>Usually specifies the signing algorithm (<code>alg</code>) and token type (<code>typ</code>).</li>
+<li>
+<p>Example:</p>
+<p><code>json
+ {
+   "alg": "HS256",
+   "typ": "JWT"
+ }</code></p>
+</li>
+<li>
+<p><strong>Payload</strong></p>
+</li>
+<li>
+<p>Contains claims (data) such as:</p>
+<ul>
+<li>username</li>
+<li>email</li>
+<li>role</li>
+<li>permissions</li>
+<li>expiry time (<code>exp</code>)</li>
+<li>Important: the payload is only <strong>encoded</strong>, not encrypted, meaning anyone can decode and read it.</li>
+</ul>
+</li>
+<li>
+<p><strong>Signature</strong></p>
+</li>
+<li>
+<p>Generated using:</p>
+<p><code>Header + Payload + Secret Key</code>
+   * Ensures integrity and authenticity.
+   * If the payload is modified, the signature should become invalid unless properly re-signed.</p>
+</li>
+</ol>
+<p><em>(message for author refer - B400 for further details about this context)</em></p>
+<h3>How JWT Validation Should Work</h3>
+<p>A secure server typically performs validation in this order:</p>
+<ul>
+<li>Verify the signature using the secret key.</li>
+<li>Validate expiration (<code>exp</code>) and other security claims.</li>
+<li>Only then trust the payload data.</li>
+</ul>
+<p>If this process is misconfigured — for example, if the server trusts the payload without strict signature validation — attackers may modify tokens and escalate privileges.</p>
+<hr />
+<h2>3. Gaining Access (Exploitation)</h2>
+<h3>Vulnerability Analysis</h3>
+<p>The vulnerability lies in improper JWT validation. Since authorization decisions relied on fields present in the payload, manipulating them could alter privileges if signature verification was weak or incorrectly implemented.</p>
+<h3>Exploitation Steps</h3>
+<ul>
+<li>I first decoded the JWT to inspect the contained attributes.</li>
+<li>After decoding, I observed a payload field containing role information.</li>
+<li>I modified the role value to <code>admin</code>.</li>
+</ul>
+<figure class="post-figure" id="fig-2-4">
+  <img width="1918" height="1079" alt="decode" src="https://github.com/user-attachments/assets/61fd9c8b-c33b-411b-bd5b-afb7fa67f9fc" />
+  <figcaption>Fig2.4 - decode</figcaption>
+</figure>
+
+<ul>
+<li>I replaced only the payload section and reused the modified cookie.</li>
+<li>The server accepted the token, effectively granting admin privileges.</li>
+</ul>
+<figure class="post-figure" id="fig-2-5">
+  <img width="1918" height="1079" alt="admin-access" src="https://github.com/user-attachments/assets/45a71c8a-6582-4fee-b593-60f057f1ad84" />
+  <figcaption>Fig2.5 - admin-access</figcaption>
+</figure>
+
+<p>Using the same cookie across requests, I accessed restricted endpoints and eventually located the flag at:</p>
+<pre><code>product/valenflag
+</code></pre>
+<figure class="post-figure" id="fig-2-6">
+  <img width="1918" height="1078" alt="flag" src="https://github.com/user-attachments/assets/a2fbc809-66f6-4439-9737-a883bd485fa0" />
+  <figcaption>Fig2.6 - flag</figcaption>
+</figure>
+
+<hr />
+<h2>4. Privilege Escalation</h2>
+<ul>
+<li>
+<p><strong>Enumeration:</strong>
+  After gaining authenticated access, I inspected role-based areas and looked for hidden or restricted endpoints.</p>
+</li>
+<li>
+<p><strong>Exploitation:</strong>
+  Privilege escalation occurred by modifying JWT payload data to impersonate an administrator account.</p>
+</li>
+</ul>
+<hr />
+<h2>5. Post-Exploitation &amp; Loot</h2>
+<p>After obtaining administrative privileges, I continued browsing privileged endpoints and discovered the hidden product endpoint containing the flag.</p>
+<p>The flag was successfully retrieved from:</p>
+<pre><code>product/valenflag
+</code></pre>
+<hr />
+<h2>Conclusion</h2>
+<p>This challenge demonstrates how dangerous insecure JWT implementations can be.</p>
+<h3>Key Takeaways</h3>
+<ul>
+<li>JWT payloads are <strong>not encrypted</strong> — they are only encoded.</li>
+<li>Authorization logic must never blindly trust client-controlled data.</li>
+<li>Signature validation is the most critical security step.</li>
+<li>Even small misconfigurations in token validation can lead to full privilege escalation.</li>
+</ul>
+<h3>Remediation Ideas</h3>
+<ul>
+<li>Always verify JWT signatures server-side.</li>
+<li>Use strong, securely stored signing secrets.</li>
+<li>Avoid storing sensitive authorization logic directly in client-controlled tokens without additional checks.</li>
+<li>Implement server-side authorization validation where possible.</li>
+</ul>
+<blockquote>
+<p>"Try to find flag yourselves" — scap3sh4rk</p>
+</blockquote></div>
+    </article>
+    
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-secondary);">
+    <p>&copy; 2026 Parthiv Kumar Nikku | Security Blog</p>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+      <i class="fas fa-lock"></i> Secured with &lt;/&gt; and coffee
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../js/blog.js"></script>
+</body>
+</html>
