@@ -27,8 +27,7 @@ Instead of registering with: `personal@gmail.com`, use: `personal+service_name@g
 - `personal+surveydonkey@gmail.com`
 - `professional+resume@gmail.com`
 
-
-<video width="640" controls>
+<video controls style="width:100%; max-width:100%; height:auto;">
   <source src="../../assets/videos/plus-addressing.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
