@@ -29,7 +29,7 @@ Instead of registering with: `personal@gmail.com`, use: `personal+service_name@g
 
 
 <video width="640" controls>
-  <source src="../../../blog-src/assets/videos/plus-addressing.mp4" type="video/mp4">
+  <source src="../assets/videos/plus-addressing.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
