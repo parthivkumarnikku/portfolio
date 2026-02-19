@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gmail Plus Addressing | Parthiv Kumar Nikku</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
+
+  <!-- Blog CSS -->
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="blog-navbar">
+    <div class="nav-left">
+      <a href="/docs/blog/index.html" class="nav-link">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a href="/docs/index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i> Portfolio
+      </a>
+    </div>
+
+    <!-- Theme Toggle - Single Icon -->
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+      <span class="icon sun"><i class="fas fa-sun"></i></span>
+      <span class="icon moon"><i class="fas fa-moon"></i></span>
+    </div>
+
+    <!-- Mobile Menu Button - Hamburger Style -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <main class="blog-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <h3><i class="fas fa-list"></i> Blog Posts</h3>
+      <ul>
+        <li><a href="Gmail Plus Addressing.html"><i class="fas fa-file-alt"></i> Gmail Plus Addressing</a></li><li><a href="THM-TryHeartMe.html"><i class="fas fa-file-alt"></i> Love at first breach - TryHeartMe</a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached</a></li>
+      </ul>
+      
+      <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
+      <ul>
+        <li>
+          <a href="/docs/index.html">
+            <i class="fas fa-home"></i> Main Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="/docs/html/certifications.html">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+        </li>
+        <li>
+          <a href="/docs/html/projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+      </ul>
+    </aside>
+    
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar Toggle Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- CONTENT AREA -->
+    <article class="blog-content">
+      <header class="post-header">
+        <h1 class="post-title">Gmail Plus Addressing</h1>
+        
+
+        <div class="meta-row">
+          <span class="meta-item"><i class="fas fa-calendar-alt"></i> 2026-02-19</span>
+          <span class="meta-item"><i class="fas fa-clock"></i> 3 min read</span>
+          <span class="meta-item"><i class="fas fa-user"></i> Parthiv Kumar Nikku</span>
+          
+          
+          <span class="meta-item tags"><span class="tag tag-gmail">gmail</span><span class="tag tag-privacy">privacy</span><span class="tag tag-general">general</span></span>
+          
+        </div>
+      </header>
+
+      <div class="post-body"><blockquote>
+<p>Challange Description:
+<em>A brief and engaging description of the challenge or topic goes here. What was the main objective? What makes this interesting?</em></p>
+</blockquote>
+<h2>Most People Use Gmail Daily — Almost Nobody Uses This Built-In Security Feature</h2>
+<p>There is a simple, built-in mechanism in <strong>Gmail</strong> that materially improves personal and organizational security awareness: <strong>email aliasing (plus addressing)</strong>.</p>
+<h2>How the attack usually happens</h2>
+<ul>
+<li>You register on a third-party platform using <code>personal@gmail.com</code>.</li>
+<li>That platform suffers a data breach.</li>
+<li>Your email appears in breach datasets and phishing lists.</li>
+<li>You later receive phishing emails sent <em>to</em> <code>personal@gmail.com</code>.</li>
+<li>You have no attribution signal—no way to know which service leaked your data.</li>
+</ul>
+<h2>The defensive technique</h2>
+<p>Instead of registering with: <code>personal@gmail.com</code>, use: <code>personal+service_name@gmail.com</code>.</p>
+<h3>Examples</h3>
+<ul>
+<li><code>personal+peesbook@gmail.com</code></li>
+<li><code>personal+pinstagram@gmail.com</code></li>
+<li><code>personal+surveydonkey@gmail.com</code></li>
+<li><code>professional+resume@gmail.com</code></li>
+</ul>
+<video width="640" controls>
+  <source src="videos/plus-addressing.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<h2>Why this matters</h2>
+<ul>
+<li>When a phishing email arrives addressed to <code>personal+peesbook@gmail.com</code>, attribution is immediate.</li>
+<li>You know <strong>exactly which service leaked or mishandled your data</strong>.</li>
+<li>You can rotate credentials, revoke access, or delete the account immediately.</li>
+<li>You gain visibility instead of guessing.</li>
+</ul>
+<h2>Security value</h2>
+<ul>
+<li>Breach source identification</li>
+<li>Faster incident response</li>
+<li>Reduced phishing effectiveness</li>
+<li>Improved personal OPSEC</li>
+<li>Better hygiene for corporate signups and test accounts</li>
+</ul>
+<p>This is not a workaround. This is a supported feature that most users ignore.</p>
+<h2>Use cases:</h2>
+<ul>
+<li><strong>Students &amp; resumes:</strong> Track where your resume leaks by tagging each job portal or recruiter.    </li>
+<li><strong>Social media signups:</strong> Identify which platform sold or lost your email data.</li>
+<li><strong>E-commerce accounts:</strong> Detect marketplaces sharing data with third-party advertisers.</li>
+<li><strong>Free tools and trials:</strong> Know which service converts your email into spam.</li>
+<li><strong>Newsletters:</strong> Instantly trace who ignored unsubscribe requests.</li>
+<li><strong>Online forums:</strong> Attribute data exposure from low-trust communities.</li>
+<li><strong>Banking and finance alerts:</strong> Separate high-risk communications from noise.</li>
+<li><strong>Corporate test accounts:</strong> Maintain clean attribution during QA and security testing.</li>
+<li><strong>Event registrations:</strong> Identify organizers who mishandle attendee data.    </li>
+<li><strong>Third-party integrations:</strong> Detect leaks introduced via OAuth or partner ecosystems.</li>
+</ul>
+<p>Security is not only about tools and exploits.<br />
+It is about <strong>signal preservation</strong>.</p></div>
+    </article>
+    
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--border-color); background: var(--bg-secondary);">
+    <p>&copy; 2026 Parthiv Kumar Nikku | Security Blog</p>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">
+      <i class="fas fa-lock"></i> Secured with &lt;/&gt; and coffee
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../docs/blog/js/blog.js"></script>
+</body>
+</html>

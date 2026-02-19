@@ -13,20 +13,20 @@
   <link rel="icon" type="image/x-icon" href="../../assets/logos/favicon.ico">
 
   <!-- Blog CSS -->
-  <link rel="stylesheet" href="https://parthivkumarnikku.github.io/portfolio/blog/css/blog.css">
+  <link rel="stylesheet" href="../css/blog.css">
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="blog-navbar">
     <div class="nav-left">
-      <a href="../index.html" class="nav-link">
+      <a href="/docs/blog/index.html" class="nav-link">
         <i class="fas fa-blog"></i> Blog
       </a>
     </div>
 
     <div class="nav-links">
-      <a href="../../index.html" class="nav-link">
+      <a href="/docs/index.html" class="nav-link">
         <i class="fas fa-arrow-left"></i> Portfolio
       </a>
     </div>
@@ -52,23 +52,23 @@
     <aside class="blog-sidebar" id="blog-sidebar">
       <h3><i class="fas fa-list"></i> Blog Posts</h3>
       <ul>
-        <li><a href="THM-TryHeartMe.html"><i class="fas fa-file-alt"></i> Love at first breach - TryHeartMe</a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached</a></li>
+        <li><a href="Gmail Plus Addressing.html"><i class="fas fa-file-alt"></i> Gmail Plus Addressing</a></li><li><a href="THM-TryHeartMe.html"><i class="fas fa-file-alt"></i> Love at first breach - TryHeartMe</a></li><li><a href="THM-Valenfind.html"><i class="fas fa-file-alt"></i> THM - Valenfind Write-up</a></li><li><a href="IITB25-Breached-Writeup.html"><i class="fas fa-file-alt"></i> Breached</a></li>
       </ul>
       
       <h3 style="margin-top: 2rem;"><i class="fas fa-link"></i> Quick Links</h3>
       <ul>
         <li>
-          <a href="../../index.html">
+          <a href="/docs/index.html">
             <i class="fas fa-home"></i> Main Portfolio
           </a>
         </li>
         <li>
-          <a href="../../html/certifications.html">
+          <a href="/docs/html/certifications.html">
             <i class="fas fa-certificate"></i> Certifications
           </a>
         </li>
         <li>
-          <a href="../../html/projects.html">
+          <a href="/docs/html/projects.html">
             <i class="fas fa-project-diagram"></i> Projects
           </a>
         </li>
@@ -125,15 +125,15 @@
 <p>I started with directory brute forcing using <strong>ffuf</strong> and quickly identified an interesting directory:</p>
 <pre><code class="language-bash">ffuf -u http://$TARGET:5000/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt
 </code></pre>
-<figure class="post-figure" id="fig-2-1">
+<figure class="post-figure" id="fig-3-1">
   <img width="951" height="661" alt="ffuf" src="https://github.com/user-attachments/assets/d6431321-fc58-4e50-b86a-2a61504f5dbb" />
-  <figcaption>Fig2.1 - ffuf</figcaption>
+  <figcaption>Fig3.1 - ffuf</figcaption>
 </figure>
 
 <p>While exploring the discovered paths, I found an <code>/admin</code> directory. Attempting to access it resulted in a <strong>403 Forbidden</strong> response, indicating that access restrictions were based on authorization rather than missing resources.</p>
-<figure class="post-figure" id="fig-2-2">
+<figure class="post-figure" id="fig-3-2">
   <img width="1918" height="1079" alt="forbidden" src="https://github.com/user-attachments/assets/eeb29372-65e7-4109-9c40-8c3b489da925" />
-  <figcaption>Fig2.2 - forbidden</figcaption>
+  <figcaption>Fig3.2 - forbidden</figcaption>
 </figure>
 
 <p>At this point, I created a normal user account and observed that the homepage displayed my current role and privilege level. This hinted that authorization decisions might be tied to client-controlled data.</p>
@@ -143,9 +143,9 @@
 <p>JWT (JSON Web Token) is a compact, URL-safe token format used for stateless authentication. Instead of storing session data on the server, the server issues a signed token containing user information that the client sends with future requests.</p>
 <p>A JWT is commonly stored as a cookie or authorization header and allows users to stay authenticated without repeatedly sending credentials.</p>
 <p>The captured authentication cookie is shown below:</p>
-<figure class="post-figure" id="fig-2-3">
-  <img width="1506" height="93" alt="3" src="https://github.com/user-attachments/assets/4971088c-91ed-43a1-96cc-bc5e6861c266" />
-  <figcaption>Fig2.3 - 3</figcaption>
+<figure class="post-figure" id="fig-3-3">
+  <img width="1506" height="93" alt="cookie" src="https://github.com/user-attachments/assets/4971088c-91ed-43a1-96cc-bc5e6861c266" />
+  <figcaption>Fig3.3 - cookie</figcaption>
 </figure>
 
 <h3>JWT Structure</h3>
@@ -209,26 +209,26 @@
 <li>After decoding, I observed a payload field containing role information.</li>
 <li>I modified the role value to <code>admin</code>.</li>
 </ul>
-<figure class="post-figure" id="fig-2-4">
+<figure class="post-figure" id="fig-3-4">
   <img width="1918" height="1079" alt="decode" src="https://github.com/user-attachments/assets/61fd9c8b-c33b-411b-bd5b-afb7fa67f9fc" />
-  <figcaption>Fig2.4 - decode</figcaption>
+  <figcaption>Fig3.4 - decode</figcaption>
 </figure>
 
 <ul>
 <li>I replaced only the payload section and reused the modified cookie.</li>
 <li>The server accepted the token, effectively granting admin privileges.</li>
 </ul>
-<figure class="post-figure" id="fig-2-5">
+<figure class="post-figure" id="fig-3-5">
   <img width="1918" height="1079" alt="admin-access" src="https://github.com/user-attachments/assets/45a71c8a-6582-4fee-b593-60f057f1ad84" />
-  <figcaption>Fig2.5 - admin-access</figcaption>
+  <figcaption>Fig3.5 - admin-access</figcaption>
 </figure>
 
 <p>Using the same cookie across requests, I accessed restricted endpoints and eventually located the flag at:</p>
 <pre><code>product/valenflag
 </code></pre>
-<figure class="post-figure" id="fig-2-6">
+<figure class="post-figure" id="fig-3-6">
   <img width="1918" height="1078" alt="flag" src="https://github.com/user-attachments/assets/a2fbc809-66f6-4439-9737-a883bd485fa0" />
-  <figcaption>Fig2.6 - flag</figcaption>
+  <figcaption>Fig3.6 - flag</figcaption>
 </figure>
 
 <hr />
@@ -282,6 +282,6 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="../js/blog.js"></script>
+  <script src="../docs/blog/js/blog.js"></script>
 </body>
 </html>
