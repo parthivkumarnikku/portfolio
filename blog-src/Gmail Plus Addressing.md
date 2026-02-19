@@ -1,7 +1,8 @@
 # Gmail Plus Addressing
 
 > Challange Description:
-> *A brief and engaging description of the challenge or topic goes here. What was the main objective? What makes this interesting?*
+> Most People Use Gmail Daily — Almost Nobody Uses This Built-In Security Feature.
+> _There is a simple, built-in mechanism in **Gmail** that materially improves personal and organizational security awareness: **email aliasing (plus addressing)**._
 
 
 Title: Gmail Plus Addressing
@@ -9,10 +10,6 @@ Date: 2026-02-19
 Author: Parthiv Kumar Nikku
 Tags: [gmail, privacy, general]
 
-
-## Most People Use Gmail Daily — Almost Nobody Uses This Built-In Security Feature
-
-There is a simple, built-in mechanism in **Gmail** that materially improves personal and organizational security awareness: **email aliasing (plus addressing)**.
 
 ## How the attack usually happens
 - You register on a third-party platform using `personal@gmail.com`.
