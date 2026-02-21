@@ -10,7 +10,7 @@ Date: 2026-02-19
 Author: Parthiv Kumar Nikku
 Tags: [gmail, privacy, general]
 
-<img width="1051" height="500" alt="ffuf" src="https://github.com/user-attachments/assets/ca760c33-d24b-4a67-a463-b439f2fbf640" />
+<img width="1051" height="500" alt="Gmail Plus addressing" src="https://github.com/user-attachments/assets/ca760c33-d24b-4a67-a463-b439f2fbf640" />
 
 
 ## How an attack usually happens
