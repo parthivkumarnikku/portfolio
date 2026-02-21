@@ -101,11 +101,16 @@
       </header>
 
       <div class="post-body"><blockquote>
-<p>Challange Description:
+<p>Description:
 Most People Use Gmail Daily — Almost Nobody Uses This Built-In Security Feature.
 <em>There is a simple, built-in mechanism in <strong>Gmail</strong> that materially improves personal and organizational security awareness: <strong>email aliasing (plus addressing)</strong>.</em></p>
 </blockquote>
-<h2>How the attack usually happens</h2>
+<figure class="post-figure" id="fig-1-1">
+  <img width="1051" height="500" alt="ffuf" src="https://github.com/user-attachments/assets/ca760c33-d24b-4a67-a463-b439f2fbf640" />
+  <figcaption>Fig1.1 - ffuf</figcaption>
+</figure>
+
+<h2>How an attack usually happens</h2>
 <ul>
 <li>You register on a third-party platform using <code>personal@gmail.com</code>.</li>
 <li>That platform suffers a data breach.</li>
@@ -117,7 +122,7 @@ Most People Use Gmail Daily — Almost Nobody Uses This Built-In Security Featur
 <p>Instead of registering with: <code>personal@gmail.com</code>, use: <code>personal+service_name@gmail.com</code>.</p>
 <h3>Examples</h3>
 <ul>
-<li><code>personal+peesbook@gmail.com</code></li>
+<li><code>personal+pfacebook@gmail.com</code></li>
 <li><code>personal+pinstagram@gmail.com</code></li>
 <li><code>personal+surveydonkey@gmail.com</code></li>
 <li><code>professional+resume@gmail.com</code></li>
@@ -129,7 +134,7 @@ Most People Use Gmail Daily — Almost Nobody Uses This Built-In Security Featur
 
 <h2>Why this matters</h2>
 <ul>
-<li>When a phishing email arrives addressed to <code>personal+peesbook@gmail.com</code>, attribution is immediate.</li>
+<li>When a phishing email arrives addressed to <code>personal+pfacebook@gmail.com</code>, attribution is immediate.</li>
 <li>You know <strong>exactly which service leaked or mishandled your data</strong>.</li>
 <li>You can rotate credentials, revoke access, or delete the account immediately.</li>
 <li>You gain visibility instead of guessing.</li>
