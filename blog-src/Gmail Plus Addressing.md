@@ -1,6 +1,6 @@
 # Gmail Plus Addressing
 
-> Challange Description:
+> Description:
 > Most People Use Gmail Daily — Almost Nobody Uses This Built-In Security Feature.
 > _There is a simple, built-in mechanism in **Gmail** that materially improves personal and organizational security awareness: **email aliasing (plus addressing)**._
 
@@ -10,8 +10,10 @@ Date: 2026-02-19
 Author: Parthiv Kumar Nikku
 Tags: [gmail, privacy, general]
 
+<img width="1051" height="500" alt="ffuf" src="https://github.com/user-attachments/assets/ca760c33-d24b-4a67-a463-b439f2fbf640" />
 
-## How the attack usually happens
+
+## How an attack usually happens
 - You register on a third-party platform using `personal@gmail.com`.
 - That platform suffers a data breach.
 - Your email appears in breach datasets and phishing lists.
@@ -22,7 +24,7 @@ Tags: [gmail, privacy, general]
 Instead of registering with: `personal@gmail.com`, use: `personal+service_name@gmail.com`.
 
 ### Examples
-- `personal+peesbook@gmail.com`
+- `personal+pfacebook@gmail.com`
 - `personal+pinstagram@gmail.com`
 - `personal+surveydonkey@gmail.com`
 - `professional+resume@gmail.com`
@@ -33,9 +35,8 @@ Instead of registering with: `personal@gmail.com`, use: `personal+service_name@g
 </video>
 
 
-
 ## Why this matters
-- When a phishing email arrives addressed to `personal+peesbook@gmail.com`, attribution is immediate.
+- When a phishing email arrives addressed to `personal+pfacebook@gmail.com`, attribution is immediate.
 - You know **exactly which service leaked or mishandled your data**.
 - You can rotate credentials, revoke access, or delete the account immediately.
 - You gain visibility instead of guessing.
